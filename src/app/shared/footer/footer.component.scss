@@ -1,0 +1,67 @@
+.footer .credits, .footer-nav {
+    line-height: 30px!important;
+}
+a {
+    color: rgb(7, 111, 196) !important;
+    font-weight: bold;
+    font-size: 1em;
+    -webkit-transform: .4s;
+    transform: .4s;
+}
+a:hover{
+    color: rgb(228, 13, 13) !important;
+    font-size: 1.3em;
+    font-weight: 2%;
+}
+.para1{
+    text-align: center!important;
+}
+nav[_ngcontent-c2] {
+    line-height: 30px !important;
+}
+.footer .credits, .footer-nav {
+    line-height: 85px;
+}
+.footer .copyright {
+    color: rgb(7, 111, 196) !important;
+    padding: 0;
+    font-size: 1em;
+    margin: 0;
+    line-height: 20px;
+    text-align: center;
+    float: center!important;
+    font-weight: bold;
+}
+.row1 {
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(7, 111, 196) !important;
+    text-align: center;
+}
+.row {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 2em 0 0 0;
+}
+.footer[_ngcontent-c2][_ngcontent-c2] .copyright[_ngcontent-c2][_ngcontent-c2] {
+    color:rgb(7, 111, 196) !important;
+    padding: 0;
+    font-size: 14px;
+    margin: 0;
+    line-height: 20px;
+    text-align: center;
+    float: center !important;
+}
+.footer[_ngcontent-c2] .credits[_ngcontent-c2], .footer-nav[_ngcontent-c2] {
+    line-height: 85px;
+    float: center!important;
+}
+.fa:hover{
+    animation:w3-spin 0.7s 1 linear!important;
+}
+@keyframes w3-spin{
+    0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}
+}

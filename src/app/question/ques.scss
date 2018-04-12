@@ -1,0 +1,57 @@
+.col-md-4{
+    padding-left: 6em;
+    border-right: 1px dotted #18C9D2;
+}    
+.dropdown{
+    padding-top: 1em;
+}
+.btn{
+    width: 25em!important;
+    font-weight: bold;
+}
+.temp{
+    padding-top: 1em;
+    margin-left: -4em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+.tittle {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+.dropdown-menu{
+    text-align: center;
+    border-bottom: 1px dotted #18C9D2;    
+    background-color: #fff;
+}
+.dropdown-menu a{
+    color: #000;
+    font-weight: bold;
+    padding-top: 1em;
+}
+.divider{
+    border-bottom: 1px dotted rgb(2, 2, 2);
+}
+@media (max-width: 500px){
+    .card {
+        font-size:.8em!important;
+    }
+    .btn{
+        width: 20em!important;
+        font-weight: bold;
+        margin-left: -7em;
+    }
+    .dropdown-menu{
+        text-align: center;
+        border-bottom: 1px dotted #18C9D2;    
+        background-color: #fff!important;
+        position: relative;
+    }
+    .dropdown-menu a{
+        color: #000;
+        font-weight: bold;
+        padding-top: 1em;
+    }
+}

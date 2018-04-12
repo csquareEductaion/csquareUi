@@ -1,0 +1,757 @@
+<div class="main">
+    <br>
+    <div class="card card-body" style="margin-top: 2em;background-color: #fff; opacity:.76;">
+        <h3 class="tittle">The Best Private Tutor {{keyword}}, {{area}}</h3>
+</div>
+    <br><br>
+    <div class="row">
+                <div class="col-md-6"> 
+                                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>                
+                        <div class="card card-body" style="background-color: #fff; opacity:.76;">
+                                <div class="card card-body">
+                                <img src="assets/img/quickenquiry.png" style="width: 200px;height:200px;margin-left:35%; margin-top: -8em;margin-bottom: -6em;">
+                                 <!-- Quick Enquiry
+                                 <p>*Only for Students/Parents</p> -->
+                                </div>
+                                    <form [formGroup]="enquiryForm">                                        
+                                    <div class="row" style="text-align:left; padding-top:1em;">
+                                            <p style="margin-left: 1em;">I Am: </p>
+                                            <div class="col-sm-6">
+                                                    <label class="checkbox-inline" for="isstudent">
+                                                      <input type="checkbox" [formControl]="isstudent" id="isstudent">&nbsp;&nbsp;Student/Parent
+                                                    </label>
+                                                    <label class="checkbox-inline" for="istutor">
+                                                            <input type="checkbox" [formControl]="istutor" id="istutor">&nbsp;&nbsp;Tutor
+                                                          </label>
+                                                  </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!firstName.valid && firstName.touched)), 'has-success': (firstName.valid && firstName.touched)}">
+                                            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First Name">
+                                            <small *ngIf="(!firstName.valid && firstName.touched)" class="text-danger">
+                                                    First Name is required.
+                                                  </small>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!lastName.valid && lastName.touched)), 'has-success': (lastName.valid && lastName.touched)}">
+                                            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name">
+                                            <small *ngIf="(!lastName.valid && lastName.touched)" class="text-danger">
+                                                    Last Name is required.
+                                                  </small>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!phone.valid && phone.touched)), 'has-success': (phone.valid && phone.touched)}">
+                                                <input type="text" class="form-control" formControlName="phone" id="phone" placeholder="Phone">
+                                                <div *ngIf="(!phone.valid && phone.touched)" class="text-danger">
+                                                <small *ngIf= "phone.errors.required">
+                                                        Phone is required.
+                                                    </small>
+                                                    <small *ngIf="phone.errors.pattern">
+                                                        Phone must be a number.
+                                                    </small>
+                                                       <small *ngIf="phone.errors.minlength">
+                                                          Phone must be at least 10.
+                                                    </small>
+                                                    <small *ngIf="phone.errors.maxlength">
+                                                        Phone must not be greater than 10.
+                                                    </small>
+                                                </div>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!gender.valid && gender.touched)), 'has-success': (gender.valid && gender.touched)}">
+                                                <select type="text" class="form-control" formControlName="gender" id="gender">
+                                                    <option value="" hidden>Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option vlaue="Female">Female</option>
+                                                </select>
+                                                <small *ngIf="(!gender.valid && gender.touched)" class="text-danger">
+                                                        Gender is required.
+                                                      </small>
+                                            </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!grade.valid && grade.touched)), 'has-success': (grade.valid && grade .touched)}">
+                                                <select class="form-control" formControlName="grade" id="grade" placeholder="Grade">
+                                                    <option value="" hidden>Grade</option>
+                                                    <option *ngFor="let list of gradeList" [value]="list.pk">{{list.grade}}</option>
+                                                </select>
+                                                <small *ngIf="(!grade.valid && grade.touched)" class="text-danger">
+                                                        Grade is required.
+                                                      </small>
+                                        </div> 
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!email.valid && email.touched)), 'has-success': (email.valid && email.touched)}">
+                                            <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
+                                            <small *ngIf="(!email.valid && email.touched)" class="text-danger">
+                                                    Email is required.
+                                                  </small>
+                                        </div> 
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!city.valid && city.touched)), 'has-success': (city.valid && city.touched)}">
+                                            <select class="form-control" formControlName="city" id="city" readonly>
+                                                <option value="" hidden>City</option>
+                                                <option *ngFor= "let list of cityList" [value]="list.pK">{{list.city_name}}</option>
+                                            </select>              
+                                                <small *ngIf="(!city.valid && city.touched)" class="text-danger">
+                                                    City is required.
+                                                </small>
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                                <input id="test" type="text" class="form-control" [formControl]="locationName" id="locationName" [ngbTypeahead]="search" placeholder="Location"/>
+                                                <small *ngIf="(!locationName.valid && locationName.touched)" class="text-danger">
+                                                    Location is required
+                                                </small>
+                                              </div>
+                                                <input type="hidden" formControlName="location" class="form-control" id="location">
+                                        <div class="form-group col-sm-12">
+                                            <textarea type="text" class="form-control" rows="1" formControlName="comment" id="comment" placeholder="Comment">
+                                                </textarea>
+                                        </div>                                                
+                                    </div>
+                                    <div class="form-group row">
+                                            <div class="col-sm-12" style="text-align: left;">
+                                              <button type="button" class="btn btn-primary btn-round btn-raised" (click)="submit()">Submit</button>&nbsp;&nbsp;
+                                              <button type="button" class="btn btn-danger btn-round btn-raised" style="background-color:rgb(248, 73, 73)!important;" (click)="cancel()">Reset</button>
+                                            </div>
+                                    </div>
+                                    </form>
+                            </div>
+                            </div>
+                            <div class="col-md-6" style="text-align:center!important;margin-top: 2em;"><br>
+                                <div class="card card-body" style="background-color: #fff;opacity:.76;">
+                                        <div class="card-body" style="background-color:  #fff;opacity:.76;">
+                                <div class="animate">
+                                        <p class="awesome">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;8041627767, 7899342386, 9036198865 </p>
+                                <br>
+                                <p style="padding-top:3em;padding-bottom:3em;text-align:center!important;margin-left:4em!important;"><b>
+                                (call timing: Monday to Saturady, 8AM to 9PM)</b>
+                                <br>&nbsp;&nbsp;Or</p>
+                                <p class="awesome" style="margin-top:-2em;">
+                                <i class="fa fa-whatsapp"></i> &nbsp;8105118078 									
+                                </p>
+                                <p class="with">
+                                                With Us You Get :-<br>
+                                                <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Quality Home Tutor/Private Tutor.<br> 
+                                                <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Full Monitoring of Home Tuition/Private Tuition.
+                                        <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Services and Support For Home Tuition/Private Tuition.
+                                        <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Flexibility To Select Home Tutor/Tuition Teacher.  
+                                     </p> 
+                                </div>  
+                        </div>
+                                </div>
+                        </div>
+</div><br><br>
+    <div class="row">
+        <div class="col-md-8">
+                    <div class="card" style="background-color:  #fff;opacity:.76;">
+                                    <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                        {{t1}}
+                                    </div>
+                                    <div class="card card-body bg-transparent">
+                                            <div class="row row">
+                                                    <div class= "col-md-4">
+                                                        <img src="{{t1Url}}" alt="home tuition in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                        </div>
+                                                    <div class="col-md-8">	
+                                                            <h4>Experience: {{t1Exp}}</h4>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                        <br><br>
+                                                        <p>
+                                                            {{t1Desp}}</p>
+                                                        </div>
+                                                </div>     
+                                    </div>
+                            </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t2}}
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t2Url}}" alt="home tutor in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t2Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    <br><br>
+                                                    <p>{{t2Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t3}}
+                                    </div>
+                                    <div class="card card-body bg-transparent">
+                                            <div class="row row">
+                                                    <div class= "col-md-4">
+                                                        <img src="{{t3Url}}" alt="home tuition in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                        </div>
+                                                    <div class="col-md-8">	
+                                                            <h4>Experience: {{t3Exp}}</h4>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        <br><br>
+                                                        <p>{{t3Desp}}</p>
+                                                        </div>
+                                                </div>     
+                                    </div>
+                            </div> 
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t4}}
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t4Url}}" alt="home tutor in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t4Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                    <br><br>
+                                                    <p>{{t4Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t5}} 
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t5Url}}" alt="home tuition in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t5Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                    <br><br>
+                                                    <p>{{t5Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="button">  
+                                        <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/studentForm')" style="color: #fff!important;">&nbsp;&nbsp;&nbsp;Need a Private Tutor? Click Here&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;
+                                        <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/tutorForm')" style="color: #fff!important;">Want to be a Home Tutor? Click Here</a><br>
+                        </div><br>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t6}}
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t6Url}}" alt="home tutor in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t6Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                    <br><br>
+                                                    <p>{{t6Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t7}}
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t7Url}}" alt="home tuition in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t7Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    <br><br>
+                                                    <p>{{t7Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t8}} 
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t8Url}}" alt="home tutor in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t8Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    <br><br>
+                                                    <p>{{t8Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t9}} 
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t9Url}}" alt="home tuition in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t9Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    <br><br>
+                                                    <p>{{t9Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        {{t10}}
+                                </div>
+                                <div class="card card-body bg-transparent">
+                                        <div class="row row">
+                                                <div class= "col-md-4">
+                                                    <img src="{{t10Url}}" alt="home tutor in bangalore, private tutor in bangalore, tuition teacher in bangalore" class="rounded mx-auto d-block">
+                                                    </div>
+                                                <div class="col-md-8">	
+                                                        <h4>Experience: {{t10Exp}}</h4>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    <br><br>
+                                                    <p>{{t10Desp}}</p>
+                                                    </div>
+                                            </div>     
+                                </div>
+                        </div>
+                        <div class="button">  
+                                <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/studentForm')" style="color: #fff!important;">&nbsp;&nbsp;&nbsp;Need a Private Tutor? Click Here&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;
+                                <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/tutorForm')" style="color: #fff!important;">Want to be a Home Tutor? Click Here</a><br>
+                        </div><br>
+            </div>
+            <div class="col-md-4">
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                        Question Papers:
+                                        </div>                                
+                                            <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                               <ul><li><a [routerLink]="['/question']">Cbse Class 10 Question Paper</a><br><br></li>
+                                                    <li><a [routerLink]="['/question']">Cbse Class 12 Question Paper</a><br><br></li>
+                                                    <li><a [routerLink]="['/question']">ICSE Class 10 Question Paper</a><br><br></li>
+                                                    <li><a [routerLink]="['/question']">ICSE Class 12 Question Paper</a><br><br></li>
+                                                    <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br><br></li>
+                                                    <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br><br></li>
+                                            </ul>  
+                                            </div>
+                                </div><br><br>
+               
+
+                <div class="card" style="background-color:  #fff;opacity:.76;">
+                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                Find Private Tutors For your syllabus:
+                                </div>                                
+                                        <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                           <ul>
+                                                                        <li><a [routerLink]="['../../private-tutor/cbse-private-tutors-in-bangalore']">CBSE Private Tutors</a><br><br></li>
+                                                                        <li><a [routerLink]="['../../private-tutor/icse-private-tutors-in-bangalore']">ISCE Private Tutors</a><br><br></li>
+                                                                        <li><a [routerLink]="['../../private-tutor/state-board-private-tutors-in-bangalore']">State Board Private Tutors </a><br><br></li>
+                                                                        <li><a [routerLink]="['../../private-tutor/igcse-private-tutors-in-bangalore']">IGCSE Private Tutors</a><br><br></li>
+                                                        </ul>  
+                                        </div>
+                                </div><br><br>
+                                        
+                                        
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                Find Private Tutors For your Grade:
+                                </div>                                
+                                        <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                           <ul>
+                                                <li><a [routerLink]="['../../private-tutor/nursery-kg-private-tutors-in-bangalore']">Nursery-KG Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-6-7-8-private-tutors-in-bangalore']">Class 1st To 5th Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-6-7-8-private-tutors-in-bangalore']">Class 6th To 8th Private Tutors </a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-9-private-tutors-in-bangalore']">Class 9th Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-10-private-tutors-in-bangalore']">Class 10th Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-11-science-private-tutors-in-bangalore']">Class 11th Science Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-11-arts-private-tutors-in-bangalore']">Class 11th Arts Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-11-commerce-private-tutors-in-bangalore']">Class 11th Commerce Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-12-science-private-tutors-in-bangalore']">Class 12th Science Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-12-arts-private-tutors-in-bangalore']">Class 12th Arts Private Tutors</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tutor/class-12-commerce-private-tutors-in-bangalore']">Class 12th Commerce Private Tutors</a><br><br></li>
+                                                                        
+                                                        </ul>  
+                                        </div>
+                        </div><br><br>
+                                        
+                                        
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                        
+                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                Find Private Tutors For your Subject:
+                                </div> 
+                                <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                <ul>
+                                        <li><a [routerLink]="['../../private-tutor/maths-private-tutors-in-bangalore']">Math Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/science-private-tutors-in-bangalore']">Science Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/english-private-tutors-in-bangalore']">English Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/physics-private-tutors-in-bangalore']">Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/social-science-private-tutors-in-bangalore']">Social Science Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/hindi-private-tutors-in-bangalore']">Hindi Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/chemistry-private-tutors-in-bangalore']">Chemistry Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/biology-private-tutors-in-bangalore']">Biology Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/accounting-private-tutors-in-bangalore']">Accounting Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/history-private-tutors-in-bangalore']">History Private Tutors</a><br><br></li>
+                                        <li><a [routerLink]="['../../private-tutor/geography-private-tutors-in-bangalore']">Geography Private Tutors</a><br><br></li>
+                                </ul>  
+                        </div>
+                        </div><br><br>            
+                                                                        
+                        <div class="card" style="background-color:  #fff;opacity:.76;">
+                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                Find Private Tutors near your locations: 
+                                </div>
+                                <div class="card card-body bg-transparent" routerLinkActive=active style="overflow-y: auto; height: 700px; overflow-x: hidden;">
+                        
+                <div class="card card-body bg-transparent" routerLinkActive="active">
+                        <a [routerLink]="['../../private-tutor /private-tutors-in-bangalore']">Bangalore</a><br>
+                        <a [routerLink]="['../../private-tutor/a-f-station-yelahanka-private-tutors']">A F station yelahanka</a><br>
+                        <a [routerLink]="['../../private-tutor/adugodi-private-tutors']">Adugodi</a><br>
+                        <a [routerLink]="['../../private-tutor/agara-private-tutors']">Agara</a><br>
+                        <a [routerLink]="['../../private-tutor/agram-private-tutors']">Agram</a><br>
+                        <a [routerLink]="['../../private-tutor/air-force-hospital-private-tutors']">Air Force hospital</a><br>
+                        <a [routerLink]="['../../private-tutor/amruthahalli-private-tutors']">Amruthahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/anandnagar-private-tutors']">Anandnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/anekal-private-tutors']">Anekal</a><br>
+                        <a [routerLink]="['../../private-tutor/anekalbazar-private-tutors']">Anekalbazar</a><br>
+                        <a [routerLink]="['../../private-tutor/arabic-college-private-tutors']">Arabic College</a><br>
+                        <a [routerLink]="['../../private-tutor/aranya-bhavan-private-tutors']">Aranya Bhavan</a><br>
+                        <a [routerLink]="['../../private-tutor/ashoknagar-private-tutors']">Ashoknagar</a><br>
+                        <a [routerLink]="['../../private-tutor/attibele-private-tutors']">Attibele</a><br>
+                        <a [routerLink]="['../../private-tutor/attur-private-tutors']">Attur</a><br>
+                        <a [routerLink]="['../../private-tutor/austin-town-private-tutors']">Austin Town</a><br>
+                        <a [routerLink]="['../../private-tutor/avalahalli-private-tutors']">Avalahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/avani-sringeri-mutt-private-tutors']">Avani Sringeri mutt</a><br>
+                        <a [routerLink]="['../../private-tutor/avenue-road-private-tutors']">Avenue Road</a><br>
+                        <a [routerLink]="['../../private-tutor/b-sk-ii-stage-private-tutors']">B Sk ii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/bsf-campus-yelahanka-private-tutors']">Bsf Campus yelahanka</a><br>
+                        <a [routerLink]="['../../private-tutor/bagalgunte-private-tutors']">Bagalgunte</a><br>
+                        <a [routerLink]="['../../private-tutor/bagalur-private-tutors']">Bagalur</a><br>
+                        <a [routerLink]="['../../private-tutor/balepete-private-tutors']">Balepete</a><br>
+                        <a [routerLink]="['../../private-tutor/banashankari-private-tutors']">Banashankari</a><br>
+                        <a [routerLink]="['../../private-tutor/banashankari-iii-stage-private-tutors']">Banashankari Iii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/banaswadi-private-tutors']">Banaswadi</a><br>
+                        <a [routerLink]="['../../private-tutor/bandikodigehalli-private-tutors']">Bandikodigehalli</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-air-port-private-tutors']">Bangalore Air port</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-bazaar-private-tutors']">Bangalore Bazaar</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-city-private-tutors']">Bangalore City</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-corporation-building-private-tutors']">Bangalore Corporation building</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-dist-offices-bldg-private-tutors']">Bangalore Dist offices bldg</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-fort-private-tutors']">Bangalore Fort</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore-sub-fgn-post-private-tutors']">Bangalore Sub fgn post</a><br>
+                        <a [routerLink]="['../../private-tutor/bangalore.-private-tutors']">Bangalore.</a><br>
+                        <a [routerLink]="['../../private-tutor/bannerghatta-private-tutors']">Bannerghatta</a><br>
+                        <a [routerLink]="['../../private-tutor/bannerghatta-road-private-tutors']">Bannerghatta Road</a><br>
+                        <a [routerLink]="['../../private-tutor/bapujinagar-private-tutors']">Bapujinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/basavanagudi-private-tutors']">Basavanagudi</a><br>
+                        <a [routerLink]="['../../private-tutor/basavaraja-market-private-tutors']">Basavaraja Market</a><br>
+                        <a [routerLink]="['../../private-tutor/basaveshwaranagar-private-tutors']">Basaveshwaranagar</a><br>
+                        <a [routerLink]="['../../private-tutor/basaveswaranagar-ii-stage-private-tutors']">Basaveswaranagar Ii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/bellandur-private-tutors']">Bellandur</a><br>
+                        <a [routerLink]="['../../private-tutor/benson-town-private-tutors']">Benson Town</a><br>
+                        <a [routerLink]="['../../private-tutor/bestamaranahalli-private-tutors']">Bestamaranahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/bettahalsur-private-tutors']">Bettahalsur</a><br>
+                        <a [routerLink]="['../../private-tutor/bhashyam-circle-private-tutors']">Bhashyam Circle</a><br>
+                        <a [routerLink]="['../../private-tutor/bhattarahalli-private-tutors']">Bhattarahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/bidaraguppe-private-tutors']">Bidaraguppe</a><br>
+                        <a [routerLink]="['../../private-tutor/bidrahalli-private-tutors']">Bidrahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/bnagalore-viswavidalaya-private-tutors']">Bnagalore Viswavidalaya</a><br>
+                        <a [routerLink]="['../../private-tutor/bommanahalli-private-tutors']">Bommanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/brigade-road-private-tutors']">Brigade Road</a><br>
+                        <a [routerLink]="['../../private-tutor/byatarayanapura-private-tutors']">Byatarayanapura</a><br>
+                        <a [routerLink]="['../../private-tutor/c.v.raman-nagar-private-tutors']">C.V.raman nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/cmp-centre-and-school-private-tutors']">Cmp Centre and school</a><br>
+                        <a [routerLink]="['../../private-tutor/crpf-campus-yelahanka-private-tutors']">Crpf Campus yelahanka</a><br>
+                        <a [routerLink]="['../../private-tutor/cahmrajendrapet-private-tutors']">Cahmrajendrapet</a><br>
+                        <a [routerLink]="['../../private-tutor/chamrajpet-private-tutors']">Chamrajpet</a><br>
+                        <a [routerLink]="['../../private-tutor/chamrajpet-bazar-private-tutors']">Chamrajpet Bazar</a><br>
+                        <a [routerLink]="['../../private-tutor/chandra-lay-out-private-tutors']">Chandra Lay out</a><br>
+                        <a [routerLink]="['../../private-tutor/chickpet-private-tutors']">Chickpet</a><br>
+                        <a [routerLink]="['../../private-tutor/chikkabettahalli-private-tutors']">Chikkabettahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/chikkajala-private-tutors']">Chikkajala</a><br>
+                        <a [routerLink]="['../../private-tutor/chikkalasandra-private-tutors']">Chikkalasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/chikkanahalli-private-tutors']">Chikkanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/chunchanakuppe-private-tutors']">Chunchanakuppe</a><br>
+                        <a [routerLink]="['../../private-tutor/cubban-road-private-tutors']">Cubban Road</a><br>
+                        <a [routerLink]="['../../private-tutor/dasarahalli-private-tutors']">Dasarahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/deepanjalinagar-private-tutors']">Deepanjalinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/devanagundi-private-tutors']">Devanagundi</a><br>
+                        <a [routerLink]="['../../private-tutor/devarjeevanahalli-private-tutors']">Devarjeevanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/devasandra-private-tutors']">Devasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/dharmaram-college-private-tutors']">Dharmaram College</a><br>
+                        <a [routerLink]="['../../private-tutor/doddagubbi-private-tutors']">Doddagubbi</a><br>
+                        <a [routerLink]="['../../private-tutor/doddajala-private-tutors']">Doddajala</a><br>
+                        <a [routerLink]="['../../private-tutor/doddakallasandra-private-tutors']">Doddakallasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/doddanekkundi-private-tutors']">Doddanekkundi</a><br>
+                        <a [routerLink]="['../../private-tutor/domlur-private-tutors']">Domlur</a><br>
+                        <a [routerLink]="['../../private-tutor/dommasandra-private-tutors']">Dommasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/doorvaninagar-private-tutors']">Doorvaninagar</a><br>
+                        <a [routerLink]="['../../private-tutor/dr.-ambedkar-veedhi-private-tutors']">Dr. ambedkar veedhi</a><br>
+                        <a [routerLink]="['../../private-tutor/electronics-city-private-tutors']">Electronics City</a><br>
+                        <a [routerLink]="['../../private-tutor/fraser-town-private-tutors']">Fraser Town</a><br>
+                        <a [routerLink]="['../../private-tutor/g.k.v.k.-private-tutors']">G.K.v.k.</a><br>
+                        <a [routerLink]="['../../private-tutor/gaviopuram-extension-private-tutors']">Gaviopuram Extension</a><br>
+                        <a [routerLink]="['../../private-tutor/gaviopuram-guttanahalli-private-tutors']">Gaviopuram Guttanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/gayathrinagar-private-tutors']">Gayathrinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/girinagar-private-tutors']">Girinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/goraguntepalya-private-tutors']">Goraguntepalya</a><br>
+                        <a [routerLink]="['../../private-tutor/goripalya-private-tutors']">Goripalya</a><br>
+                        <a [routerLink]="['../../private-tutor/governmemnt-electric-factory-private-tutors']">Governmemnt Electric factory</a><br>
+                        <a [routerLink]="['../../private-tutor/govindapalya-private-tutors']">Govindapalya</a><br>
+                        <a [routerLink]="['../../private-tutor/gunjur-private-tutors']">Gunjur</a><br>
+                        <a [routerLink]="['../../private-tutor/h-m-t-private-tutors']">H M t</a><br>
+                        <a [routerLink]="['../../private-tutor/h.a.-farm-private-tutors']">H.A. farm</a><br>
+                        <a [routerLink]="['../../private-tutor/h.a.l-ii-stage-private-tutors']">H.A.l ii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/h.k.p.-road-private-tutors']">H.K.p. road</a><br>
+                        <a [routerLink]="['../../private-tutor/hsr-layout-private-tutors']">Hsr Layout</a><br>
+                        <a [routerLink]="['../../private-tutor/hampinagar-private-tutors']">Hampinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/handenahalli-private-tutors']">Handenahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/harogadde-private-tutors']">Harogadde</a><br>
+                        <a [routerLink]="['../../private-tutor/hebbal-kempapura-private-tutors']">Hebbal Kempapura</a><br>
+                        <a [routerLink]="['../../private-tutor/hennagara-private-tutors']">Hennagara</a><br>
+                        <a [routerLink]="['../../private-tutor/highcourt-private-tutors']">Highcourt</a><br>
+                        <a [routerLink]="['../../private-tutor/hongasandra-private-tutors']">Hongasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/hoodi-private-tutors']">Hoodi</a><br>
+                        <a [routerLink]="['../../private-tutor/horamavu-private-tutors']">Horamavu</a><br>
+                        <a [routerLink]="['../../private-tutor/hosakerehalli-private-tutors']">Hosakerehalli</a><br>
+                        <a [routerLink]="['../../private-tutor/hosur-road-private-tutors']">Hosur Road</a><br>
+                        <a [routerLink]="['../../private-tutor/hulimangala-private-tutors']">Hulimangala</a><br>
+                        <a [routerLink]="['../../private-tutor/hulimavu-private-tutors']">Hulimavu</a><br>
+                        <a [routerLink]="['../../private-tutor/hulsur-bazaar-private-tutors']">Hulsur Bazaar</a><br>
+                        <a [routerLink]="['../../private-tutor/hunasamaranahalli-private-tutors']">Hunasamaranahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/isro-anthariksha-bhavan-private-tutors']">Isro Anthariksha bhavan</a><br>
+                        <a [routerLink]="['../../private-tutor/immedihalli-private-tutors']">Immedihalli</a><br>
+                        <a [routerLink]="['../../private-tutor/indalavadi-private-tutors']">Indalavadi</a><br>
+                        <a [routerLink]="['../../private-tutor/indiranagar-private-tutors']">Indiranagar</a><br>
+                        <a [routerLink]="['../../private-tutor/indiranagar-com.-complex-private-tutors']">Indiranagar Com. complex</a><br>
+                        <a [routerLink]="['../../private-tutor/industrial-estate-private-tutors']">Industrial Estate</a><br>
+                        <a [routerLink]="['../../private-tutor/ittamadu-layout-private-tutors']">Ittamadu Layout</a><br>
+                        <a [routerLink]="['../../private-tutor/j-p-nagar-private-tutors']">J P nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/j.c.nagar-private-tutors']">J.C.nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/jakkur-private-tutors']">Jakkur</a><br>
+                        <a [routerLink]="['../../private-tutor/jalahalli-private-tutors']">Jalahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/jalahalli-east-private-tutors']">Jalahalli East</a><br>
+                        <a [routerLink]="['../../private-tutor/jalahalli-village-private-tutors']">Jalahalli Village</a><br>
+                        <a [routerLink]="['../../private-tutor/jalahalli-west-private-tutors']">Jalahalli West</a><br>
+                        <a [routerLink]="['../../private-tutor/jalavayuvihar-private-tutors']">Jalavayuvihar</a><br>
+                        <a [routerLink]="['../../private-tutor/jayanagar-private-tutors']">Jayanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/jayanagar-west-private-tutors']">Jayanagar West</a><br>
+                        <a [routerLink]="['../../private-tutor/jayangar-east-private-tutors']">Jayangar East</a><br>
+                        <a [routerLink]="['../../private-tutor/jayangar-iii-block-private-tutors']">Jayangar Iii block</a><br>
+                        <a [routerLink]="['../../private-tutor/jeevanahalli-private-tutors']">Jeevanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/jeevanbhimanagar-private-tutors']">Jeevanbhimanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/jigani-private-tutors']">Jigani</a><br>
+                        <a [routerLink]="['../../private-tutor/jp-nagar-iii-phase-private-tutors']">Jp Nagar iii phase</a><br>
+                        <a [routerLink]="['../../private-tutor/k-h-b-colony-private-tutors']">K H b colony</a><br>
+                        <a [routerLink]="['../../private-tutor/k.-g.-road-private-tutors']">K. g. road</a><br>
+                        <a [routerLink]="['../../private-tutor/k.p.west-private-tutors']">K.P.west</a><br>
+                        <a [routerLink]="['../../private-tutor/kacharakanahalli-private-tutors']">Kacharakanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/kadabagere-private-tutors']">Kadabagere</a><br>
+                        <a [routerLink]="['../../private-tutor/kadugodi-private-tutors']">Kadugodi</a><br>
+                        <a [routerLink]="['../../private-tutor/kalkunte-private-tutors']">Kalkunte</a><br>
+                        <a [routerLink]="['../../private-tutor/kalyanagar-private-tutors']">Kalyanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/kamagondanahalli-private-tutors']">Kamagondanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/kamakshipalya-private-tutors']">Kamakshipalya</a><br>
+                        <a [routerLink]="['../../private-tutor/kannamangala-private-tutors']">Kannamangala</a><br>
+                        <a [routerLink]="['../../private-tutor/kannur-private-tutors']">Kannur</a><br>
+                        <a [routerLink]="['../../private-tutor/kanteeravanagar-private-tutors']">Kanteeravanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/kathriguppe-private-tutors']">Kathriguppe</a><br>
+                        <a [routerLink]="['../../private-tutor/kenchanahalli-private-tutors']">Kenchanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/kendriya-sadan-private-tutors']">Kendriya Sadan</a><br>
+                        <a [routerLink]="['../../private-tutor/kendriya-vihar-private-tutors']">Kendriya Vihar</a><br>
+                        <a [routerLink]="['../../private-tutor/kodigehalli-private-tutors']">Kodigehalli</a><br>
+                        <a [routerLink]="['../../private-tutor/konanakunte-private-tutors']">Konanakunte</a><br>
+                        <a [routerLink]="['../../private-tutor/koramangala-private-tutors']">Koramangala</a><br>
+                        <a [routerLink]="['../../private-tutor/koramangala-i-block-private-tutors']">Koramangala I block</a><br>
+                        <a [routerLink]="['../../private-tutor/koramangala-vi-bk-private-tutors']">Koramangala Vi bk</a><br>
+                        <a [routerLink]="['../../private-tutor/kothanur-private-tutors']">Kothanur</a><br>
+                        <a [routerLink]="['../../private-tutor/krishnarajapuram-private-tutors']">Krishnarajapuram</a><br>
+                        <a [routerLink]="['../../private-tutor/krishnarajapuram-r-s-private-tutors']">Krishnarajapuram R s</a><br>
+                        <a [routerLink]="['../../private-tutor/kugur-private-tutors']">Kugur</a><br>
+                        <a [routerLink]="['../../private-tutor/kumaraswamy-layout-private-tutors']">Kumaraswamy Layout</a><br>
+                        <a [routerLink]="['../../private-tutor/kumbalgodu-private-tutors']">Kumbalgodu</a><br>
+                        <a [routerLink]="['../../private-tutor/kundalahalli-private-tutors']">Kundalahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/lalbagh-west-private-tutors']">Lalbagh West</a><br>
+                        <a [routerLink]="['../../private-tutor/legislators-home-private-tutors']">Legislators Home</a><br>
+                        <a [routerLink]="['../../private-tutor/lingarajapuram-private-tutors']">Lingarajapuram</a><br>
+                        <a [routerLink]="['../../private-tutor/m-s-r-road-private-tutors']">M S r road</a><br>
+                        <a [routerLink]="['../../private-tutor/madhavan-park-private-tutors']">Madhavan Park</a><br>
+                        <a [routerLink]="['../../private-tutor/madivala-private-tutors']">Madivala</a><br>
+                        <a [routerLink]="['../../private-tutor/magadi-road-private-tutors']">Magadi Road</a><br>
+                        <a [routerLink]="['../../private-tutor/mahadevapura-private-tutors']">Mahadevapura</a><br>
+                        <a [routerLink]="['../../private-tutor/mahalakshmipuram-layout-private-tutors']">Mahalakshmipuram Layout</a><br>
+                        <a [routerLink]="['../../private-tutor/mahatma-gandhi-road-private-tutors']">Mahatma Gandhi road</a><br>
+                        <a [routerLink]="['../../private-tutor/malkand-lines-private-tutors']">Malkand Lines</a><br>
+                        <a [routerLink]="['../../private-tutor/mallathahalli-private-tutors']">Mallathahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/malleswaram-private-tutors']">Malleswaram</a><br>
+                        <a [routerLink]="['../../private-tutor/malleswaram-west-private-tutors']">Malleswaram West</a><br>
+                        <a [routerLink]="['../../private-tutor/mandalay-lines-private-tutors']">Mandalay Lines</a><br>
+                        <a [routerLink]="['../../private-tutor/marathahalli-colony-private-tutors']">Marathahalli Colony</a><br>
+                        <a [routerLink]="['../../private-tutor/marsur-private-tutors']">Marsur</a><br>
+                        <a [routerLink]="['../../private-tutor/maruthi-sevanagar-private-tutors']">Maruthi Sevanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/mathikere-private-tutors']">Mathikere</a><br>
+                        <a [routerLink]="['../../private-tutor/mavalli-private-tutors']">Mavalli</a><br>
+                        <a [routerLink]="['../../private-tutor/mayasandra-private-tutors']">Mayasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/medihalli-private-tutors']">Medihalli</a><br>
+                        <a [routerLink]="['../../private-tutor/medimallasandra-private-tutors']">Medimallasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/mico-layout-private-tutors']">Mico Layout</a><br>
+                        <a [routerLink]="['../../private-tutor/milk-colony-private-tutors']">Milk Colony</a><br>
+                        <a [routerLink]="['../../private-tutor/mount-st-joseph-private-tutors']">Mount St joseph</a><br>
+                        <a [routerLink]="['../../private-tutor/msrit-private-tutors']">Msrit</a><br>
+                        <a [routerLink]="['../../private-tutor/mundur-private-tutors']">Mundur</a><br>
+                        <a [routerLink]="['../../private-tutor/museum-road-private-tutors']">Museum Road</a><br>
+                        <a [routerLink]="['../../private-tutor/muthanallur-private-tutors']">Muthanallur</a><br>
+                        <a [routerLink]="['../../private-tutor/muthusandra-private-tutors']">Muthusandra</a><br>
+                        <a [routerLink]="['../../private-tutor/nal-private-tutors']">Nal</a><br>
+                        <a [routerLink]="['../../private-tutor/naduvathi-private-tutors']">Naduvathi</a><br>
+                        <a [routerLink]="['../../private-tutor/nagarbhavi-private-tutors']">Nagarbhavi</a><br>
+                        <a [routerLink]="['../../private-tutor/nagasandra-private-tutors']">Nagasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/nagavara-private-tutors']">Nagavara</a><br>
+                        <a [routerLink]="['../../private-tutor/nandinilayout-private-tutors']">Nandinilayout</a><br>
+                        <a [routerLink]="['../../private-tutor/narasimharaja-colony-private-tutors']">Narasimharaja Colony</a><br>
+                        <a [routerLink]="['../../private-tutor/narasimjharaja-road-private-tutors']">Narasimjharaja Road</a><br>
+                        <a [routerLink]="['../../private-tutor/narayan-pillai-street-private-tutors']">Narayan Pillai street</a><br>
+                        <a [routerLink]="['../../private-tutor/nayandahalli-private-tutors']">Nayandahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/neralur-private-tutors']">Neralur</a><br>
+                        <a [routerLink]="['../../private-tutor/new-tharaggupet-private-tutors']">New Tharaggupet</a><br>
+                        <a [routerLink]="['../../private-tutor/new-thippasandra-private-tutors']">New Thippasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/okalipuram-private-tutors']">Okalipuram</a><br>
+                        <a [routerLink]="['../../private-tutor/p&t-col.-kavalbyrasandra-private-tutors']">P&t Col. kavalbyrasandra</a><br>
+                        <a [routerLink]="['../../private-tutor/padmanabhnagar-private-tutors']">Padmanabhnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/palace-guttahalli-private-tutors']">Palace Guttahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/panathur-private-tutors']">Panathur</a><br>
+                        <a [routerLink]="['../../private-tutor/pasmpamahakavi-road-private-tutors']">Pasmpamahakavi Road</a><br>
+                        <a [routerLink]="['../../private-tutor/peenya-i-stage-private-tutors']">Peenya I stage</a><br>
+                        <a [routerLink]="['../../private-tutor/peenya-ii-stage-private-tutors']">Peenya Ii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/peenya-small-industries-private-tutors']">Peenya Small industries</a><br>
+                        <a [routerLink]="['../../private-tutor/r-t-nagar-private-tutors']">R T nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/r.m.v.-extension-ii-stage-private-tutors']">R.M.v. extension ii stage</a><br>
+                        <a [routerLink]="['../../private-tutor/rajajinagar-private-tutors']">Rajajinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/rajajinagar-i-block-private-tutors']">Rajajinagar I block</a><br>
+                        <a [routerLink]="['../../private-tutor/rajajinagar-ivth-block-private-tutors']">Rajajinagar Ivth block</a><br>
+                        <a [routerLink]="['../../private-tutor/rajanakunte-private-tutors']">Rajanakunte</a><br>
+                        <a [routerLink]="['../../private-tutor/rajarajeshwarinagar-private-tutors']">Rajarajeshwarinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/rajbhavan-private-tutors']">Rajbhavan</a><br>
+                        <a [routerLink]="['../../private-tutor/ramachandrapuram-private-tutors']">Ramachandrapuram</a><br>
+                        <a [routerLink]="['../../private-tutor/ramagondanahalli-private-tutors']">Ramagondanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/ramakrishna-hegde-nagar-private-tutors']">Ramakrishna Hegde nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/ramamurthy-nagar-private-tutors']">Ramamurthy Nagar</a><br>
+                        <a [routerLink]="['../../private-tutor/rameshnagar-private-tutors']">Rameshnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/richmond-town-private-tutors']">Richmond Town</a><br>
+                        <a [routerLink]="['../../private-tutor/rv-niketan-private-tutors']">Rv Niketan</a><br>
+                        <a [routerLink]="['../../private-tutor/sadashivanagar-private-tutors']">Sadashivanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/sahakaranagar-p.o-private-tutors']">Sahakaranagar P.o</a><br>
+                        <a [routerLink]="['../../private-tutor/samandur-private-tutors']">Samandur</a><br>
+                        <a [routerLink]="['../../private-tutor/samethanahalli-private-tutors']">Samethanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/sampangiramnagar-private-tutors']">Sampangiramnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/sarjapura-private-tutors']">Sarjapura</a><br>
+                        <a [routerLink]="['../../private-tutor/science-institute-private-tutors']">Science Institute</a><br>
+                        <a [routerLink]="['../../private-tutor/seshadripuram-private-tutors']">Seshadripuram</a><br>
+                        <a [routerLink]="['../../private-tutor/shankarpura-private-tutors']">Shankarpura</a><br>
+                        <a [routerLink]="['../../private-tutor/shanthinagar-private-tutors']">Shanthinagar</a><br>
+                        <a [routerLink]="['../../private-tutor/sidihoskote-private-tutors']">Sidihoskote</a><br>
+                        <a [routerLink]="['../../private-tutor/singanayakanahalli-private-tutors']">Singanayakanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/sivan-chetty-gardens-private-tutors']">Sivan Chetty gardens</a><br>
+                        <a [routerLink]="['../../private-tutor/someswarapura-private-tutors']">Someswarapura</a><br>
+                        <a [routerLink]="['../../private-tutor/sri-jayachamarajendra-road-private-tutors']">Sri Jayachamarajendra road</a><br>
+                        <a [routerLink]="['../../private-tutor/srirampuram-private-tutors']">Srirampuram</a><br>
+                        <a [routerLink]="['../../private-tutor/st.-johns-medical-college-private-tutors']">St. john's medical college</a><br>
+                        <a [routerLink]="['../../private-tutor/st.-thomas-town-private-tutors']">St. thomas town</a><br>
+                        <a [routerLink]="['../../private-tutor/state-bank-of-mysore-colony-private-tutors']">State Bank of mysore colony</a><br>
+                        <a [routerLink]="['../../private-tutor/subhashnagar-private-tutors']">Subhashnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/subramanyapura-private-tutors']">Subramanyapura</a><br>
+                        <a [routerLink]="['../../private-tutor/swimming-pool-extn-private-tutors']">Swimming Pool extn</a><br>
+                        <a [routerLink]="['../../private-tutor/tarahunise-private-tutors']">Tarahunise</a><br>
+                        <a [routerLink]="['../../private-tutor/tavarekere-private-tutors']">Tavarekere</a><br>
+                        <a [routerLink]="['../../private-tutor/taverekere-private-tutors']">Taverekere</a><br>
+                        <a [routerLink]="['../../private-tutor/thambuchetty-palya-private-tutors']">Thambuchetty Palya</a><br>
+                        <a [routerLink]="['../../private-tutor/thammanayakanahalli-private-tutors']">Thammanayakanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/tilaknagar-private-tutors']">Tilaknagar</a><br>
+                        <a [routerLink]="['../../private-tutor/training-command-iaf-private-tutors']">Training Command iaf</a><br>
+                        <a [routerLink]="['../../private-tutor/tyagrajnagar-private-tutors']">Tyagrajnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/ullalu-upanagara-private-tutors']">Ullalu Upanagara</a><br>
+                        <a [routerLink]="['../../private-tutor/vanakanahalli-private-tutors']">Vanakanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/vartur-private-tutors']">Vartur</a><br>
+                        <a [routerLink]="['../../private-tutor/vasanthnagar-private-tutors']">Vasanthnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/venkatarangapura-private-tutors']">Venkatarangapura</a><br>
+                        <a [routerLink]="['../../private-tutor/venkateshapura-private-tutors']">Venkateshapura</a><br>
+                        <a [routerLink]="['../../private-tutor/vidhana-soudha-private-tutors']">Vidhana Soudha</a><br>
+                        <a [routerLink]="['../../private-tutor/vidyanagara-private-tutors']">Vidyanagara</a><br>
+                        <a [routerLink]="['../../private-tutor/vidyaranyapura-private-tutors']">Vidyaranyapura</a><br>
+                        <a [routerLink]="['../../private-tutor/vijayanagar-private-tutors']">Vijayanagar</a><br>
+                        <a [routerLink]="['../../private-tutor/vijayanagar-east-private-tutors']">Vijayanagar East</a><br>
+                        <a [routerLink]="['../../private-tutor/vikramnagar-private-tutors']">Vikramnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/vimapura-private-tutors']">Vimapura</a><br>
+                        <a [routerLink]="['../../private-tutor/virgonagar-private-tutors']">Virgonagar</a><br>
+                        <a [routerLink]="['../../private-tutor/visveswarapuram-private-tutors']">Visveswarapuram</a><br>
+                        <a [routerLink]="['../../private-tutor/viswaneedam-private-tutors']">Viswaneedam</a><br>
+                        <a [routerLink]="['../../private-tutor/vittalnagar-private-tutors']">Vittalnagar</a><br>
+                        <a [routerLink]="['../../private-tutor/viveknagar-private-tutors']">Viveknagar</a><br>
+                        <a [routerLink]="['../../private-tutor/vyalikaval-extn-private-tutors']">Vyalikaval Extn</a><br>
+                        <a [routerLink]="['../../private-tutor/wheel-and-axle-plant-private-tutors']">Wheel And axle plant</a><br>
+                        <a [routerLink]="['../../private-tutor/whitefield-private-tutors']">Whitefield</a><br>
+                        <a [routerLink]="['../../private-tutor/wilson-garden-private-tutors']">Wilson Garden</a><br>
+                        <a [routerLink]="['../../private-tutor/yadavanahalli-private-tutors']">Yadavanahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/yediyur-private-tutors']">Yediyur</a><br>
+                        <a [routerLink]="['../../private-tutor/yelachenahalli-private-tutors']">Yelachenahalli</a><br>
+                        <a [routerLink]="['../../private-tutor/yelahanka-private-tutors']">Yelahanka</a><br>
+                        <a [routerLink]="['../../private-tutor/yelahanka-satellite-town-private-tutors']">Yelahanka Satellite town</a><br>
+                        <a [routerLink]="['../../private-tutor/yemalur-private-tutors']">Yemalur</a><br>
+                        <a [routerLink]="['../../private-tutor/yeshwanthpur-bazar-private-tutors']">Yeshwanthpur Bazar</a><br>
+                        <a [routerLink]="['../../private-tutor/yeswanthpura-private-tutors']">Yeswanthpura</a><br>
+                        <a [routerLink]="['../../private-tutor/btm-layout-1st-stage-private-tutors']"></a><br>
+                        <a [routerLink]="['../../private-tutor/btm-layout-2nd-stage-private-tutors']"></a><br>
+                </div>
+                            </div>
+                            
+
+                    </div>
+            </div>
+
+</div>
+   

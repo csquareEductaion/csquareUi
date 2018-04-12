@@ -1,0 +1,36 @@
+.tittle {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+.card.page-carousel{
+    background-color: transparent!important;
+}
+.card{
+    background-color: rgb(255, 255, 255);
+    margin-left: 3em;
+    margin-right: 3em;
+}
+.card-header{
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(10, 10, 10);
+}
+.card-body{
+    color: rgb(8, 8, 8);
+    text-align: justify;
+    margin-right: 1em; 
+    padding: 1em 0 1em 0!important;
+}
+.rounded.mx-auto.d-block{
+    width: 60%;
+}
+a {
+    color: #06b7f1 !important;
+    font-weight: bold;
+    font-size: 1em;
+}
+a:hover{
+    color: #552D08 !important;
+}

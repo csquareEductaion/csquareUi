@@ -1,0 +1,66 @@
+.back{
+    margin-top: 10em;
+    padding-left: 5em;
+}
+.row{
+    margin-top: 2em;
+}
+.row1{
+    margin-top: 8em;
+    padding: 0 2em 0 2em;
+}
+.help-btn {
+    color: #009ddb;
+    font-family: 'SofiaProSemiBold';
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    top: 32px;
+    text-align: center;
+    margin-top: 3em!important;
+}
+.card {
+    border-radius: 12px;
+    box-shadow: 0 6px 10px -4px rgba(88, 85, 85, 0.15);
+    color: #070000;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    border: 0 none;
+    opacity: 0.9;
+    
+    transition: box-shadow 200ms ease, -webkit-transform 300ms cubic-bezier(0.34, 2, 0.6, 1);
+    transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease;
+    transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease, -webkit-transform 300ms cubic-bezier(0.34, 2, 0.6, 1);
+}   
+.card-header{
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
+}
+.card-body{
+    font-weight: bold;
+}
+// .checkbox-inline{
+//     margin-right: 4em!important;
+//     margin-top: 1em!important;
+//     margin-bottom: 2em!important;
+// }
+:host /deep/ ng2-smart-table thead, :host /deep/ ng2-smart-table tbody, :host /deep/ ng2-smart-table tr, :host /deep/ ng2-smart-table td, :host /deep/ ng2-smart-table th  {
+    border-collapse: collapse!important;
+    border: 1px solid #5da6fa!important;
+   }
+:host /deep/ ng2-smart-table tr.ng2-smart-titles{
+    background-color: rgb(235, 235, 235)!important;
+    
+}
+:host /deep/ ng2-smart-table a.ng2-smart-sort-link.sort{
+font-weight: bold!important;
+color: #070000!important;
+}
+.tabTitle{
+    font-weight: 900;
+    font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+}

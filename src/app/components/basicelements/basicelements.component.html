@@ -1,0 +1,352 @@
+    <div class="container1" #container1>
+        <div class="row" style="margin-top: 2em;">
+                <div class="col-md-6" style="text-align:center;margin-top: 2em;"><br>
+                        <div class="card card-body" style="background-color: #fff;opacity:.9;">
+                                <div class="card-body" style="background-color:  #fff;opacity:.9;">
+                        <div class="animate">
+                                <p class="awesome">
+                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;8041627767, 7899342386, 9036198865 </p>
+                        <br>
+                        <p style="padding-top:3em;padding-bottom:3em;margin-left:4em!important;"><b>
+                        (call timing: Monday to Saturady, 8AM to 9PM)</b>
+                        <br>&nbsp;&nbsp;Or</p>
+                        <p class="awesome" style="margin-top:-2em;">
+                        <i class="fa fa-whatsapp"></i> &nbsp;8105118078 									
+                        </p>
+                        <p class="with">
+                                        With Us You Get :-<br>
+                                        <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Quality Home Tutor/Private Tutor.<br> 
+                                        <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Full Monitoring of Home Tuition/Private Tuition.
+                                <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Services and Support For Home Tuition/Private Tuition.
+                                <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Flexibility To Select Home Tutor/Tuition Teacher.  
+                             </p> 
+                        </div>  
+                </div>
+                        </div>
+                </div>
+                <div class="col-md-6">     
+                                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>                    
+                        <!-- <img src="assets/img/quickenquiry.png" style="float:right!important; margin-top: -2em"> -->
+                        <div class="card card-body" style="background-color: #fff;opacity: .9;">
+                                <div class="card-header" style="background-color: #fff;opacity: .9;">
+                                <img src="assets/img/quickenquiry.png" style="float:center!important; margin-top: -3em;margin-bottom: -2em;">
+                                 <!-- Quick Enquiry
+                                 <p>*Only for Students/Parents</p> -->
+                                </div>
+                                    <form [formGroup]="enquiryForm">                                        
+                                    <div class="row" style="text-align:left; padding-top:1em;">
+                                            <p style="margin-left: 1em;">I Am: </p>
+                                            <div class="col-sm-6">
+                                                    <label class="checkbox-inline" for="isstudent">
+                                                      <input type="checkbox" formControlName="isstudent" id="isstudent">&nbsp;&nbsp;Student/Parent
+                                                    </label>
+                                                    <label class="checkbox-inline" for="istutor">
+                                                            <input type="checkbox" formControlName="istutor" id="istutor">&nbsp;&nbsp;Tutor
+                                                          </label>
+                                                  </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!firstName.valid && firstName.touched)), 'has-success': (firstName.valid && firstName.touched)}">
+                                            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First Name">
+                                            <small *ngIf="(!firstName.valid && firstName.touched)" class="text-danger">
+                                                    First Name is required.
+                                                  </small>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!lastName.valid && lastName.touched)), 'has-success': (lastName.valid && lastName.touched)}">
+                                            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name">
+                                            <small *ngIf="(!lastName.valid && lastName.touched)" class="text-danger">
+                                                    Last Name is required.
+                                                  </small>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!phone.valid && phone.touched)), 'has-success': (phone.valid && phone.touched)}">
+                                                <input type="text" class="form-control" formControlName="phone" id="phone" placeholder="Phone">
+                                                <div *ngIf="(!phone.valid && phone.touched)" class="text-danger">
+                                                <small *ngIf= "phone.errors.required">
+                                                        Phone is required.
+                                                    </small>
+                                                    <small *ngIf="phone.errors.pattern">
+                                                        Phone must be a number.
+                                                    </small>
+                                                       <small *ngIf="phone.errors.minlength">
+                                                          Phone must be at least 10.
+                                                    </small>
+                                                    <small *ngIf="phone.errors.maxlength">
+                                                        Phone must not be greater than 10.
+                                                    </small>
+                                                </div>
+                                        </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!gender.valid && gender.touched)), 'has-success': (gender.valid && gender.touched)}">
+                                                <select type="text" class="form-control" formControlName="gender" id="gender">
+                                                    <option value="" hidden>Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option vlaue="Female">Female</option>
+                                                </select>
+                                                <small *ngIf="(!gender.valid && gender.touched)" class="text-danger">
+                                                        Gender is required.
+                                                      </small>
+                                            </div>
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!grade.valid && grade.touched)), 'has-success': (grade.valid && grade .touched)}">
+                                                <select class="form-control" formControlName="grade" id="grade" placeholder="Grade">
+                                                    <option value="" hidden>Grade</option>
+                                                    <option *ngFor="let list of gradeList | sortBy : 'sortorder'" [value]="list.pk">{{list.grade}}</option>
+                                                </select>
+                                                <small *ngIf="(!grade.valid && grade.touched)" class="text-danger">
+                                                        Grade is required.
+                                                      </small>
+                                        </div> 
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!email.valid && email.touched)), 'has-success': (email.valid && email.touched)}">
+                                            <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
+                                            <small *ngIf="(!email.valid && email.touched)" class="text-danger">
+                                                    Email is required.
+                                                  </small>
+                                        </div> 
+                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!city.valid && city.touched)), 'has-success': (city.valid && city.touched)}">
+                                            <select class="form-control" formControlName="city" id="city">
+                                                <option value="" hidden>City</option>
+                                                <option *ngFor= "let list of cityList" [value]="list.pK">{{list.city_name}}</option>
+                                            </select>              
+                                                <small *ngIf="(!city.valid && city.touched)" class="text-danger">
+                                                    City is required.
+                                                </small>
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                                <input id="test" type="text" class="form-control" [formControl]="locationName" id="locationName" [ngbTypeahead]="search" placeholder="Location"/>
+                                                <small>Please Select City and then Location.</small>
+                                                <small *ngIf="(!locationName.valid && locationName.touched)" class="text-danger">
+                                                    Location is required
+                                                </small>
+                                              </div>
+                                                <input type="hidden" formControlName="location" class="form-control" id="location">
+                                        <div class="form-group col-sm-12">
+                                            <textarea type="text" class="form-control" rows="2" formControlName="comment" id="comment" placeholder="Comment">
+                                                </textarea>
+                                        </div>                                                
+                                    </div>
+                                    <div class="form-group row">
+                                            <div class="col-sm-12" style="text-align: left;">
+                                              <button type="button" class="btn btn-primary btn-round" (click)="submit()">Submit</button>&nbsp;&nbsp;
+                                              <button type="button" class="btn btn-danger btn-round" style="background-color:rgb(248, 73, 73)!important;" (click)="cancel()">Reset</button>
+                                            </div>
+                                    </div>
+                                    </form>
+                            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6"><br><br>
+                        <!-- <p class="with">
+                        With Us You Get :-<br>
+                        <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Quality Home Tutor/Private Tutor.<br> 
+                        <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Full Monitoring of Home Tuition/Private Tuition.
+                <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Services and Support For Home Tuition/Private Tuition.
+                <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Flexibility To Select Home Tutor/Tuition Teacher.  
+             </p>         -->
+                        <div class="card card-body" style="background-color: #fff; margin-top:-5em!important;">
+                                        <div class="card-body" style="background-color: #fff;">
+                                        <img class="howItWork" src="assets/img/how_does_it_work.png" style="margin-left:4em!important;float:center!important; margin-top: -2em;margin-bottom: -1em; width: 565px;height: 300px;">
+                                                </div>
+                                        <div class="card-body bg-transparent" style="margin-top:-2em!important;box-shadow: 2px 10px 5px  #e4e2e2;">
+                                        <video onloadstart="this.volume=0.2" width="100% "  height="100%" controls autoplay>
+                                        <!-- <source src="PATH_TO_MP4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser. -->
+                                        <source src="assets/video/CsquareEducation Video Promo [360p].mp4" type="video/webm" />
+                                        </video>
+                                        </div> 
+                        </div>
+                        <div class="card card-body" style="background-color: #F5F5F5; margin-top:5em;">
+                                        <div class="card card-header" style="background-color: #fff;margin-top: 0em!important; font-size:1.5em!important;">
+                                                What People Enrolled With Us Have To Say?
+                                        </div>
+                                        <div class="card">
+                                        <div class="card-body" style="background-color: #fff;border-radius:1em; margin-top:-1em;">
+                                                <ngb-carousel >
+                                                                <ng-template ngbSlide>
+                                                                                <div class="row row">
+                                                                                        <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                        <img class="profile" src="assets/review/Nitesh.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                                      </div> 
+                                                                                        <div class="col-md-8">
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">Nitesh Kumar</p>
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span><br>
+                                                                                                                One of the best place to take tuition. Faculty and support provided by this institution is of best quality. My brother scored 95.6% in 10th board after getting good support and faculty by Csquareeducation. All the best,keep it up
+                                                                                        </p>
+                                                                                        </div>
+                                                                                </div>              
+                                                                </ng-template>
+                                                                <ng-template ngbSlide>                                                                        
+                                                                                <div class="row row">
+                                                                                        <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                        <img class="profile" src="assets/review/Ujwal.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                        </div>
+                                                                                        <div class="col-md-8">
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">Ujjwal Agrawal</p>
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span><br>
+                                                                                                                Hello..
+                                                                                                                        i'm sharing my personal revel in, Csquare Education teachers are very experience first they increase our basic expertise to any subject matter and solve issues to low degree to high level, and teachers are very supportive and helpfull too.</p>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                        <div class="row row">
+                                                                                <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                <img class="profile" src="assets/review/pradeep.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                                <p style="text-align: justify!important;font-size:1em;">Pradeep</p>
+                                                                                                <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span><br>
+                                                                                                        I got best home tutor for my children where the service from csquare education is systematically reviewing my child's academics progress, I found best home tutor in Bangalore. thank you csquare education</p>
+                                                                                </div>
+                                                                        </div>
+                                                                        </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                        <div class="row row">
+                                                                                <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                <img class="profile" src="assets/review/Viky.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                                <p style="text-align: justify!important;font-size:1em;">Shubham Srivastava</p>
+                                                                                                <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                <span class="fa fa-star checked"></span><br>
+                                                                                                        Luckily I got the opportunity to work here. They have a great and hardworking team and the prime thing is that the focus is on everyone. No one go unnoticed. I have seen lot of happy parents. Great work. #CsqaureEducation</p>
+                                                                                </div> 
+                                                                        </div>                                                                       
+                                                                        </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                                <div class="row row">
+                                                                                        <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                        <img class="profile" src="assets/img/she.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                        </div>
+                                                                                        <div class="col-md-8">
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">Rupali Romanjan</p>
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span><br>
+                                                                                                                This is a very innovative idea...I worked as a tutor....n it turned out to be one of d best opportunity till that...d management is very professional hence no payment issue ever...I m looking forward to be working with them more often...</p>
+                                                                                        </div>
+                                                                                </div>
+                                                                                </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                                <div class="row row">
+                                                                                        <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                        <img class="profile" src="assets/review/vidya.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                        </div>
+                                                                                        <div class="col-md-8">
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">Vidya Sagar</p>
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span><br>
+                                                                                                                I got very good tutor for my brother who is writing 12th exam even very good support from csquare. I can say csquare education is an one of the best home tuition provider in Bangalore.</p>
+                                                                                        </div>
+                                                                                </div>
+                                                                                </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                                <div class="row row">
+                                                                                                <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                                <img class="profile" src="assets/img/she.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                                </div>
+                                                                                                <div class="col-md-8">
+                                                                                                                <p style="text-align: justify!important;font-size:1em;">Ankita Agarwall</p>
+                                                                                                                <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                                <span class="fa fa-star checked"></span>
+                                                                                                                                <span class="fa fa-star checked"></span><br>
+                                                                                                                        Awesome work experience with csquare they look into all kinds of issues and provide quality service to both the students and tutors. Thank you csquare</p>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                </ng-template>
+                                                                <ng-template ngbSlide>
+                                                                                <div class="row row">
+                                                                                        <div class="col-md-4" style="margin-top: 1em;">
+                                                                                                        <img class="profile" src="assets/img/he.jpg" style="float:left!important; width: 100px;height: 100px;">
+                                                                                        </div>
+                                                                                        <div class="col-md-8">
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">Vijay Chandel</p>
+                                                                                                        <p style="text-align: justify!important;font-size:1em;">
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span>
+                                                                                                                        <span class="fa fa-star checked"></span><br>
+                                                                                                                Best home tutor provider according to me.
+                                                                                                                        I took home tuition for my brother and he got very good marks in 10th</p>
+                                                                                        </div>
+                                                                                </div>
+                                                                                </ng-template>
+                                                        </ngb-carousel>
+                                        </div>
+                                        </div>
+                                </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top: 5em;">
+                                                <div class="card card-body" style="background-color: #fff;opacity: .9;">
+                                                <div class="card-header" style="background-color: #fff;opacity: .9;">
+                                                                <img src="assets/img/motivate.jpg" style="float:center!important; margin-top: -1em;margin-bottom: -1em; width: 300px;height: 200px;">
+                                                    </div>
+                                                     <div class="card-body bg-transparent">
+                                                       <blockquote class="blockquote" style="font-size:.8em!important;text-align:justify!important;">
+                                                                        <p class="mb-0">"By education, i mean an all-round drawing of the best in child and man in body, mind and spirit".</p>
+                                                                        <footer class="blockquote-footer" style="font-size:1em!important;font-weight:bold!important;"><cite title="Source Title">Mahatma Gandhi</cite></footer>
+                                                                      </blockquote>
+                                                                      <blockquote class="blockquote" style="font-size:.8em!important;text-align:justify!important;">
+                                                                            <p class="mb-0">"I have never let my schooling interfere with my education."</p>
+                                                                            <footer class="blockquote-footer" style="font-size:1em!important;font-weight:bold!important;"><cite title="Source Title">Mark Twain</cite></footer>
+                                                                          </blockquote>
+                                                                <blockquote class="blockquote" style="font-size:.8em!important;text-align:justify!important;">
+                                                                        <p class="mb-0">"If you can't fly, then run,if you can't run, then walk, if you can't walk, then crawl, but whatever you do, 
+                                                                                you have to keep moving forward."</p>
+                                                                        <footer class="blockquote-footer" style="font-size:1em!important;font-weight:bold!important;"><cite title="Source Title">Martin Luther King Jr</cite></footer>
+                                                                      </blockquote>
+                                                                      <blockquote class="blockquote" style="font-size:.8em!important;text-align:justify!important;">
+                                                                            <p class="mb-0">"Education is the most powerful weapon which you can use to change the world."</p>
+                                                                            <footer class="blockquote-footer" style="font-size:1em!important;font-weight:bold!important;"><cite title="Source Title">Nelson Mandela</cite></footer>
+                                                                          </blockquote>
+                                                                <blockquote class="blockquote" style="font-size:.8em!important;text-align:justify!important;">
+                                                                        <p class="mb-0">"Tell me and i'll forget. Show me and i may remember. Involve me and i learn."</p>
+                                                                        <footer class="blockquote-footer" style="font-size:1em!important;font-weight:bold!important;"><cite title="Source Title">Benjamin franklin</cite></footer>
+                                                                      </blockquote>
+                                                                      <!-- <blockquote class="blockquote">
+                                                                            <p class="mb-0">"Educating the mind without educating the heart is no education at all."</p>
+                                                                            <footer class="blockquote-footer"><cite title="Source Title">Aristotle</cite></footer>
+                                                                          </blockquote> -->
+                                                                        </div>
+                                                                                </div>
+                                                        <div class="card card-body" style="background-image:linear-gradient(
+                                                                rgba(0, 0, 0, 0.7),
+                                                                rgba(0, 0, 0, 0.7)
+                                                              ), url('assets/img/enroll.jpg')!important; margin-top: 5em;">
+                                                                <div class="card card-header" style="background-color: #fff;opacity: .9;font-size:1em!important;">
+                                                                        Need A Home Tuition? Or Need A Tutor Job? Apply Below &amp; Enjoy :)
+                                                                </div>
+                                                                <div class="card-body bg-transparent" style="text-align:center;">
+                                                                        <!-- <img src="assets/img/enroll.jpg" style="width:200px;height: 200px;"> -->
+                                                                         <a role="button" class="btn btn-primary btn-round btn-raised" style="background-color:rgb(245, 208, 106); border:none!important;" (click)="buttonClick('/studentForm')">&nbsp;&nbsp;&nbsp;Need a Private Tutor? Click Here&nbsp;&nbsp;&nbsp;&nbsp;</a><br><br>
+                                                                        <a role="button" class="btn btn-primary btn-round btn-raised" style="background-color:rgb(245, 208, 106); border:none!important;"  (click)="buttonClick('/tutorForm')" >Want to be a Home Tutor? Click Here</a><br>
+                                                                </div>                
+                                                        </div>   
+                                </div>
+        </div>       
+    </div>
