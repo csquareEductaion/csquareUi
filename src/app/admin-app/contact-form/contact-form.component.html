@@ -13,6 +13,7 @@
                                   </div>
                               </div>
                              <div class="card-body bg-transparent">
+                                    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 
                                   <ng2-smart-table [settings]="settings" [source]="source" (delete)="onDeleteConfirm($event)"></ng2-smart-table>
                              </div>                    
                           </div>

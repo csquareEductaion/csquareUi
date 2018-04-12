@@ -23,6 +23,7 @@ export class StudentManagementComponent implements OnInit {
   limit: any = -1;
   settings: any;
   sessionId: any;
+  loading: any;
   
   prepareSetting() {
     return {
@@ -101,7 +102,7 @@ export class StudentManagementComponent implements OnInit {
     config.interval = 3000;
     config.wrap = true;
     config.keyboard = false;
-    //  this.spinnerService.hide();
+    this.loading = true;
         this.service.getAllStudents(this.offset, this.limit).subscribe((data) => {
           this.service.getAllRefCites().subscribe(res=>{
             res.forEach(element => {
@@ -109,7 +110,7 @@ export class StudentManagementComponent implements OnInit {
             });
             this.settings = this.prepareSetting();
             this.source.load(data);
-            //  this.spinnerService.hide();
+            this.loading = false;
           })
         });
   }

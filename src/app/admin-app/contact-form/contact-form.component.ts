@@ -23,6 +23,7 @@ export class ContactFormComponent implements OnInit {
   limit: any = 500;
   settings: any;
   sessionId: any;
+  loading: any;
 
 
   prepareSettings() {
@@ -88,13 +89,13 @@ export class ContactFormComponent implements OnInit {
 
   }
   ngOnInit() {
-   // //  this.spinnerService.hide();
+    this.loading = true;
     this.route.params.subscribe((params: Params) => {
       this.sessionId = params['id'];
         this.service.getAllContact().subscribe((data) => {
           this.settings = this.prepareSettings();
           this.source.load(data);
-        //  //  this.spinnerService.hide();
+          this.loading = false;
         });
     });
   }

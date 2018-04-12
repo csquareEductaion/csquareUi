@@ -23,6 +23,7 @@ export class LeadComponent implements OnInit {
   limit: any = -1;
   settings: any;
   sessionId: any;
+  loading: any;
 
 
   prepareSettings() {
@@ -117,12 +118,14 @@ export class LeadComponent implements OnInit {
   }
   ngOnInit() {
     //  this.spinnerService.hide();
+    this.loading = true;
     this.route.params.subscribe((params: Params) => {
       this.sessionId = params['id'];
         this.service.getAllLeads(this.offset,this.limit).subscribe((data) => {
           this.leadList = data;
           this.settings = this.prepareSettings();
           this.source.load(data);
+          this.loading = false;
           //  this.spinnerService.hide();
         });
     });

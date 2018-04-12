@@ -12,6 +12,7 @@
                </div>
                <div class="card-body bg-transparent">
                     <div class="card card-body">
+                                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 
                     <form [formGroup]="studentManagementForm">
                             <div class="row">
                                     <div class="form-group col-sm-4" [ngClass]="{'has-error': ((!firstName.valid && firstName.touched)), 'has-success': (firstName.valid && firstName.touched)}">
@@ -140,7 +141,7 @@
                                                                             <label for="grade">Grade</label>
                                                                             <select  class="form-control" formControlName="grade" id="grade">
                                                                                     <option value="" hidden>Grade</option>
-                                                                                    <option *ngFor = "let item of gradeList" [value]="item.pk">{{item.grade}}</option> 
+                                                                                    <option *ngFor = "let item of gradeList | sortBy : 'sortorder'" [value]="item.pk">{{item.grade}}</option> 
                                                                             </select>
                                                                             <small *ngIf="(!grade.valid && grade.touched)" class="text-danger">
                                                                                     Grade is required.

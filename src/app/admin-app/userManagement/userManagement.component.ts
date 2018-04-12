@@ -26,6 +26,7 @@ export class UserComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   settings: any;
   sessionId: any;
+  loading: any;
 
   prepareSettings() {
     return {
@@ -118,12 +119,12 @@ export class UserComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.sessionId = params['id'];
     });
-    //  this.spinnerService.hide();
+    this.loading = true;
     this.service.getAllUsers(this.offset, this.limit).subscribe((data) => {    
       this.userList = data;
       this.settings = this.prepareSettings();
       this.source.load(data);
-      //  this.spinnerService.hide();
+      this.loading = false;
    });
   }
   handleEdit(data: any) {

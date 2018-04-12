@@ -5,6 +5,7 @@
             <div class="container"> -->
 <app-loggedInNavbar [sessionId]="sessionId"></app-loggedInNavbar>
 <div class="row1">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 
         <div class="card card-body">
             <div class="card-header">
                     <button type="button" style="float:left;" class="btn btn-primary btn-round" (click)="buttonClick('/userManagement')">&nbsp;&nbsp;Back</button> 

@@ -78,6 +78,7 @@ export class EditLeadComponent implements OnInit {
    leadStatusList: any [] = [];
    public leadSyllabusList: AbstractControl;
    public location: AbstractControl;
+   loading: any;
 
    locationSearchList: any[] = [];
    locationList: any[] = [];
@@ -113,8 +114,18 @@ export class EditLeadComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.loading = true;
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
+        data.sort( function(name1, name2) {
+          if ( name1.sortorder < name2.sortorder ){
+            return -1;
+          }else if( name1.sortorder > name2.sortorder ){
+              return 1;
+          }else{
+            return 0;	
+          }
+      });
         data.forEach(ele=>{
         const newList = new listItem();
         newList.id = ele.pk;
@@ -145,6 +156,15 @@ export class EditLeadComponent implements OnInit {
       };
       this.service.getAllRefGrades().subscribe(data=>{
         this.gradeDis = [];
+        data.sort( function(name1, name2) {
+          if ( name1.sortorder < name2.sortorder ){
+            return -1;
+          }else if( name1.sortorder > name2.sortorder ){
+              return 1;
+          }else{
+            return 0;	
+          }
+      });
         data.forEach(element=>{
         const newItem = new listItem();
         newItem.id = element.pk;
@@ -196,6 +216,7 @@ export class EditLeadComponent implements OnInit {
                     this.selectedSyllabus.push(newItem);
                   });                
                    this.leadForm.patchValue(data);
+                   this.loading = false;
                   //  if(data.isstudent == true){
                   //    this.isstudent.setValue('1');
                   //  } else {
@@ -275,13 +296,13 @@ export class EditLeadComponent implements OnInit {
         const formValue: any = this.leadForm.value;
         if(!this.leadIdParam){
           if(this.leadForm.valid) {
-           // //  this.spinnerService.hide();
+            this.loading = true;
             this.service.addLead(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
               activeModal.componentInstance.modalContent = 'Congrats! Lead has been created Successfully';
-             // //  this.spinnerService.hide();
+              this.loading = false;
               this.router.navigateByUrl('/admin-app/lead/'+this.sessionId);
             });
           } else{
@@ -293,13 +314,13 @@ export class EditLeadComponent implements OnInit {
         } else {
           this.pK.setValue(this.leadIdParam);
           if(this.leadForm.valid) {
-           // //  this.spinnerService.hide();
+            this.loading = true;
             this.service.updateLead(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
               activeModal.componentInstance.modalContent = 'Lead has been Successfully Updated!';
-            //  //  this.spinnerService.hide();
+              this.loading = false;
               this.router.navigateByUrl('/admin-app/lead/'+this.sessionId); 
             });
           } else{

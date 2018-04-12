@@ -52,6 +52,7 @@ export class EditUserComponent implements OnInit {
    locationSearchList: any[] = [];
    public locationName: AbstractControl;
    sessionId: any;
+   loading: any;
 
    search = (text$: Observable<string>) =>
    text$
@@ -84,7 +85,7 @@ export class EditUserComponent implements OnInit {
     }
 
     ngOnInit() {
-     
+        this.loading = true;
         this.route.params.subscribe((params: Params) => {
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
@@ -98,7 +99,7 @@ export class EditUserComponent implements OnInit {
                   }
                   this.location.setValue(data.location);
                    this.leadForm.patchValue(data);
-
+                   this.loading = false;
             })
         }
         })

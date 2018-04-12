@@ -1,5 +1,6 @@
 <app-loggedInNavbar [sessionId]="sessionId"></app-loggedInNavbar>
-<div class="row1">  
+<div class="row1"> 
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>  
 <form [formGroup]="tutorManagementForm">
 <ngb-tabset type="pills">
   <ngb-tab>

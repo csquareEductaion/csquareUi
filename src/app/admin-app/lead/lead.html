@@ -6,6 +6,7 @@
                 <app-loggedInNavbar [sessionId]="sessionId"></app-loggedInNavbar>
 <div class="row">
         <div class="card card-body">
+                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>                    
             <div class="card-body" style="text-align:left!important;">
                
                 <div class="card card-header" style="font-size: 3em!important;text-align:center;">

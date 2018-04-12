@@ -22,6 +22,7 @@ export class TutorManagementComponent implements OnInit {
   limit: any = -1;
   settings: any;
   sessionId: any;
+  loading: any;
 
   prepareSetting() {
     return {
@@ -119,11 +120,11 @@ export class TutorManagementComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.sessionId = params['id'];
     });
-    //  this.spinnerService.hide();
+    this.loading = true;
     this.service.getAllTutors(this.offset, this.limit).subscribe((data) => {
       this.settings = this.prepareSetting();
       this.source.load(data);
-      //  this.spinnerService.hide();
+      this.loading = false;
     });
   }
   handleEdit(data: any) {

@@ -137,6 +137,15 @@ export class EditTutorManagementComponent implements OnInit {
     ngOnInit() {
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
+        data.sort( function(name1, name2) {
+          if ( name1.sortorder < name2.sortorder ){
+            return -1;
+          }else if( name1.sortorder > name2.sortorder ){
+              return 1;
+          }else{
+            return 0;	
+          }
+      });
         data.forEach(ele=>{
         const newList = new listItem();
         newList.id = ele.pk;
@@ -167,6 +176,15 @@ export class EditTutorManagementComponent implements OnInit {
       };
       this.service.getAllRefGrades().subscribe(data=>{
         this.gradeDis = [];
+        data.sort( function(name1, name2) {
+          if ( name1.sortorder < name2.sortorder ){
+            return -1;
+          }else if( name1.sortorder > name2.sortorder ){
+              return 1;
+          }else{
+            return 0;	
+          }
+      });
         data.forEach(element=>{
         const newItem = new listItem();
         newItem.id = element.pk;

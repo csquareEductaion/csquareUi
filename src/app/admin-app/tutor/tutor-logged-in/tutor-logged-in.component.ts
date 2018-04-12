@@ -121,6 +121,8 @@ export class TutorLoggedInComponent implements OnInit {
  message: any;
  source: LocalDataSource = new LocalDataSource();
  settingsForTable: any;
+ loading: any;
+
  prepareSetting() {
   return {
     actions: {
@@ -208,7 +210,7 @@ export class TutorLoggedInComponent implements OnInit {
   private fb: FormBuilder,
   private http:Http,
   private modalService: NgbModal    ) {
-    
+    this.loading = true;
     this.service.getAllRefCites().subscribe(res=>{
       res.forEach(element => {
         this.cityList.push({value: element.pK, title: element.city_name});
@@ -278,6 +280,7 @@ export class TutorLoggedInComponent implements OnInit {
             this.service.getStudentByTutorId(this.tutorIdParam).subscribe(result =>{
               this.settingsForTable = this.prepareSetting();
               this.source.load(result);
+              this.loading = false;
             })
         })
       })
@@ -469,13 +472,13 @@ handleFileInput(event: any) {
     if (this.tutorIdParam){
       this.pK.setValue(this.tutorIdParam);
       if(this.tutorManagementForm.valid) {
-        //  this.spinnerService.hide();
+        this.loading = true;
         this.service.updateTutor(formValue).subscribe(enquiry => {
           const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
           activeModal.componentInstance.showHide = true;
           activeModal.componentInstance.modalHeader = 'Alert';
           activeModal.componentInstance.modalContent = 'Thank You! This Student has been Successfully Updated.';
-          //  this.spinnerService.hide();
+          this.loading = false;
          // this.router.navigateByUrl('/admin-app/tutorManagement/' + this.sessionId);
         });
       } else{

@@ -11,6 +11,7 @@
                 Edit Lead for futher process
                </div>
                <div class="card-body bg-transparent">
+                    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 
                     <form [formGroup]="leadForm">
                             <div class="row">
                                     <div class="col-md-12">

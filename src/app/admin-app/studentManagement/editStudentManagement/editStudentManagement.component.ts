@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { element } from 'protractor';
+import { SortPipe } from '../../../shared/pipes/filters/filter.pipe';
 
 class tutorList {
   pk: any;
@@ -112,6 +113,7 @@ export class EditStudentManagementComponent implements OnInit {
    cityList: any[] = [];
    tableSettings: any;
    sessionId: any;
+   loading: any;
 
 
    locationSearchList: any[] = [];
@@ -146,8 +148,18 @@ export class EditStudentManagementComponent implements OnInit {
 
     ngOnInit() {
       debugger;
+      this.loading = true;
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
+        data.sort( function(name1, name2) {
+          if ( name1.sortorder < name2.sortorder ){
+            return -1;
+          }else if( name1.sortorder > name2.sortorder ){
+              return 1;
+          }else{
+            return 0;	
+          }
+      });
         data.forEach(ele=>{
         const newList = new listItem();
         newList.id = ele.pk;
@@ -157,8 +169,6 @@ export class EditStudentManagementComponent implements OnInit {
       });
         this.settings = {
           text: "Preffered Subjects",
-          selectAllText: 'Select All',
-          unSelectAllText: 'UnSelect All',
           classes: "myclass custom-class"
       };
         this.route.params.subscribe((params: Params) => {
@@ -187,6 +197,7 @@ export class EditStudentManagementComponent implements OnInit {
                       this.source.load(this.tutorStudentList);
                     })              
                    this.studentManagementForm.patchValue(data);
+                   this.loading = false;
             })
         }
         })
@@ -302,13 +313,13 @@ export class EditStudentManagementComponent implements OnInit {
         const formValue: any = this.studentManagementForm.value;
         if (!this.leadIdParam){
           if(this.studentManagementForm.valid) {
-            //  this.spinnerService.hide();
+            this.loading = true;
             this.service.addStudent(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
               activeModal.componentInstance.modalContent = 'Congrats! Student has been Successfully Created.';
-              //  this.spinnerService.hide();
+              this.loading = false;
               this.router.navigateByUrl('/admin-app/studentManagement/' + this.sessionId);
             });
           } else{
@@ -320,13 +331,13 @@ export class EditStudentManagementComponent implements OnInit {
         } else {
           this.pK.setValue(this.leadIdParam);
           if(this.studentManagementForm.valid) {
-            //  this.spinnerService.hide();
+            this.loading = true;
             this.service.updateStudent(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
               activeModal.componentInstance.modalContent = 'Thank You! This Student has been Successfully Updated.';
-              //  this.spinnerService.hide();
+              this.loading = false;
               this.router.navigateByUrl('/admin-app/studentManagement/' + this.sessionId);
             });
           } else{

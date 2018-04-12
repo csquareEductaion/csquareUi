@@ -29,7 +29,7 @@ import { TutorModelComponent } from './tutor/tutor-logged-in/tutor-model/tutor-m
 import { FullCalendarModule } from 'ng-fullcalendar';
 import {EventService} from './tutor/tutor-logged-in/event.service';
 import { LoadingModule } from 'ngx-loading';
-
+import { FilterPipeModule } from '../shared/pipes/filters/fliter.module';
 
 @NgModule({
   imports: [
@@ -45,7 +45,8 @@ import { LoadingModule } from 'ngx-loading';
     Ng2SmartTableModule,
     AngularMultiSelectModule,
     FullCalendarModule,
-    LoadingModule
+    LoadingModule,
+    FilterPipeModule
   ],
   declarations: [
     AdminAppComponent,

@@ -49,6 +49,7 @@ export class TutorSearchComponent implements OnInit {
    public locationName: AbstractControl;
    sessionId: any;
    showAssign: boolean = false;
+   loading: any;
 
    search = (text$: Observable<string>) =>
    text$
@@ -253,6 +254,7 @@ export class TutorSearchComponent implements OnInit {
   
   searchTutor(){
     debugger;
+    this.loading = true;
     this.searchForm = [];
     let i =0;
     if(this.city.value){
@@ -313,12 +315,15 @@ export class TutorSearchComponent implements OnInit {
     }
     this.service.searchTutor(this.searchForm).subscribe(data=>{
       this.source.load(data);
+      this.loading = false;
     })
   }
 
   assignTutor(){
     debugger;
+    this.loading = true;
     this.service.updateStudent(this.student).subscribe(res=>{
+      this.loading = false;
       const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
       activeModal.componentInstance.showHide = true;
       activeModal.componentInstance.modalHeader = 'Success';
