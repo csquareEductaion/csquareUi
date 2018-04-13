@@ -48,7 +48,7 @@ submit() {
   if(this.contactForm.valid){
     //  this.spinnerService.hide();
     this.service.contactUs(formValue).subscribe(enquiry => {
-      debugger;
+       ;
       const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
       activeModal.componentInstance.showHide = true;
       activeModal.componentInstance.modalHeader = 'Alert';
@@ -64,7 +64,7 @@ submit() {
   }
 };
 cancel(data: any){
-  debugger;
+   ;
   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
   activeModal.componentInstance.showHide = true;
   activeModal.componentInstance.modalHeader = 'Alert';

@@ -147,7 +147,7 @@ export class EditStudentManagementComponent implements OnInit {
     }
 
     ngOnInit() {
-      debugger;
+       ;
       this.loading = true;
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
@@ -172,15 +172,15 @@ export class EditStudentManagementComponent implements OnInit {
           classes: "myclass custom-class"
       };
         this.route.params.subscribe((params: Params) => {
-            debugger;
+             ;
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
-            debugger;
+             ;
             if (this.leadIdParam) {
                 this.service.getStudentById(this.leadIdParam).subscribe(data => {
                   this.selectedItems = [];
                   data.studentSubjectList.forEach(ele =>{
-                    debugger;
+                     ;
                     const newItem = new listItem();
                     newItem.id = ele.subjectId;
                     this.subjectDis.forEach(res =>{
@@ -212,7 +212,7 @@ export class EditStudentManagementComponent implements OnInit {
           //     this.subjects.setValue(this.selectedItems);
           // }
           onItemSelect(item: any) {
-            debugger;
+             ;
             this.subjectList = [];
               this.selectedItems.forEach(item =>{
                 const sub = new leadSubject();
@@ -375,7 +375,7 @@ export class EditStudentManagementComponent implements OnInit {
       }
     
       onDeleteConfirm(event: any){
-        debugger;
+         ;
         const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
     activeModal.componentInstance.showHide = true;
     activeModal.componentInstance.modalHeader = 'Alert';
@@ -532,7 +532,7 @@ export class EditStudentManagementComponent implements OnInit {
         });
 
         this.locationName.valueChanges.subscribe(val=>{
-          debugger;
+           ;
           this.locationList.forEach(element => {
             if((element.pincode + ' ( ' +element.location_name+ ' )') == val){
               this.location.setValue(element.pk);

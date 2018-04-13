@@ -215,7 +215,7 @@ export class EditTutorManagementComponent implements OnInit {
                     this.selected.push(newItem);
                   });
                   data.tutorSubjectList.forEach(ele =>{
-                    debugger;
+                     ;
                     const newItem = new listItem();
                     newItem.id = ele.subjectId;
                     this.subjectDis.forEach(res =>{
@@ -238,9 +238,9 @@ export class EditTutorManagementComponent implements OnInit {
                   this.location.setValue(data.location);
                    this.tutorManagementForm.patchValue(data);
             });
-            debugger
+             
             this.service.getStudentByTutorId(this.tutorIdParam).subscribe(result =>{
-              debugger
+               
               this.settingsStudentTable = this.prepareSetting();
               this.source.load(result);
             })
@@ -257,11 +257,11 @@ export class EditTutorManagementComponent implements OnInit {
           //     this.subjects.setValue(this.selectedItems);
           // }
           onItemSelect(item: any) {
-            debugger;
+             ;
             this.gradeList = [];
             this.subjectList = [];
             this.syllabusList = [];
-            debugger;
+             ;
               this.selected.forEach(item =>{
                 const grade =new tutorGrade();
                 grade.gradeId = item.id;
@@ -286,7 +286,7 @@ export class EditTutorManagementComponent implements OnInit {
               this.gradeList = [];
               this.subjectList = [];
               this.syllabusList = [];
-              debugger;
+               ;
                 this.selected.forEach(item =>{
                   const newItem =new tutorGrade();
                   newItem.gradeId = item.id;
@@ -466,7 +466,7 @@ export class EditTutorManagementComponent implements OnInit {
         });
 
         this.locationName.valueChanges.subscribe(val=>{
-          debugger;
+           ;
           this.locationList.forEach(element => {
             if((element.pincode + ' ( ' +element.location_name+ ' )') == val){
               this.location.setValue(element.pk);
@@ -550,7 +550,7 @@ export class EditTutorManagementComponent implements OnInit {
     }
 
     getCityById( value: any ) {
-      // debugger;
+      //  ;
       const len: number = this.cityList.length;
       for (let i = 0; i < len; i++) {
         if (this.cityList[i].pK === value) {

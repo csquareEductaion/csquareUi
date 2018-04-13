@@ -104,7 +104,6 @@ export class StudentComponent implements OnInit {
         ngOnInit() {
         this.service.getAllRefSubjects().subscribe(data=>{
           this.itemList = [];
-          console.log(data);
           data.sort( function(name1, name2) {
             if ( name1.sortorder < name2.sortorder ){
               return -1;
@@ -139,7 +138,7 @@ export class StudentComponent implements OnInit {
         //     this.subjects.setValue(this.selectedItems);
         // }
         onItemSelect(item: any) {
-          debugger;
+           ;
           this.subjectList = []; 
             this.selectedItems.forEach(item =>{
               const sub = new leadSubject();
@@ -279,7 +278,7 @@ export class StudentComponent implements OnInit {
     }
 
     buttonClick(data: any) {
-      debugger;
+       ;
       this.router.navigateByUrl(data);
     }    
 

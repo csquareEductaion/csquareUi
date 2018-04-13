@@ -172,11 +172,11 @@ export class TutorComponent implements OnInit {
           //     this.subjects.setValue(this.selectedItems);
           // }
           onItemSelect(item: any) {
-            debugger;
+             ;
             this.gradeList = [];
             this.subjectList = [];
             this.syllabusList = [];
-            debugger;
+             ;
               this.selected.forEach(item =>{
                 const grade =new leadGrade();
                 grade.gradeId = item.id;
@@ -201,7 +201,7 @@ export class TutorComponent implements OnInit {
               this.gradeList = [];
               this.subjectList = [];
               this.syllabusList = [];
-              debugger;
+               ;
                 this.selected.forEach(item =>{
                   const newItem =new leadGrade();
                   newItem.gradeId = item.id;
@@ -338,12 +338,12 @@ export class TutorComponent implements OnInit {
          })
     }
     buttonClick(data: any) {
-      debugger;
+       ;
       this.router.navigateByUrl(data);
     }  
 
     validationMessage(){
-      debugger;
+       ;
       if(!this.firstName.value){
         this.message = 'Please Provide First Name.';
       } else if(!this.lastName.value){
@@ -363,7 +363,7 @@ export class TutorComponent implements OnInit {
       } else if(this.subjects.value.length == 0){
         this.message = 'Please Select Subjects.';
       } else if(this.syllabus.value.length == 0){
-        debugger;
+         ;
         this.message = 'Please Select Syllabus.';
       } else {
         this.message = "";

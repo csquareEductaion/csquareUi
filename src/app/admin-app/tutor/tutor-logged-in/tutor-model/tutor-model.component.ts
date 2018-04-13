@@ -56,7 +56,7 @@ private eventService: EventService ){
         events: data
       };
     });
-    debugger;
+     ;
     if(this.studentData){
       this.city.setValue(this.studentData.city);
       this.location.setValue(this.studentData.location);
@@ -84,14 +84,12 @@ private eventService: EventService ){
   }
 
   clickButton(event: any){
-    debugger
-    console.log(event);
+     
   }
 
   eventClick(event: any){
-    debugger
+     
     
-    console.log(event);
   }
 
   private initForm() {

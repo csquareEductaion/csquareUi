@@ -54,7 +54,7 @@ export class NavigationComponent implements OnInit {
     ngOnInit() {}
 
     buttonClick(data: any) {
-      debugger;
+       ;
       this.router.navigateByUrl(data);
     } 
 }

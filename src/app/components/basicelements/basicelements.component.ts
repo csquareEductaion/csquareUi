@@ -92,17 +92,6 @@ export class BasicelementsComponent implements OnInit{
         })
         this.service.getAllRefGrades().subscribe(data =>{
           this.gradeList = data;
-          console.log(data);
-        //   this.gradeList.sort( (name1, name2) => {
-        //     debugger
-        //     if ( name1.sortorder < name2.sortorder ){
-        //       return -1;
-        //     }else if( name1.sortorder > name2.sortorder ){
-        //         return 1;
-        //     }else{
-        //       return 0;	
-        //     }
-        // });
         })
         
         this.initForm();
@@ -122,9 +111,6 @@ export class BasicelementsComponent implements OnInit{
       }
 
       ngOnInit() {
-        // this.http.post('https://api.github.com/users/seeschweiler').subscribe(data => {
-        //   console.log(data);
-        // });
       }
     submit() {
         this.validationMessage();

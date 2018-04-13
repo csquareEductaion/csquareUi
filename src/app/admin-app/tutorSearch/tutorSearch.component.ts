@@ -210,11 +210,10 @@ export class TutorSearchComponent implements OnInit {
         this.studentTutor.push(event.data);
       }
     }
-    console.log(this.student.studentTutorList);
   }
 
   preview(){
-    debugger;
+     ;
     const activeModal = this.modalService.open(TutorModalComponent, { size: 'lg' });
         activeModal.componentInstance.modalHeader = 'All Assigned Tutor To';
         activeModal.componentInstance.cityList = this.cityList;
@@ -226,7 +225,7 @@ export class TutorSearchComponent implements OnInit {
           if(res == 'N'){
            
           } else {
-            debugger;
+             ;
             this.studentTutor = res;
             let flag = 0;
             this.studentTutor.forEach(ele=>{
@@ -253,7 +252,7 @@ export class TutorSearchComponent implements OnInit {
   }
   
   searchTutor(){
-    debugger;
+     ;
     this.loading = true;
     this.searchForm = [];
     let i =0;
@@ -320,7 +319,7 @@ export class TutorSearchComponent implements OnInit {
   }
 
   assignTutor(){
-    debugger;
+     ;
     this.loading = true;
     this.service.updateStudent(this.student).subscribe(res=>{
       this.loading = false;
@@ -382,7 +381,7 @@ export class TutorSearchComponent implements OnInit {
    });
 
    this.locationName.valueChanges.subscribe(val=>{
-     debugger;
+      ;
      this.locationList.forEach(element => {
        if((element.pincode + ' ( ' +element.location_name+ ' )') == val){
          this.location.setValue(element.pk);

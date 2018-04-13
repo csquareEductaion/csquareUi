@@ -57,7 +57,7 @@ export class LoggedInNavComponent implements OnInit {
   public changeGreeting(greeting: any): void {
     
     const isOpen = this.popover.isOpen();
-    debugger;
+     ;
     
     if (isOpen == false) {
       this.popover.close();
@@ -72,7 +72,7 @@ export class LoggedInNavComponent implements OnInit {
   }
 
     ngOnInit() {
-        debugger
+         
         this.route.params.subscribe((params: Params) =>{
             this.sessionId = params['id'];
         })
@@ -84,7 +84,7 @@ export class LoggedInNavComponent implements OnInit {
                 this.studentForm = false;
                 this.tutorForm = false;
                 this.profile = true;
-                debugger
+                 
 
                 this.userName = data.firstName + ' ' + data.lastName;
                 this.userEmail = data.email;

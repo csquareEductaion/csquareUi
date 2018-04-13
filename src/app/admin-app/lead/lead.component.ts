@@ -104,7 +104,7 @@ export class LeadComponent implements OnInit {
     config.interval = 3000;
     config.wrap = true;
     config.keyboard = false;
-    debugger;
+     ;
     this.service.getAllRefCites().subscribe(res=>{
       res.forEach(element => {
         this.cityList.push({value: element.pK, title: element.city_name});
@@ -131,7 +131,7 @@ export class LeadComponent implements OnInit {
     });
   }
   handleEdit(data: any) {
-      debugger;
+       ;
     const leadData = data.data;
         this.router.navigateByUrl('/admin-app/editLead/' + this.sessionId + '/' + leadData.pK);
   }
@@ -140,7 +140,7 @@ export class LeadComponent implements OnInit {
   }
 
   onDeleteConfirm(data: any): void {
-    debugger;
+     ;
     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
@@ -192,7 +192,7 @@ export class LeadComponent implements OnInit {
   }
   
   getCityById( value: any ) {
-    // debugger;
+    //  ;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
       if (this.cityList[i].value === value) {

@@ -253,7 +253,7 @@ export class TutorLoggedInComponent implements OnInit {
             this.selected.push(newItem);
           });
           data.tutorSubjectList.forEach(ele =>{
-            debugger;
+             ;
             const newItem = new listItem();
             newItem.id = ele.subjectId;
             this.subjectDis.forEach(res =>{
@@ -298,7 +298,7 @@ export class TutorLoggedInComponent implements OnInit {
     activeModel.componentInstance.attendenceTabClicked = this.attendenceTabClicked;
   }
   getCityById( value: any ) {
-    // debugger;
+    //  ;
     let name :any;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
@@ -311,7 +311,7 @@ export class TutorLoggedInComponent implements OnInit {
   }
 
   getLocationById( value: any ) {
-    // debugger;
+    //  ;
     let name : any;
     const len: number = this.locationList.length;
     for (let i = 0; i < len; i++) {
@@ -323,7 +323,7 @@ export class TutorLoggedInComponent implements OnInit {
     return name;
   }
   handleEdit(data: any) {
-    debugger;
+     ;
   const leadData = data.data;
       this.router.navigateByUrl('/admin-app/editTutorManagement/' + this.sessionId + '/' + leadData.pK);
 }
@@ -402,11 +402,11 @@ onDeleteConfirm(data: any) {
 }
 
 onItemSelect(item: any) {
-  debugger;
+   ;
   this.gradeList = [];
   this.subjectList = [];
   this.syllabusList = [];
-  debugger;
+   ;
     this.selected.forEach(item =>{
       const grade =new tutorGrade();
       grade.gradeId = item.id;
@@ -431,7 +431,7 @@ onItemSelect(item: any) {
     this.gradeList = [];
     this.subjectList = [];
     this.syllabusList = [];
-    debugger;
+     ;
       this.selected.forEach(item =>{
         const newItem =new tutorGrade();
         newItem.gradeId = item.id;
@@ -453,8 +453,6 @@ onItemSelect(item: any) {
   }
 
 handleFileInput(event: any) {
-  debugger;
-  console.log(event.target);
 
   if (event.target.files && event.target.files[0]) {
     var reader = new FileReader();
@@ -604,7 +602,7 @@ this.service.searchLocationByCity(val).subscribe(data=>{
 });
 
 this.locationName.valueChanges.subscribe(val=>{
-debugger;
+ ;
 this.locationList.forEach(element => {
   if((element.pincode + ' ( ' +element.location_name+ ' )') == val){
     this.location.setValue(element.pk);
@@ -654,7 +652,7 @@ if(!this.firstName.value){
 }
 
 teachingValidation(){
-  debugger
+   
   if(!this.qualification.value){
     this.doctab = false;
     this.verifiedTab = false;

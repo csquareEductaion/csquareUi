@@ -128,7 +128,7 @@ export class UserComponent implements OnInit {
    });
   }
   handleEdit(data: any) {
-      debugger;
+       ;
     const leadData = data.data;
         this.router.navigateByUrl('/admin-app/editUserManagement/' +this.sessionId + '/' + leadData.pK);
   }
@@ -137,7 +137,7 @@ export class UserComponent implements OnInit {
   }
 
   onDeleteConfirm(data: any): void {
-    debugger;
+     ;
     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';
@@ -163,7 +163,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserStatus(value: any){
-    debugger;
+     ;
    let status;
    this.userStatusList.forEach(item =>{
      if (item.pk == value ){
@@ -174,7 +174,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserRole(value: any){
-    debugger;
+     ;
    let status;
    this.userRoleList.forEach(item =>{
      if (item.pk == value ){
@@ -185,7 +185,7 @@ export class UserComponent implements OnInit {
   }
 
   getCityById( value: any ) {
-    // debugger;
+    //  ;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
       if (this.cityList[i].value === value) {

@@ -101,7 +101,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   onDeleteConfirm(data: any): void {
-    debugger;
+     ;
     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Alert';

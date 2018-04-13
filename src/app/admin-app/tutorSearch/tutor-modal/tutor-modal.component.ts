@@ -110,7 +110,7 @@ export class TutorModalComponent implements OnInit {
   }
 
   ngOnInit() { 
-    debugger;
+     ;
     
    // this.source.load(this.tutorList);
   }
@@ -125,7 +125,6 @@ export class TutorModalComponent implements OnInit {
         index ++;
       }
     });
-    console.log(this.tutorList);
     this.settings = this.prepareSettings();
     this.source.load(this.tutorList);
   }

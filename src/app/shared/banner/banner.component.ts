@@ -47,7 +47,7 @@ export class BannerComponent implements OnInit {
         this.scrollService.scrollTo(element,duration);
     }  
     buttonClick(data: any) {
-        debugger;
+         ;
         this.router.navigateByUrl(data);
       }  
 }

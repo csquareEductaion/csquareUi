@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   public changeGreeting(greeting: any): void {
     
     const isOpen = this.popover.isOpen();
-    debugger;
+     ;
     
     if (isOpen == false) {
       this.popover.close();

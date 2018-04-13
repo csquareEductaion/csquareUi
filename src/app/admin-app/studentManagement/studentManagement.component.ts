@@ -120,7 +120,7 @@ export class StudentManagementComponent implements OnInit {
     });
   }
   handleEdit(data: any) {
-      debugger;
+       ;
     const leadData = data.data;
         this.router.navigateByUrl('/admin-app/editStudentManagement/' + this.sessionId + '/' +leadData.pK);
   }
@@ -154,7 +154,7 @@ export class StudentManagementComponent implements OnInit {
   }
 
   // getLocation(value: any){
-  //   debugger;
+  //    ;
   //  let name;
   //  this.locationList.forEach(item =>{
   //    if (item.pk == value ){
@@ -165,7 +165,7 @@ export class StudentManagementComponent implements OnInit {
 
   // }
   getCityById( value: any ) {
-    // debugger;
+    //  ;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
       if (this.cityList[i].value === value) {

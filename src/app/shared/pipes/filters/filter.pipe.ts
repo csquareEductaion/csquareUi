@@ -39,7 +39,7 @@ export class SortPipe {
       if(!items) return [];
       if(!searchText) return items;
   searchText = searchText.toLowerCase();
-  debugger;
+   ;
   return items.filter( it => {
         return JSON.stringify(it).toLowerCase().includes(searchText);
       });

@@ -177,7 +177,7 @@ export class EditLeadComponent implements OnInit {
           classes: "myclass custom-class"
       };
         this.route.params.subscribe((params: Params) => {
-            debugger;
+             ;
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
             if (this.leadIdParam) {
@@ -236,11 +236,11 @@ export class EditLeadComponent implements OnInit {
           //     this.subjects.setValue(this.selectedItems);
           // }
           onItemSelect(item: any) {
-            debugger;
+             ;
             this.gradeList = [];
             this.subjectList = [];
             this.syllabusList = [];
-            debugger;
+             ;
               this.selected.forEach(item =>{
                 const grade =new leadGrade();
                 grade.gradeId = item.id;
@@ -265,7 +265,7 @@ export class EditLeadComponent implements OnInit {
               this.gradeList = [];
               this.subjectList = [];
               this.syllabusList = [];
-              debugger;
+               ;
                 this.selected.forEach(item =>{
                   const newItem =new leadGrade();
                   newItem.gradeId = item.id;

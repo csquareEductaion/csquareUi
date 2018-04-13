@@ -119,7 +119,7 @@ areaMain: string;
 
 
  ngOnInit() { 
-   debugger;
+    ;
        this.areaMain = this.area;
  }
  submit() {
@@ -140,7 +140,7 @@ areaMain: string;
     // //  this.spinnerService.hide();
     this.loading = true;
      this.service.addLead(formValue).subscribe(enquiry => {
-       debugger;
+        ;
        if(enquiry._body == "Email already exists"){
          const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
          activeModal.componentInstance.showHide = true;
@@ -245,7 +245,7 @@ areaMain: string;
      } 
    })
  this.grade.valueChanges.subscribe(val=>{ 
-   debugger;
+    ;
     const newItem = new leadGrade();
    newItem.gradeId = val;
    this.gradeL.push(newItem);

@@ -128,7 +128,7 @@ export class TutorManagementComponent implements OnInit {
     });
   }
   handleEdit(data: any) {
-      debugger;
+       ;
     const leadData = data.data;
         this.router.navigateByUrl('/admin-app/editTutorManagement/' + this.sessionId + '/' + leadData.pK);
   }
@@ -162,7 +162,7 @@ export class TutorManagementComponent implements OnInit {
   }
 
   getCityById( value: any ) {
-    // debugger;
+    //  ;
     let name :any;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
@@ -175,7 +175,7 @@ export class TutorManagementComponent implements OnInit {
   }
 
   getLocationById( value: any ) {
-    // debugger;
+    //  ;
     let name : any;
     const len: number = this.locationList.length;
     for (let i = 0; i < len; i++) {

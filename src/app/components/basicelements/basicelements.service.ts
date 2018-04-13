@@ -10,7 +10,7 @@ export class BasicelementsService {
    //url = "https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8";
   constructor(private http:Http) {
     // let url = `${environment.serverUrl}/addLead`;
-    // console.log(url);
+    
    }
   // addLead(data: any): Observable<any> {
   //     return this.http.post(this.url, data).map(req => req.json());

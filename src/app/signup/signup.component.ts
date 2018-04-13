@@ -41,14 +41,14 @@ export class SignupComponent implements OnInit {
         this.loading = true;
         this.service.login(formValue).subscribe(res =>{
             if( res.sessionId != null){
-                debugger;
+                 ;
                // //  this.spinnerService.hide();
                this.loading = false;
                 if(res.userRole == '2'){
                     //admin
                     this.router.navigateByUrl('/admin-app/lead/'+res.sessionId);
                 } else if(res.userRole == '1'){
-                    debugger;
+                     ;
                     //tutor
                     this.router.navigateByUrl('/admin-app/tutor/tutor-logged-in/' +res.sessionId+ '/' +res.userId);
                 } else {

@@ -22,7 +22,7 @@ export class StudentLoggedInComponent implements OnInit {
       this.sessionId = params['id'];
 
       this.service.getStudentById(this.studentIdParam).subscribe(data =>{
-        console.log(data);
+        
       });
     })
    }
