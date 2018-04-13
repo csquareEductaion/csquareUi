@@ -147,8 +147,6 @@ export class EditStudentManagementComponent implements OnInit {
     }
 
     ngOnInit() {
-       ;
-      this.loading = true;
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
         data.sort( function(name1, name2) {
@@ -175,8 +173,8 @@ export class EditStudentManagementComponent implements OnInit {
              ;
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
-             ;
             if (this.leadIdParam) {
+              this.loading = true;
                 this.service.getStudentById(this.leadIdParam).subscribe(data => {
                   this.selectedItems = [];
                   data.studentSubjectList.forEach(ele =>{

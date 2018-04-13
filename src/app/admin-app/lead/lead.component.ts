@@ -24,7 +24,7 @@ export class LeadComponent implements OnInit {
   settings: any;
   sessionId: any;
   loading: any;
-
+  leadType: any[] = [];
 
   prepareSettings() {
     return {
@@ -72,11 +72,14 @@ export class LeadComponent implements OnInit {
             },
             valuePrepareFunction: value => this.getCityById(value),
           },
-          pK: {
-              title: 'Lead Type',
-              type: 'string',
-              valuePrepareFunction: value => this.getLeadType(value),
+          isstudent: {
+              title: 'Is Student',
+              type: 'boolean'
           },
+          istutor: {
+            title: 'Is Tutor',
+            type: 'boolean'
+        },
           email: {
               title: 'Email',
               type: 'string'
@@ -87,7 +90,13 @@ export class LeadComponent implements OnInit {
           },
           leadStatus: {
             title: 'Lead Status',
-            type: 'string',
+            filter: {
+              type: 'list',
+              config: {
+                selectText: 'Show All',
+               list: this.leadStatusList,
+              },
+            },
             valuePrepareFunction: value => this.getLeadStatus(value),
           }
         }
@@ -112,12 +121,15 @@ export class LeadComponent implements OnInit {
      })
 
      this.service.getAllLeadStatus().subscribe(resp=>{
-      this.leadStatusList = resp;
+      resp.forEach(element => {
+        this.leadStatusList.push({value: element.pk, title: element.currentStatus});
+      });
      })
+     this.leadType[0] = { value:true, title: 'Tutor' };
+     this.leadType[1] = { value:true, title: 'Student' };
    
   }
   ngOnInit() {
-    //  this.spinnerService.hide();
     this.loading = true;
     this.route.params.subscribe((params: Params) => {
       this.sessionId = params['id'];
@@ -126,7 +138,6 @@ export class LeadComponent implements OnInit {
           this.settings = this.prepareSettings();
           this.source.load(data);
           this.loading = false;
-          //  this.spinnerService.hide();
         });
     });
   }
@@ -168,31 +179,31 @@ export class LeadComponent implements OnInit {
   }
 
   getLeadType(value : any){
-    let id = value;
-    let status;
-    this.leadList.forEach(item =>{
-      if( item.pK == id) {
-        if( item.istutor == true) {
-          status = 'Tutor';
-        } else if(item.isstudent == true){
-          status = 'Student';
-        }
+    debugger;
+    const index = this.leadList.findIndex(item =>{
+      if(item.pK == value){
+       return true;
       }
     })
-    return status;
+    if(index >= 0){
+      if(this.leadList[index].isstudent == true){
+        return this.leadType[1].title;
+      } else if(this.leadList[index].istutor == true){
+        return this.leadType[0].title;
+      }
+    }
   }
   getLeadStatus(value: any) {
-    let status;
-    this.leadStatusList.forEach(item =>{
-      if( item.pk == value) {
-        status = item.currentStatus;
+      const len: number = this.leadStatusList.length;
+      for (let i = 0; i < len; i++) {
+        if (this.leadStatusList[i].value === value) {
+          return this.leadStatusList[i].title;
+        }
       }
-    })
-    return status;
+      return value;
   }
   
   getCityById( value: any ) {
-    //  ;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
       if (this.cityList[i].value === value) {

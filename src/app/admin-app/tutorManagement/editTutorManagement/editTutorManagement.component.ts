@@ -110,6 +110,7 @@ export class EditTutorManagementComponent implements OnInit {
    locationSearchList: any[] = [];
    public locationName: AbstractControl;
    sessionId: any;
+   loading: any;
 
    search = (text$: Observable<string>) =>
    text$
@@ -200,6 +201,7 @@ export class EditTutorManagementComponent implements OnInit {
             this.tutorIdParam = params['pk'];
             this.sessionId = params['id'];
             if (this.tutorIdParam) {
+              this.loading = true;
                 this.service.getTutorById(this.tutorIdParam).subscribe(data => {
                   this.selectedItems = [];
                   this.selectedSyllabus = [];
@@ -237,6 +239,7 @@ export class EditTutorManagementComponent implements OnInit {
                   });
                   this.location.setValue(data.location);
                    this.tutorManagementForm.patchValue(data);
+                   this.loading = false;
             });
              
             this.service.getStudentByTutorId(this.tutorIdParam).subscribe(result =>{
@@ -314,13 +317,13 @@ export class EditTutorManagementComponent implements OnInit {
               const formValue: any = this.tutorManagementForm.value;
               if (!this.tutorIdParam){
                 if(this.tutorManagementForm.valid) {
-                  //  this.spinnerService.hide();
+                  this.loading = true;
                   this.service.addTutor(formValue).subscribe(enquiry => {
                     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
                     activeModal.componentInstance.showHide = true;
                     activeModal.componentInstance.modalHeader = 'Alert';
                     activeModal.componentInstance.modalContent = 'Congrats! Student has been Successfully Created.';
-                    //  this.spinnerService.hide();
+                    this.loading = false;
                     this.router.navigateByUrl('/admin-app/tutorManagement/' + this.sessionId);
                   });
                 } else{
@@ -332,13 +335,13 @@ export class EditTutorManagementComponent implements OnInit {
               } else {
                 this.pK.setValue(this.tutorIdParam);
                 if(this.tutorManagementForm.valid) {
-                  //  this.spinnerService.hide();
+                  this.loading = true;
                   this.service.updateTutor(formValue).subscribe(enquiry => {
                     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
                     activeModal.componentInstance.showHide = true;
                     activeModal.componentInstance.modalHeader = 'Alert';
                     activeModal.componentInstance.modalContent = 'Thank You! This Student has been Successfully Updated.';
-                    //  this.spinnerService.hide();
+                    this.loading = false;
                     this.router.navigateByUrl('/admin-app/tutorManagement/' + this.sessionId);
                   });
                 } else{

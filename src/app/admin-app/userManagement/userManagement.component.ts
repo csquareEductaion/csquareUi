@@ -80,12 +80,24 @@ export class UserComponent implements OnInit {
         },
         user_role: {
           title: 'User Role',
-          type: 'string',
+          filter: {
+            type: 'list',
+            config: {
+              selectText: 'Show All',
+             list: this.userRoleList,
+            },
+          },
           valuePrepareFunction: value => this.getUserRole(value),
         },
         user_status: {
           title: 'User Status',
-          type: 'string',
+          filter: {
+            type: 'list',
+            config: {
+              selectText: 'Show All',
+             list: this.userStatusList,
+            },
+          },
           valuePrepareFunction: value => this.getUserStatus(value),
         }
       }
@@ -108,10 +120,14 @@ export class UserComponent implements OnInit {
     });
   })
   this.service.getAllUserStatus().subscribe(data=>{
-    this.userStatusList = data;
+    data.forEach(element => {
+      this.userStatusList.push({value: element.pk, title: element.user_status});
+    });
   });
   this.service.getAllUserRoles().subscribe(data=>{
-    this.userRoleList = data;
+    data.forEach(element => {
+      this.userRoleList.push({value: element.pk, title: element.role_name});
+    });
   })
  
   }
@@ -163,29 +179,26 @@ export class UserComponent implements OnInit {
   }
 
   getUserStatus(value: any){
-     ;
-   let status;
-   this.userStatusList.forEach(item =>{
-     if (item.pk == value ){
-      status = item.user_status;
-     }
-   })
-   return status;
+    const len: number = this.userStatusList.length;
+    for (let i = 0; i < len; i++) {
+      if (this.userStatusList[i].value === value) {
+        return this.userStatusList[i].title;
+      }
+    }
+    return value;
   }
 
   getUserRole(value: any){
-     ;
-   let status;
-   this.userRoleList.forEach(item =>{
-     if (item.pk == value ){
-      status = item.role_name;
-     }
-   })
-   return status;
+    const len: number = this.userRoleList.length;
+    for (let i = 0; i < len; i++) {
+      if (this.userRoleList[i].value === value) {
+        return this.userRoleList[i].title;
+      }
+    }
+    return value;
   }
 
   getCityById( value: any ) {
-    //  ;
     const len: number = this.cityList.length;
     for (let i = 0; i < len; i++) {
       if (this.cityList[i].value === value) {

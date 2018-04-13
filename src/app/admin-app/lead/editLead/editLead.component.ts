@@ -114,7 +114,6 @@ export class EditLeadComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.loading = true;
       this.service.getAllRefSubjects().subscribe(data=>{
         this.subjectDis = [];
         data.sort( function(name1, name2) {
@@ -177,10 +176,11 @@ export class EditLeadComponent implements OnInit {
           classes: "myclass custom-class"
       };
         this.route.params.subscribe((params: Params) => {
-             ;
+             
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
             if (this.leadIdParam) {
+              this.loading = true;
                 this.service.getLeadById(this.leadIdParam).subscribe(data => {
                   this.selectedItems = [];
                   this.selectedSyllabus = [];

@@ -85,11 +85,11 @@ export class EditUserComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loading = true;
         this.route.params.subscribe((params: Params) => {
             this.leadIdParam = params['pk'];
             this.sessionId = params['id'];
             if (this.leadIdParam) {
+              this.loading = true;
                 this.service.getUserById(this.leadIdParam).subscribe(data => {
                   if(data.user_status != null){
                     this.user_status.setValue(data.user_status);
