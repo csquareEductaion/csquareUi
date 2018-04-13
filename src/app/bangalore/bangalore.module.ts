@@ -19,6 +19,7 @@ import { PrivateTuitionComponent } from './private-tuition/private-tuition.compo
 import { PrivateTutorComponent } from './private-tutor/private-tutor.component';
 import { PrivateTutorInBangaloreComponent } from './private-tutor/private-tutor-in-bangalore/private-tutor-in-bangalore.component';
 import { LoadingModule } from 'ngx-loading';
+import { FilterPipeModule } from '../shared/pipes/filters/fliter.module';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { LoadingModule } from 'ngx-loading';
     NgbModule.forRoot(),
    // NgbCarouselConfig,
    routing,
-   LoadingModule
+   LoadingModule,
+   FilterPipeModule
   ],
   declarations: [
     

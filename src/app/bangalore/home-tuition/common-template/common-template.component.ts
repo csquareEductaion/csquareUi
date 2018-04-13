@@ -11,6 +11,7 @@ import {CommonTemplateUsedService} from './common-template.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { SortPipe } from '../../../shared/pipes/filters/filter.pipe';
 
 class leadGrade{
   gradeId: string;

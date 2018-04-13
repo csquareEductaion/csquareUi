@@ -17,7 +17,7 @@ import { HomeTuitionInBangaloreComponent } from './home-tuition-in-bangalore/hom
 import { CommonTemplateComponent } from './common-template/common-template.component';
 import { CommonTemplateUsedService, CommonTemplate } from './common-template/common-template.service';
 import { LoadingModule } from 'ngx-loading';
-
+import { FilterPipeModule } from '../../shared/pipes/filters/fliter.module';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { LoadingModule } from 'ngx-loading';
     NgbModule.forRoot(),
    // NgbCarouselConfig,
    routing,
-   LoadingModule
+   LoadingModule,
+   FilterPipeModule
   ],
   declarations: [
     

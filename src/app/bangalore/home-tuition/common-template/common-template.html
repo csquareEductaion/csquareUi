@@ -66,7 +66,7 @@
 									<div class="form-group col-sm-6" [ngClass]="{'has-error': ((!grade.valid && grade.touched)), 'has-success': (grade.valid && grade .touched)}">
 											<select class="form-control" formControlName="grade" id="grade" placeholder="Grade">
 												<option value="" hidden>Grade</option>
-												<option *ngFor="let list of gradeList" [value]="list.pk">{{list.grade}}</option>
+												<option *ngFor="let list of gradeList | sortBy: 'sortorder'" [value]="list.pk">{{list.grade}}</option>
 											</select>
 											<small *ngIf="(!grade.valid && grade.touched)" class="text-danger">
 													Grade is required.

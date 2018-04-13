@@ -29,7 +29,7 @@ const routes: Routes =[
     { path: 'contact',      loadChildren: './contact/contact.module#ContactModule' },
     { path: 'parents-review',      loadChildren: './parents/parents.module#ParentsModule' },
     { path: 'careers',      loadChildren: './careers/careers.module#CareersModule' },
-    { path: 'bangalore',     loadChildren: './bangalore/bangalore.module#BangaloreModule'},
+   // { path: 'bangalore',     loadChildren: './bangalore/bangalore.module#BangaloreModule'},
     { path: 'admin-app',      loadChildren: './admin-app/admin-app.module#AdminAppModule' },
 
     
