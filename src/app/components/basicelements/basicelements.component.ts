@@ -142,7 +142,8 @@ export class BasicelementsComponent implements OnInit{
               activeModal.componentInstance.showHide = true;
               activeModal.componentInstance.modalHeader = 'Success';
               activeModal.componentInstance.modalContent = 'Thank you ' + this.firstName.value + ' ' + this.lastName.value + ' for contacting us we will reach you shortly!';
-              this.enquiryForm.reset();
+              //this.enquiryForm.reset();
+              this.initForm();
              // //  this.spinnerService.hide();
              this.loading = false;
             }

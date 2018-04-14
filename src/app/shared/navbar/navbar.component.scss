@@ -37,3 +37,28 @@
     }
 
 }
+.labelBtn{
+    height:200px; 
+    padding-top:10em;
+    font-size: 14px;
+    font-weight: bold; 
+    color:#fff!important;
+    text-transform: none;
+    padding-left: 0;
+    padding-right: 0;
+    // -webkit-transform: rotate(90deg);   
+    // -moz-transform: rotate(90deg);
+    // -ms-transform: rotate(90deg);
+    // -o-transform: rotate(90deg);
+    // transform: rotate(90deg);
+}
+.labelBtn:hover{
+    background-color: #fff!important;
+    color: rgb(228, 19, 11)!important;
+    border: 1px solid #fff!important;
+}
+@media(max-width: 500px){
+    .btn-nav{
+        display: none!important;
+    }
+}

@@ -4,6 +4,7 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPopoverConfig} from '@ng-bootstrap/ng-bootstrap';
 import { CommonModalComponent } from 'app/shared/common-modal/common-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location,
          private element : ElementRef,
         config: NgbPopoverConfig,
+        private router: Router,
         private modalService: NgbModal) {
         this.sidebarVisible = false;
     }
@@ -78,6 +80,10 @@ export class NavbarComponent implements OnInit {
         if(this.showLink){
            this.ngOnInit();
         }
+    }
+
+    buttonClick(data: any){
+        this.router.navigateByUrl(data);
     }
     
 }
