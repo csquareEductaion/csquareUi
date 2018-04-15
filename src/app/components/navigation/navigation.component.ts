@@ -44,12 +44,18 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
+
+  isCollapsedS1: any;
+  isCollapsedS2: any;
+  isCollapsedS3: any;
+
     constructor(config: NgbCarouselConfig,
       private router: Router,) {
       config.interval = 2000;
       config.wrap = true;
       config.keyboard = true;
      }
+     
 
     ngOnInit() {}
 
