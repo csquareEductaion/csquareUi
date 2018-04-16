@@ -28,6 +28,7 @@ export class ContactComponent implements OnInit {
   public email: AbstractControl;
   public phone: AbstractControl;
   public message: AbstractControl;
+  errorMessage: string;
 
   constructor(private fb: FormBuilder,
     private router: Router, 
@@ -46,25 +47,26 @@ export class ContactComponent implements OnInit {
 submit() {
   const formValue: any = this.contactForm.value;
   if(this.contactForm.valid){
-    //  this.spinnerService.hide();
-    this.service.contactUs(formValue).subscribe(enquiry => {
-       ;
-      const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+    this.validationMessage();
+    if(this.errorMessage){
+      const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg'});
       activeModal.componentInstance.showHide = true;
-      activeModal.componentInstance.modalHeader = 'Alert';
-      activeModal.componentInstance.modalContent = 'Thank you ' + this.name.value + ' for contacting us we will reach you shortly!';
-      //  this.spinnerService.hide();
-      this.contactForm.reset();
-    });
-  } else{
-    const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-    activeModal.componentInstance.showHide = true;
-    activeModal.componentInstance.modalHeader = 'Alert';
-    activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+      activeModal.componentInstance.modalHeader = 'Error';
+      activeModal.componentInstance.modalContent = this.errorMessage;
+    } else {
+      this.service.contactUs(formValue).subscribe(enquiry => {
+        const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+        activeModal.componentInstance.showHide = true;
+        activeModal.componentInstance.modalHeader = 'Alert';
+        activeModal.componentInstance.modalContent = 'Thank you ' + this.name.value + ' for contacting us we will reach you shortly!';
+        //  this.spinnerService.hide();
+        this.contactForm.reset();
+      });
+    }
   }
-};
+}
+
 cancel(data: any){
-   ;
   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
   activeModal.componentInstance.showHide = true;
   activeModal.componentInstance.modalHeader = 'Alert';
@@ -81,7 +83,8 @@ private initForm() {
   this.contactForm = this.fb.group({
     
     'name': ['', Validators.compose([Validators.required])],
-    'phone': ['', Validators.compose([Validators.required])],
+    'phone': ['', Validators.compose([Validators.required,Validators.maxLength(10),
+      Validators.minLength(10),Validators.pattern('[0-9]*')])],
     'email': ['', Validators.compose([Validators.required,Validators.email])],
     'message': [''],    
 
@@ -91,6 +94,17 @@ private initForm() {
    this.phone = this.contactForm.controls['phone'];
    this.email = this.contactForm.controls['email'];
    this.message = this.contactForm.controls['message'];
+}
+validationMessage(){
+ if(!this.name.value){
+   this.errorMessage = 'Please Provide First Name.';
+ } else if(!this.phone.value){
+   this.errorMessage = 'Please Provide Phone Number.';
+ } else if(!this.email.value){
+   this.errorMessage = 'Please Provide Email.';
+ } else if(!this.message.value){
+   this.errorMessage = 'Leave Some Message For Better Service.'
+ }
 }
 }
 

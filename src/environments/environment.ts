@@ -5,7 +5,7 @@
 
 export const environment = {
   production: true,
-  //serverUrl: 'http://localhost:8080/cs-api-gateway'
-    serverUrl: 'https://csquareeducation.in:8443/cs-api-gateway'
+  serverUrl: 'http://localhost:8080/cs-api-gateway'
+  //  serverUrl: 'https://csquareeducation.in:8443/cs-api-gateway'
 
 };
