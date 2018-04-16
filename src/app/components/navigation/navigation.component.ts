@@ -48,6 +48,9 @@ export class NavigationComponent implements OnInit {
   isCollapsedS1: any;
   isCollapsedS2: any;
   isCollapsedS3: any;
+  usersCount: number = 0;
+  studentCount: number = 0;
+  tutorCount: number = 0;
 
     constructor(config: NgbCarouselConfig,
       private router: Router,) {
@@ -57,7 +60,12 @@ export class NavigationComponent implements OnInit {
      }
      
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.usersCount = 6000;
+        this.studentCount = 200;
+        this.tutorCount = 5800;
+      
+    }
 
     buttonClick(data: any) {
        ;

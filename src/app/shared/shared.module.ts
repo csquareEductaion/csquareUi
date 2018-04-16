@@ -12,6 +12,7 @@ import { CommonModalComponent } from 'app/shared/common-modal/common-modal.compo
 import { LoggedInNavComponent } from './loggedInNav/loggedInNavbar.component';
 import { LoggedInService, LoggedIn } from './loggedInNav/loggedInNavbar.service';
 import { FilterPipeModule } from './pipes/filters/fliter.module';
+import {Banner, BannerService} from './banner/banner.service';
 
 @NgModule({
     imports: [
@@ -32,6 +33,6 @@ import { FilterPipeModule } from './pipes/filters/fliter.module';
       ],
     declarations: [CommonModalComponent, LoggedInNavComponent ],
     exports:[  CommonModalComponent, LoggedInNavComponent],
-    providers: [ LoggedInService ]
+    providers: [ LoggedInService,BannerService ]
 })
 export class SharedModule { }

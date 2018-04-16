@@ -9,38 +9,45 @@ img{
 }
 h2{
     text-align: center;
-    color: rgb(248, 94, 94)!important;
+    color: #f8591f!important;
     font-size: 40px;
     text-decoration: underline;
-    font-family: 'Nobile', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+h5{
+    text-align: center;
+    color: #f8591f!important;
+    font-size: 24px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
 .row{
     padding: 0px!important;
 }
-.card-body{
-    margin-left: 2em;
-    margin-right: 2em;
-    background-color: rgb(250, 249, 249)!important;
-    border: 1px solid #ccc;
-    font-family: 'Nobile', sans-serif;
+.data-result{
+    background-color: #f8591f!important;
+}
+.slider{
+    margin-left: 12em;
+    background-color: #fff;
 }
 .card-header{
-    margin-left: 2em;
-    margin-right: 2em;
     border: 1px solid #ccc;
-    color: rgb(248, 94, 94)!important;
+    color: #f8591f!important;
     text-align: center;
     font-size: 45px;
-    border-radius: 0px!important;
-    font-family: 'Nobile', sans-serif;
+}
+.card-body{
+    background-color: rgb(250, 249, 249)!important;
+    border: 1px solid #ccc;
 }
 .col-md-2{
     text-align: center;
     font-size: 24px;
-    font-family: 'Nobile', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 a:hover{
-    color: rgb(248, 94, 94)!important;   
+    color: #f8591f!important;;   
 }
 .fa-5x{
     font-size: 100px;
@@ -51,29 +58,23 @@ a:hover{
 }
 p{
     text-align: justify;
-    font-family: 'Nobile', sans-serif;
-}
-.col-md-6{
-    margin-top: 4em;
-    margin-left: 2em;
+    font-family: 'Montserrat', sans-serif;
 }
 h3{
     font-size: 16px;
     text-align: justify;
-    font-weight: 800;
-    font-family: 'Nobile', sans-serif;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
 }
 h4{
     font-size: 14px;
     text-align: justify;
-    font-weight: 800;
-    font-family: 'Nobile', sans-serif;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
     color: rgb(53, 52, 52)!important;
 }
 .main{
-    margin-left: 10em;
     margin-top: 4em;
-    margin-right: -4em;
     margin-bottom: 4em;
 }
 .review-pic{
@@ -82,11 +83,24 @@ h4{
 .checked {
     color: orange;
 }
+.service-dis{
+    margin-left: 6em;
+    margin-top: 1em;
+}
+.data-view{
+    text-align: center;
+    color: #fff;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
 @media(max-width: 500px){
     h2{
         margin: 0px;
         padding: 0px;
-        font-size: 14px!important;
+        font-size: 12px!important;
     }
     .fa-5x{
         font-size: 20px;
@@ -94,9 +108,8 @@ h4{
     .mobile{
         display: none;
     }
-    .card-header{
-        margin: 0px;
-        margin-left: 2em;
+    .slider{
+        margin-left: 0px;
     }
     .service-img{
         margin-left: 3em;
@@ -104,7 +117,7 @@ h4{
         height:200px!important;
     }
     h4{
-        font-size: 14px;
+        font-size: 12px;
         font-weight: none;
     }
     h3{
@@ -113,11 +126,18 @@ h4{
     }
     .main{
         margin: 0px;
-        margin-left: 7em;
+    }
+    .card-header{
+        font-size: 18px;
+        margin: 0px;
     }
     .card-body{
         margin: 0px;
-        margin-left: 2em;
-        padding: 0px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .service-dis{
+        margin: 0px;
+        margin-top: 1em;
     }
 }
