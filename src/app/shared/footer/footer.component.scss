@@ -67,6 +67,9 @@ nav[_ngcontent-c2] {
 .fa:hover{
     animation:w3-spin 0.7s 1 linear!important;
 }
+.heart{
+    color: red!important;
+}
 @keyframes w3-spin{
     0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}
 }

@@ -99,6 +99,9 @@ h1 {
 .btn-success:hover{
     background-color: #f8591f!important;
 }
+:host /deep/ .dropdown-menu{
+    width: 92%!important;
+}
   @media(max-width:500px){
     //   .container-fluid{
     //       display: none!important;
