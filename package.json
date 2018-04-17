@@ -62,7 +62,9 @@
     "nouislider": "9.2.0",
     "popper.js": "^1.12.3",
     "rxjs": "5.5.2",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "ng-fullcalendar": "",
+    "fullcalendar": "3.6.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "nightly",
