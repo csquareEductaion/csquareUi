@@ -9,8 +9,20 @@ a {
     transform: .4s;
     font-family: 'Montserrat', sans-serif;
 }
+.fa-facebook{
+color:rgb(59, 89, 152)!important;
+}
+.fa-twitter{
+    color:rgb(0, 172, 237)!important;
+}
+.fa-linkedin{
+    color: rgb(0,119,181)!important;
+}
+.fa-google{
+    color: rgb(72, 133, 237)!important;
+}
 a:hover{
-    color: rgb(23, 155, 243)!important;
+    color: rgb(59, 89, 152)!important;
     font-size: 1.3em;
     font-weight: 2%;
 }
