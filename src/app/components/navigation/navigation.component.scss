@@ -91,6 +91,10 @@ h4{
     margin-left: 6em;
     margin-top: 1em;
 }
+.service-para{
+    margin-left: 6em;
+    margin-top: 5em;
+}
 .data-view{
     text-align: center;
     color: #fff;
@@ -99,6 +103,11 @@ h4{
     font-size: 40px;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
+}
+@media(min-width: 500px){
+    .laptop{
+        display: none;
+    }
 }
 @media(max-width: 500px){
     h2{
@@ -142,6 +151,12 @@ h4{
     }
     .service-dis{
         margin: 0px;
+        margin-left: 3em;
+        margin-top: 1em;
+    }
+    .service-para{
+        margin: 0px;
+        margin-left: 3em;
         margin-top: 1em;
     }
 }
