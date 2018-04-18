@@ -76,7 +76,8 @@ export class AppComponent implements OnInit {
         titlee = titlee.slice( 1 );
         let titleLogged = titlee.split('/');
         if(titlee === '/signup' || titleLogged[1] === 'admin-app' || titleLogged[1] === 'tutorForm' ||
-         titleLogged[1] === 'studentForm' ){
+         titleLogged[1] === 'studentForm' || titleLogged[1] == 'about' || titleLogged[1] == 'question' ||
+        titleLogged[1] == 'contact' ){
             return false;
         } else {
             return true;
