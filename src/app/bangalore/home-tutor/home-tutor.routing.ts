@@ -347,8 +347,8 @@ const routes: Routes =[
 
 
 
-    { path: '', redirectTo: 'bangalore', pathMatch: 'full' },
-    {path: '**', redirectTo: 'bangalore' }
+    { path: '', redirectTo: 'home-tutor-in-bangalore', pathMatch: 'full' },
+    {path: '**', redirectTo: 'home-tutor-in-bangalore' }
  ] 
 }
 ];

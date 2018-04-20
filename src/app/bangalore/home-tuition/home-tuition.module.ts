@@ -15,7 +15,6 @@ import {HomeTuitionComponent} from './home-tuition.component';
 import { JWBootstrapSwitchModule } from "jw-bootstrap-switch-ng2";
 import { HomeTuitionInBangaloreComponent } from './home-tuition-in-bangalore/home-tuition-in-bangalore.component';
 import { CommonTemplateComponent } from './common-template/common-template.component';
-import { CommonTemplateUsedService, CommonTemplate } from './common-template/common-template.service';
 import { LoadingModule } from 'ngx-loading';
 import { FilterPipeModule } from '../../shared/pipes/filters/fliter.module';
 
@@ -41,7 +40,6 @@ import { FilterPipeModule } from '../../shared/pipes/filters/fliter.module';
     CommonTemplateComponent
   ],
   providers: [
-    CommonTemplateUsedService
   ],
   entryComponents: [
     

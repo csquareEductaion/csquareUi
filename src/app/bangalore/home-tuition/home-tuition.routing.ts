@@ -346,8 +346,8 @@ const routes: Routes =[
     {path: 'btm-layout-2nd-stage-home-tuition-tutors', component: HomeTuitionInBangaloreComponent },
 
 
-{ path: '', redirectTo: 'bangalore', pathMatch: 'full' },
-{path: '**', redirectTo: 'bangalore' }
+{ path: '', redirectTo: 'home-tuition-in-bangalore', pathMatch: 'full' },
+{path: '**', redirectTo: 'home-tuition-in-bangalore' }
  ] 
 }
 ];

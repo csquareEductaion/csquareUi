@@ -42,7 +42,7 @@ const routes: Routes =[
     CommonModule,
     //BrowserModule,
     NoopAnimationsModule,
-    RouterModule.forRoot(routes, {useHash:true})
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ]

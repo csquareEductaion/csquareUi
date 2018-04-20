@@ -1,142 +1,12 @@
 <div class="main">
     <br>
-    <div class="card card-body" style="margin-top: 2em;background-color: #fff; opacity:.76;">
-        <h3 class="tittle">The Best Private Tuition {{keyword}}, {{area}}</h3>
+    <div class="card card-body" style="margin-top: 2em;background-color: #fff; ">
+        <h3 class="tittle">The Best 10 Home Tutors {{keyword}}, {{area}}</h3>
 </div>
-    <br><br>
-    <div class="row">
-                <div class="col-md-6">   
-                                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>              
-                        <div class="card card-body" style="background-color: #fff; opacity:.76;">
-                                <div class="card card-body">
-                                <img src="assets/img/quickenquiry.png" style="width: 200px;height:200px;margin-left:35%; margin-top: -8em;margin-bottom: -6em;">
-                                 <!-- Quick Enquiry
-                                 <p>*Only for Students/Parents</p> -->
-                                </div>
-                                    <form [formGroup]="enquiryForm">                                        
-                                    <div class="row" style="text-align:left; padding-top:1em;">
-                                            <p style="margin-left: 1em;">I Am: </p>
-                                            <div class="col-sm-6">
-                                                    <label class="checkbox-inline" for="isstudent">
-                                                      <input type="checkbox" [formControl]="isstudent" id="isstudent">&nbsp;&nbsp;Student/Parent
-                                                    </label>
-                                                    <label class="checkbox-inline" for="istutor">
-                                                            <input type="checkbox" [formControl]="istutor" id="istutor">&nbsp;&nbsp;Tutor
-                                                          </label>
-                                                  </div>
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!firstName.valid && firstName.touched)), 'has-success': (firstName.valid && firstName.touched)}">
-                                            <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First Name">
-                                            <small *ngIf="(!firstName.valid && firstName.touched)" class="text-danger">
-                                                    First Name is required.
-                                                  </small>
-                                        </div>
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!lastName.valid && lastName.touched)), 'has-success': (lastName.valid && lastName.touched)}">
-                                            <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name">
-                                            <small *ngIf="(!lastName.valid && lastName.touched)" class="text-danger">
-                                                    Last Name is required.
-                                                  </small>
-                                        </div>
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!phone.valid && phone.touched)), 'has-success': (phone.valid && phone.touched)}">
-                                                <input type="text" class="form-control" formControlName="phone" id="phone" placeholder="Phone">
-                                                <div *ngIf="(!phone.valid && phone.touched)" class="text-danger">
-                                                <small *ngIf= "phone.errors.required">
-                                                        Phone is required.
-                                                    </small>
-                                                    <small *ngIf="phone.errors.pattern">
-                                                        Phone must be a number.
-                                                    </small>
-                                                       <small *ngIf="phone.errors.minlength">
-                                                          Phone must be at least 10.
-                                                    </small>
-                                                    <small *ngIf="phone.errors.maxlength">
-                                                        Phone must not be greater than 10.
-                                                    </small>
-                                                </div>
-                                        </div>
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!gender.valid && gender.touched)), 'has-success': (gender.valid && gender.touched)}">
-                                                <select type="text" class="form-control" formControlName="gender" id="gender">
-                                                    <option value="" hidden>Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option vlaue="Female">Female</option>
-                                                </select>
-                                                <small *ngIf="(!gender.valid && gender.touched)" class="text-danger">
-                                                        Gender is required.
-                                                      </small>
-                                            </div>
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!grade.valid && grade.touched)), 'has-success': (grade.valid && grade .touched)}">
-                                                <select class="form-control" formControlName="grade" id="grade" placeholder="Grade">
-                                                    <option value="" hidden>Grade</option>
-                                                    <option *ngFor="let list of gradeList | sortBy: 'sortorder'" [value]="list.pk">{{list.grade}}</option>
-                                                </select>
-                                                <small *ngIf="(!grade.valid && grade.touched)" class="text-danger">
-                                                        Grade is required.
-                                                      </small>
-                                        </div> 
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!email.valid && email.touched)), 'has-success': (email.valid && email.touched)}">
-                                            <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
-                                            <small *ngIf="(!email.valid && email.touched)" class="text-danger">
-                                                    Email is required.
-                                                  </small>
-                                        </div> 
-                                        <div class="form-group col-sm-6" [ngClass]="{'has-error': ((!city.valid && city.touched)), 'has-success': (city.valid && city.touched)}">
-                                            <select class="form-control" formControlName="city" id="city" readonly>
-                                                <option value="" hidden>City</option>
-                                                <option *ngFor= "let list of cityList" [value]="list.pK">{{list.city_name}}</option>
-                                            </select>              
-                                                <small *ngIf="(!city.valid && city.touched)" class="text-danger">
-                                                    City is required.
-                                                </small>
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                                <input id="test" type="text" class="form-control" [formControl]="locationName" id="locationName" [ngbTypeahead]="search" placeholder="Location"/>
-                                                <small *ngIf="(!locationName.valid && locationName.touched)" class="text-danger">
-                                                    Location is required
-                                                </small>
-                                              </div>
-                                                <input type="hidden" formControlName="location" class="form-control" id="location">
-                                        <div class="form-group col-sm-12">
-                                            <textarea type="text" class="form-control" rows="1" formControlName="comment" id="comment" placeholder="Comment">
-                                                </textarea>
-                                        </div>                                                
-                                    </div>
-                                    <div class="form-group row">
-                                            <div class="col-sm-12" style="text-align: left;">
-                                              <button type="button" class="btn btn-primary btn-round btn-raised" (click)="submit()">Submit</button>&nbsp;&nbsp;
-                                              <button type="button" class="btn btn-danger btn-round btn-raised" style="background-color:rgb(248, 73, 73)!important;" (click)="cancel()">Reset</button>
-                                            </div>
-                                    </div>
-                                    </form>
-                            </div>
-                            </div>
-                            <div class="col-md-6" style="text-align:center!important;margin-top: 2em;"><br>
-                                <div class="card card-body" style="background-color: #fff;opacity:.76;">
-                                        <div class="card-body" style="background-color:  #fff;opacity:.76;">
-                                <div class="animate">
-                                        <p class="awesome">
-                                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;8041627767, 7899342386, 9036198865 </p>
-                                <br>
-                                <p style="padding-top:3em;padding-bottom:3em;text-align:center!important;margin-left:4em!important;"><b>
-                                (call timing: Monday to Saturady, 8AM to 9PM)</b>
-                                <br>&nbsp;&nbsp;Or</p>
-                                <p class="awesome" style="margin-top:-2em;">
-                                <i class="fa fa-whatsapp"></i> &nbsp;8105118078 									
-                                </p>
-                                <p class="with">
-                                                With Us You Get :-<br>
-                                                <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Quality Home Tutor/Private Tutor.<br> 
-                                                <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Full Monitoring of Home Tuition/Private Tuition.
-                                        <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Best Services and Support For Home Tuition/Private Tuition.
-                                        <br> <i class="fa fa-bolt" aria-hidden="true"></i>&nbsp;Flexibility To Select Home Tutor/Tuition Teacher.  
-                                     </p> 
-                                </div>  
-                        </div>
-                                </div>
-                        </div>
-</div><br><br>
     <div class="row">
         <div class="col-md-8">
-                    <div class="card" style="background-color:  #fff;opacity:.76;">
-                                    <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                    <div class="card" style="background-color:  #fff; ">
+                                    <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                         {{t1}}
                                     </div>
                                     <div class="card card-body bg-transparent">
@@ -158,8 +28,8 @@
                                                 </div>     
                                     </div>
                             </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t2}}
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -180,8 +50,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t3}}
                                     </div>
                                     <div class="card card-body bg-transparent">
@@ -202,8 +72,8 @@
                                                 </div>     
                                     </div>
                             </div> 
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t4}}
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -224,8 +94,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t5}} 
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -250,8 +120,8 @@
                                         <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/studentForm')" style="color: #fff!important;">&nbsp;&nbsp;&nbsp;Need a Private Tutor? Click Here&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;
                                         <a role="button" class="btn btn-primary btn-round btn-raised" (click)="buttonClick('/tutorForm')" style="color: #fff!important;">Want to be a Home Tutor? Click Here</a><br>
                         </div><br>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t6}}
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -272,8 +142,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t7}}
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -294,8 +164,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t8}} 
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -316,8 +186,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t9}} 
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -338,8 +208,8 @@
                                             </div>     
                                 </div>
                         </div>
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         {{t10}}
                                 </div>
                                 <div class="card card-body bg-transparent">
@@ -366,8 +236,8 @@
                         </div><br>
             </div>
             <div class="col-md-4">
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                        <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
+                        <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
                                                         Question Papers:
                                         </div>                                
                                             <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
@@ -380,419 +250,418 @@
                                             </ul>  
                                             </div>
                                 </div><br><br>
-               
-
-                <div class="card" style="background-color:  #fff;opacity:.76;">
-                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
-                                                                                                Find Private Tuitions For your syllabus:
-                                </div>                                
-                                        <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
-                                           <ul>
-                                                                        <li><a [routerLink]="['../../private-tuition/cbse-private-tuitions-in-bangalore']">CBSE Private Tuitions</a><br><br></li>
-                                                                        <li><a [routerLink]="['../../private-tuition/icse-private-tuitions-in-bangalore']">ISCE Private Tuitions</a><br><br></li>
-                                                                        <li><a [routerLink]="['../../private-tuition/state-board-private-tuitions-in-bangalore']">State Board Private Tuitions </a><br><br></li>
-                                                                        <li><a [routerLink]="['../../private-tuition/igcse-private-tuitions-in-bangalore']">IGCSE Private Tuitions</a><br><br></li>
-                                                        </ul>  
-                                        </div>
+                    
+                                <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                        Find Private Tuitions For your syllabus:
+                                        </div>                                
+                                                <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                                   <ul>
+                                                                                <li><a [routerLink]="['../../private-tuition/cbse-private-tuitions-in-bangalore']">CBSE Private Tuitions</a><br><br></li>
+                                                                                <li><a [routerLink]="['../../private-tuition/icse-private-tuitions-in-bangalore']">ISCE Private Tuitions</a><br><br></li>
+                                                                                <li><a [routerLink]="['../../private-tuition/state-board-private-tuitions-in-bangalore']">State Board Private Tuitions </a><br><br></li>
+                                                                                <li><a [routerLink]="['../../private-tuition/igcse-private-tuitions-in-bangalore']">IGCSE Private Tuitions</a><br><br></li>
+                                                                </ul>  
+                                                </div>
+                                        </div><br><br>
+                                                
+                                                
+                                <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                        Find Private Tuitions For your Grade:
+                                        </div>                                
+                                                <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
+                                                   <ul>
+                                                        <li><a [routerLink]="['../../private-tuition/nursery-kg-private-tuition-tutors-in-bangalore']">Nursery-KG Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-6-7-8-private-tuition-tutors-in-bangalore']">Class 1st To 5th Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-6-7-8-private-tuition-tutors-in-bangalore']">Class 6th To 8th Private Tuitions </a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-9-private-tuition-tutors-in-bangalore']">Class 9th Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-10-private-tuition-tutors-in-bangalore']">Class 10th Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-11-science-private-tuition-tutors-in-bangalore']">Class 11th Science Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-11-arts-private-tuition-tutors-in-bangalore']">Class 11th Arts Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-11-commerce-private-tuition-tutors-in-bangalore']">Class 11th Commerce Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-12-science-private-tuition-tutors-in-bangalore']">Class 12th Science Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-12-arts-private-tuition-tutors-in-bangalore']">Class 12th Arts Private Tuitions</a><br><br></li>
+                                                        <li><a [routerLink]="['../../private-tuition/class-12-commerce-private-tuition-tutors-in-bangalore']">Class 12th Commerce Private Tuitions</a><br><br></li>
+                                                                                
+                                                                </ul>  
+                                                </div>
                                 </div><br><br>
-                                        
-                                        
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
-                                                                                                Find Private Tuitions For your Grade:
-                                </div>                                
+                                                
+                                                
+                                <div class="card" style="background-color:  #fff; ">
+                                
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                                        Find Private Tuitions For your Subject:
+                                        </div> 
                                         <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
-                                           <ul>
-                                                <li><a [routerLink]="['../../private-tuition/nursery-kg-private-tuition-tutors-in-bangalore']">Nursery-KG Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-6-7-8-private-tuition-tutors-in-bangalore']">Class 1st To 5th Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-6-7-8-private-tuition-tutors-in-bangalore']">Class 6th To 8th Private Tuitions </a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-9-private-tuition-tutors-in-bangalore']">Class 9th Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-10-private-tuition-tutors-in-bangalore']">Class 10th Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-11-science-private-tuition-tutors-in-bangalore']">Class 11th Science Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-11-arts-private-tuition-tutors-in-bangalore']">Class 11th Arts Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-11-commerce-private-tuition-tutors-in-bangalore']">Class 11th Commerce Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-12-science-private-tuition-tutors-in-bangalore']">Class 12th Science Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-12-arts-private-tuition-tutors-in-bangalore']">Class 12th Arts Private Tuitions</a><br><br></li>
-                                                <li><a [routerLink]="['../../private-tuition/class-12-commerce-private-tuition-tutors-in-bangalore']">Class 12th Commerce Private Tuitions</a><br><br></li>
-                                                                        
-                                                        </ul>  
-                                        </div>
-                        </div><br><br>
-                                        
-                                        
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                        
-                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
-                                                                                                Find Private Tuitions For your Subject:
-                                </div> 
-                                <div class="card card-body bg-transparent" style="margin-right: 0em!important; font-size:.9em;font-weight:bold;" routerLinkActive="active">
-                                <ul>
-                                        <li><a [routerLink]="['../../private-tuition/maths-private-tuitions-in-bangalore']">Math Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/science-private-tuitions-in-bangalore']">Science Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/english-private-tuitions-in-bangalore']">EnglishPrivate Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/physics-private-tuitions-in-bangalore']">Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/social-science-private-tuitions-in-bangalore']">Social Science Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/hindi-private-tuitions-in-bangalore']">Hindi Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/chemistry-private-tuitions-in-bangalore']">Chemistry Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/biology-private-tuitions-in-bangalore']">Biology Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/accounting-private-tuitions-in-bangalore']">Accounting Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/history-private-tuitions-in-bangalore']">History Private Tuitions</a><br><br></li>
-                                        <li><a [routerLink]="['../../private-tuition/geography-private-tuitions-in-bangalore']">Geography Private Tuitions</a><br><br></li>
-                                </ul>  
-                        </div>
-                        </div><br><br>            
-                                                                        
-                        <div class="card" style="background-color:  #fff;opacity:.76;">
-                                <div class="card card-body" style="background-color:  #fff;opacity:.76; font-size:2em;color:black;text-align:center;font-weight:bold;">
-                                                                                Find Private Tuitions near your locations: 
-                                </div>
-                                <div class="card card-body bg-transparent" routerLinkActive=active style="overflow-y: auto; height: 700px; overflow-x: hidden;">
-                        
-                <div class="card card-body bg-transparent" routerLinkActive="active">
-                        <a [routerLink]="['../../private-tuition/private-tuition-in-bangalore']">Bangalore</a><br>
-                        <a [routerLink]="['../../private-tuition/a-f-station-yelahanka-private-tuition-tutors']">A F station yelahanka</a><br>
-                        <a [routerLink]="['../../private-tuition/adugodi-private-tuition-tutors']">Adugodi</a><br>
-                        <a [routerLink]="['../../private-tuition/agara-private-tuition-tutors']">Agara</a><br>
-                        <a [routerLink]="['../../private-tuition/agram-private-tuition-tutors']">Agram</a><br>
-                        <a [routerLink]="['../../private-tuition/air-force-hospital-private-tuition-tutors']">Air Force hospital</a><br>
-                        <a [routerLink]="['../../private-tuition/amruthahalli-private-tuition-tutors']">Amruthahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/anandnagar-private-tuition-tutors']">Anandnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/anekal-private-tuition-tutors']">Anekal</a><br>
-                        <a [routerLink]="['../../private-tuition/anekalbazar-private-tuition-tutors']">Anekalbazar</a><br>
-                        <a [routerLink]="['../../private-tuition/arabic-college-private-tuition-tutors']">Arabic College</a><br>
-                        <a [routerLink]="['../../private-tuition/aranya-bhavan-private-tuition-tutors']">Aranya Bhavan</a><br>
-                        <a [routerLink]="['../../private-tuition/ashoknagar-private-tuition-tutors']">Ashoknagar</a><br>
-                        <a [routerLink]="['../../private-tuition/attibele-private-tuition-tutors']">Attibele</a><br>
-                        <a [routerLink]="['../../private-tuition/attur-private-tuition-tutors']">Attur</a><br>
-                        <a [routerLink]="['../../private-tuition/austin-town-private-tuition-tutors']">Austin Town</a><br>
-                        <a [routerLink]="['../../private-tuition/avalahalli-private-tuition-tutors']">Avalahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/avani-sringeri-mutt-private-tuition-tutors']">Avani Sringeri mutt</a><br>
-                        <a [routerLink]="['../../private-tuition/avenue-road-private-tuition-tutors']">Avenue Road</a><br>
-                        <a [routerLink]="['../../private-tuition/b-sk-ii-stage-private-tuition-tutors']">B Sk ii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/bsf-campus-yelahanka-private-tuition-tutors']">Bsf Campus yelahanka</a><br>
-                        <a [routerLink]="['../../private-tuition/bagalgunte-private-tuition-tutors']">Bagalgunte</a><br>
-                        <a [routerLink]="['../../private-tuition/bagalur-private-tuition-tutors']">Bagalur</a><br>
-                        <a [routerLink]="['../../private-tuition/balepete-private-tuition-tutors']">Balepete</a><br>
-                        <a [routerLink]="['../../private-tuition/banashankari-private-tuition-tutors']">Banashankari</a><br>
-                        <a [routerLink]="['../../private-tuition/banashankari-iii-stage-private-tuition-tutors']">Banashankari Iii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/banaswadi-private-tuition-tutors']">Banaswadi</a><br>
-                        <a [routerLink]="['../../private-tuition/bandikodigehalli-private-tuition-tutors']">Bandikodigehalli</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-air-port-private-tuition-tutors']">Bangalore Air port</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-bazaar-private-tuition-tutors']">Bangalore Bazaar</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-city-private-tuition-tutors']">Bangalore City</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-corporation-building-private-tuition-tutors']">Bangalore Corporation building</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-dist-offices-bldg-private-tuition-tutors']">Bangalore Dist offices bldg</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-fort-private-tuition-tutors']">Bangalore Fort</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore-sub-fgn-post-private-tuition-tutors']">Bangalore Sub fgn post</a><br>
-                        <a [routerLink]="['../../private-tuition/bangalore.-private-tuition-tutors']">Bangalore.</a><br>
-                        <a [routerLink]="['../../private-tuition/bannerghatta-private-tuition-tutors']">Bannerghatta</a><br>
-                        <a [routerLink]="['../../private-tuition/bannerghatta-road-private-tuition-tutors']">Bannerghatta Road</a><br>
-                        <a [routerLink]="['../../private-tuition/bapujinagar-private-tuition-tutors']">Bapujinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/basavanagudi-private-tuition-tutors']">Basavanagudi</a><br>
-                        <a [routerLink]="['../../private-tuition/basavaraja-market-private-tuition-tutors']">Basavaraja Market</a><br>
-                        <a [routerLink]="['../../private-tuition/basaveshwaranagar-private-tuition-tutors']">Basaveshwaranagar</a><br>
-                        <a [routerLink]="['../../private-tuition/basaveswaranagar-ii-stage-private-tuition-tutors']">Basaveswaranagar Ii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/bellandur-private-tuition-tutors']">Bellandur</a><br>
-                        <a [routerLink]="['../../private-tuition/benson-town-private-tuition-tutors']">Benson Town</a><br>
-                        <a [routerLink]="['../../private-tuition/bestamaranahalli-private-tuition-tutors']">Bestamaranahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/bettahalsur-private-tuition-tutors']">Bettahalsur</a><br>
-                        <a [routerLink]="['../../private-tuition/bhashyam-circle-private-tuition-tutors']">Bhashyam Circle</a><br>
-                        <a [routerLink]="['../../private-tuition/bhattarahalli-private-tuition-tutors']">Bhattarahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/bidaraguppe-private-tuition-tutors']">Bidaraguppe</a><br>
-                        <a [routerLink]="['../../private-tuition/bidrahalli-private-tuition-tutors']">Bidrahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/bnagalore-viswavidalaya-private-tuition-tutors']">Bnagalore Viswavidalaya</a><br>
-                        <a [routerLink]="['../../private-tuition/bommanahalli-private-tuition-tutors']">Bommanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/brigade-road-private-tuition-tutors']">Brigade Road</a><br>
-                        <a [routerLink]="['../../private-tuition/byatarayanapura-private-tuition-tutors']">Byatarayanapura</a><br>
-                        <a [routerLink]="['../../private-tuition/c.v.raman-nagar-private-tuition-tutors']">C.V.raman nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/cmp-centre-and-school-private-tuition-tutors']">Cmp Centre and school</a><br>
-                        <a [routerLink]="['../../private-tuition/crpf-campus-yelahanka-private-tuition-tutors']">Crpf Campus yelahanka</a><br>
-                        <a [routerLink]="['../../private-tuition/cahmrajendrapet-private-tuition-tutors']">Cahmrajendrapet</a><br>
-                        <a [routerLink]="['../../private-tuition/chamrajpet-private-tuition-tutors']">Chamrajpet</a><br>
-                        <a [routerLink]="['../../private-tuition/chamrajpet-bazar-private-tuition-tutors']">Chamrajpet Bazar</a><br>
-                        <a [routerLink]="['../../private-tuition/chandra-lay-out-private-tuition-tutors']">Chandra Lay out</a><br>
-                        <a [routerLink]="['../../private-tuition/chickpet-private-tuition-tutors']">Chickpet</a><br>
-                        <a [routerLink]="['../../private-tuition/chikkabettahalli-private-tuition-tutors']">Chikkabettahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/chikkajala-private-tuition-tutors']">Chikkajala</a><br>
-                        <a [routerLink]="['../../private-tuition/chikkalasandra-private-tuition-tutors']">Chikkalasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/chikkanahalli-private-tuition-tutors']">Chikkanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/chunchanakuppe-private-tuition-tutors']">Chunchanakuppe</a><br>
-                        <a [routerLink]="['../../private-tuition/cubban-road-private-tuition-tutors']">Cubban Road</a><br>
-                        <a [routerLink]="['../../private-tuition/dasarahalli-private-tuition-tutors']">Dasarahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/deepanjalinagar-private-tuition-tutors']">Deepanjalinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/devanagundi-private-tuition-tutors']">Devanagundi</a><br>
-                        <a [routerLink]="['../../private-tuition/devarjeevanahalli-private-tuition-tutors']">Devarjeevanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/devasandra-private-tuition-tutors']">Devasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/dharmaram-college-private-tuition-tutors']">Dharmaram College</a><br>
-                        <a [routerLink]="['../../private-tuition/doddagubbi-private-tuition-tutors']">Doddagubbi</a><br>
-                        <a [routerLink]="['../../private-tuition/doddajala-private-tuition-tutors']">Doddajala</a><br>
-                        <a [routerLink]="['../../private-tuition/doddakallasandra-private-tuition-tutors']">Doddakallasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/doddanekkundi-private-tuition-tutors']">Doddanekkundi</a><br>
-                        <a [routerLink]="['../../private-tuition/domlur-private-tuition-tutors']">Domlur</a><br>
-                        <a [routerLink]="['../../private-tuition/dommasandra-private-tuition-tutors']">Dommasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/doorvaninagar-private-tuition-tutors']">Doorvaninagar</a><br>
-                        <a [routerLink]="['../../private-tuition/dr.-ambedkar-veedhi-private-tuition-tutors']">Dr. ambedkar veedhi</a><br>
-                        <a [routerLink]="['../../private-tuition/electronics-city-private-tuition-tutors']">Electronics City</a><br>
-                        <a [routerLink]="['../../private-tuition/fraser-town-private-tuition-tutors']">Fraser Town</a><br>
-                        <a [routerLink]="['../../private-tuition/g.k.v.k.-private-tuition-tutors']">G.K.v.k.</a><br>
-                        <a [routerLink]="['../../private-tuition/gaviopuram-extension-private-tuition-tutors']">Gaviopuram Extension</a><br>
-                        <a [routerLink]="['../../private-tuition/gaviopuram-guttanahalli-private-tuition-tutors']">Gaviopuram Guttanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/gayathrinagar-private-tuition-tutors']">Gayathrinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/girinagar-private-tuition-tutors']">Girinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/goraguntepalya-private-tuition-tutors']">Goraguntepalya</a><br>
-                        <a [routerLink]="['../../private-tuition/goripalya-private-tuition-tutors']">Goripalya</a><br>
-                        <a [routerLink]="['../../private-tuition/governmemnt-electric-factory-private-tuition-tutors']">Governmemnt Electric factory</a><br>
-                        <a [routerLink]="['../../private-tuition/govindapalya-private-tuition-tutors']">Govindapalya</a><br>
-                        <a [routerLink]="['../../private-tuition/gunjur-private-tuition-tutors']">Gunjur</a><br>
-                        <a [routerLink]="['../../private-tuition/h-m-t-private-tuition-tutors']">H M t</a><br>
-                        <a [routerLink]="['../../private-tuition/h.a.-farm-private-tuition-tutors']">H.A. farm</a><br>
-                        <a [routerLink]="['../../private-tuition/h.a.l-ii-stage-private-tuition-tutors']">H.A.l ii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/h.k.p.-road-private-tuition-tutors']">H.K.p. road</a><br>
-                        <a [routerLink]="['../../private-tuition/hsr-layout-private-tuition-tutors']">Hsr Layout</a><br>
-                        <a [routerLink]="['../../private-tuition/hampinagar-private-tuition-tutors']">Hampinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/handenahalli-private-tuition-tutors']">Handenahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/harogadde-private-tuition-tutors']">Harogadde</a><br>
-                        <a [routerLink]="['../../private-tuition/hebbal-kempapura-private-tuition-tutors']">Hebbal Kempapura</a><br>
-                        <a [routerLink]="['../../private-tuition/hennagara-private-tuition-tutors']">Hennagara</a><br>
-                        <a [routerLink]="['../../private-tuition/highcourt-private-tuition-tutors']">Highcourt</a><br>
-                        <a [routerLink]="['../../private-tuition/hongasandra-private-tuition-tutors']">Hongasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/hoodi-private-tuition-tutors']">Hoodi</a><br>
-                        <a [routerLink]="['../../private-tuition/horamavu-private-tuition-tutors']">Horamavu</a><br>
-                        <a [routerLink]="['../../private-tuition/hosakerehalli-private-tuition-tutors']">Hosakerehalli</a><br>
-                        <a [routerLink]="['../../private-tuition/hosur-road-private-tuition-tutors']">Hosur Road</a><br>
-                        <a [routerLink]="['../../private-tuition/hulimangala-private-tuition-tutors']">Hulimangala</a><br>
-                        <a [routerLink]="['../../private-tuition/hulimavu-private-tuition-tutors']">Hulimavu</a><br>
-                        <a [routerLink]="['../../private-tuition/hulsur-bazaar-private-tuition-tutors']">Hulsur Bazaar</a><br>
-                        <a [routerLink]="['../../private-tuition/hunasamaranahalli-private-tuition-tutors']">Hunasamaranahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/isro-anthariksha-bhavan-private-tuition-tutors']">Isro Anthariksha bhavan</a><br>
-                        <a [routerLink]="['../../private-tuition/immedihalli-private-tuition-tutors']">Immedihalli</a><br>
-                        <a [routerLink]="['../../private-tuition/indalavadi-private-tuition-tutors']">Indalavadi</a><br>
-                        <a [routerLink]="['../../private-tuition/indiranagar-private-tuition-tutors']">Indiranagar</a><br>
-                        <a [routerLink]="['../../private-tuition/indiranagar-com.-complex-private-tuition-tutors']">Indiranagar Com. complex</a><br>
-                        <a [routerLink]="['../../private-tuition/industrial-estate-private-tuition-tutors']">Industrial Estate</a><br>
-                        <a [routerLink]="['../../private-tuition/ittamadu-layout-private-tuition-tutors']">Ittamadu Layout</a><br>
-                        <a [routerLink]="['../../private-tuition/j-p-nagar-private-tuition-tutors']">J P nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/j.c.nagar-private-tuition-tutors']">J.C.nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/jakkur-private-tuition-tutors']">Jakkur</a><br>
-                        <a [routerLink]="['../../private-tuition/jalahalli-private-tuition-tutors']">Jalahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/jalahalli-east-private-tuition-tutors']">Jalahalli East</a><br>
-                        <a [routerLink]="['../../private-tuition/jalahalli-village-private-tuition-tutors']">Jalahalli Village</a><br>
-                        <a [routerLink]="['../../private-tuition/jalahalli-west-private-tuition-tutors']">Jalahalli West</a><br>
-                        <a [routerLink]="['../../private-tuition/jalavayuvihar-private-tuition-tutors']">Jalavayuvihar</a><br>
-                        <a [routerLink]="['../../private-tuition/jayanagar-private-tuition-tutors']">Jayanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/jayanagar-west-private-tuition-tutors']">Jayanagar West</a><br>
-                        <a [routerLink]="['../../private-tuition/jayangar-east-private-tuition-tutors']">Jayangar East</a><br>
-                        <a [routerLink]="['../../private-tuition/jayangar-iii-block-private-tuition-tutors']">Jayangar Iii block</a><br>
-                        <a [routerLink]="['../../private-tuition/jeevanahalli-private-tuition-tutors']">Jeevanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/jeevanbhimanagar-private-tuition-tutors']">Jeevanbhimanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/jigani-private-tuition-tutors']">Jigani</a><br>
-                        <a [routerLink]="['../../private-tuition/jp-nagar-iii-phase-private-tuition-tutors']">Jp Nagar iii phase</a><br>
-                        <a [routerLink]="['../../private-tuition/k-h-b-colony-private-tuition-tutors']">K H b colony</a><br>
-                        <a [routerLink]="['../../private-tuition/k.-g.-road-private-tuition-tutors']">K. g. road</a><br>
-                        <a [routerLink]="['../../private-tuition/k.p.west-private-tuition-tutors']">K.P.west</a><br>
-                        <a [routerLink]="['../../private-tuition/kacharakanahalli-private-tuition-tutors']">Kacharakanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/kadabagere-private-tuition-tutors']">Kadabagere</a><br>
-                        <a [routerLink]="['../../private-tuition/kadugodi-private-tuition-tutors']">Kadugodi</a><br>
-                        <a [routerLink]="['../../private-tuition/kalkunte-private-tuition-tutors']">Kalkunte</a><br>
-                        <a [routerLink]="['../../private-tuition/kalyanagar-private-tuition-tutors']">Kalyanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/kamagondanahalli-private-tuition-tutors']">Kamagondanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/kamakshipalya-private-tuition-tutors']">Kamakshipalya</a><br>
-                        <a [routerLink]="['../../private-tuition/kannamangala-private-tuition-tutors']">Kannamangala</a><br>
-                        <a [routerLink]="['../../private-tuition/kannur-private-tuition-tutors']">Kannur</a><br>
-                        <a [routerLink]="['../../private-tuition/kanteeravanagar-private-tuition-tutors']">Kanteeravanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/kathriguppe-private-tuition-tutors']">Kathriguppe</a><br>
-                        <a [routerLink]="['../../private-tuition/kenchanahalli-private-tuition-tutors']">Kenchanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/kendriya-sadan-private-tuition-tutors']">Kendriya Sadan</a><br>
-                        <a [routerLink]="['../../private-tuition/kendriya-vihar-private-tuition-tutors']">Kendriya Vihar</a><br>
-                        <a [routerLink]="['../../private-tuition/kodigehalli-private-tuition-tutors']">Kodigehalli</a><br>
-                        <a [routerLink]="['../../private-tuition/konanakunte-private-tuition-tutors']">Konanakunte</a><br>
-                        <a [routerLink]="['../../private-tuition/koramangala-private-tuition-tutors']">Koramangala</a><br>
-                        <a [routerLink]="['../../private-tuition/koramangala-i-block-private-tuition-tutors']">Koramangala I block</a><br>
-                        <a [routerLink]="['../../private-tuition/koramangala-vi-bk-private-tuition-tutors']">Koramangala Vi bk</a><br>
-                        <a [routerLink]="['../../private-tuition/kothanur-private-tuition-tutors']">Kothanur</a><br>
-                        <a [routerLink]="['../../private-tuition/krishnarajapuram-private-tuition-tutors']">Krishnarajapuram</a><br>
-                        <a [routerLink]="['../../private-tuition/krishnarajapuram-r-s-private-tuition-tutors']">Krishnarajapuram R s</a><br>
-                        <a [routerLink]="['../../private-tuition/kugur-private-tuition-tutors']">Kugur</a><br>
-                        <a [routerLink]="['../../private-tuition/kumaraswamy-layout-private-tuition-tutors']">Kumaraswamy Layout</a><br>
-                        <a [routerLink]="['../../private-tuition/kumbalgodu-private-tuition-tutors']">Kumbalgodu</a><br>
-                        <a [routerLink]="['../../private-tuition/kundalahalli-private-tuition-tutors']">Kundalahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/lalbagh-west-private-tuition-tutors']">Lalbagh West</a><br>
-                        <a [routerLink]="['../../private-tuition/legislators-home-private-tuition-tutors']">Legislators Home</a><br>
-                        <a [routerLink]="['../../private-tuition/lingarajapuram-private-tuition-tutors']">Lingarajapuram</a><br>
-                        <a [routerLink]="['../../private-tuition/m-s-r-road-private-tuition-tutors']">M S r road</a><br>
-                        <a [routerLink]="['../../private-tuition/madhavan-park-private-tuition-tutors']">Madhavan Park</a><br>
-                        <a [routerLink]="['../../private-tuition/madivala-private-tuition-tutors']">Madivala</a><br>
-                        <a [routerLink]="['../../private-tuition/magadi-road-private-tuition-tutors']">Magadi Road</a><br>
-                        <a [routerLink]="['../../private-tuition/mahadevapura-private-tuition-tutors']">Mahadevapura</a><br>
-                        <a [routerLink]="['../../private-tuition/mahalakshmipuram-layout-private-tuition-tutors']">Mahalakshmipuram Layout</a><br>
-                        <a [routerLink]="['../../private-tuition/mahatma-gandhi-road-private-tuition-tutors']">Mahatma Gandhi road</a><br>
-                        <a [routerLink]="['../../private-tuition/malkand-lines-private-tuition-tutors']">Malkand Lines</a><br>
-                        <a [routerLink]="['../../private-tuition/mallathahalli-private-tuition-tutors']">Mallathahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/malleswaram-private-tuition-tutors']">Malleswaram</a><br>
-                        <a [routerLink]="['../../private-tuition/malleswaram-west-private-tuition-tutors']">Malleswaram West</a><br>
-                        <a [routerLink]="['../../private-tuition/mandalay-lines-private-tuition-tutors']">Mandalay Lines</a><br>
-                        <a [routerLink]="['../../private-tuition/marathahalli-colony-private-tuition-tutors']">Marathahalli Colony</a><br>
-                        <a [routerLink]="['../../private-tuition/marsur-private-tuition-tutors']">Marsur</a><br>
-                        <a [routerLink]="['../../private-tuition/maruthi-sevanagar-private-tuition-tutors']">Maruthi Sevanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/mathikere-private-tuition-tutors']">Mathikere</a><br>
-                        <a [routerLink]="['../../private-tuition/mavalli-private-tuition-tutors']">Mavalli</a><br>
-                        <a [routerLink]="['../../private-tuition/mayasandra-private-tuition-tutors']">Mayasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/medihalli-private-tuition-tutors']">Medihalli</a><br>
-                        <a [routerLink]="['../../private-tuition/medimallasandra-private-tuition-tutors']">Medimallasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/mico-layout-private-tuition-tutors']">Mico Layout</a><br>
-                        <a [routerLink]="['../../private-tuition/milk-colony-private-tuition-tutors']">Milk Colony</a><br>
-                        <a [routerLink]="['../../private-tuition/mount-st-joseph-private-tuition-tutors']">Mount St joseph</a><br>
-                        <a [routerLink]="['../../private-tuition/msrit-private-tuition-tutors']">Msrit</a><br>
-                        <a [routerLink]="['../../private-tuition/mundur-private-tuition-tutors']">Mundur</a><br>
-                        <a [routerLink]="['../../private-tuition/museum-road-private-tuition-tutors']">Museum Road</a><br>
-                        <a [routerLink]="['../../private-tuition/muthanallur-private-tuition-tutors']">Muthanallur</a><br>
-                        <a [routerLink]="['../../private-tuition/muthusandra-private-tuition-tutors']">Muthusandra</a><br>
-                        <a [routerLink]="['../../private-tuition/nal-private-tuition-tutors']">Nal</a><br>
-                        <a [routerLink]="['../../private-tuition/naduvathi-private-tuition-tutors']">Naduvathi</a><br>
-                        <a [routerLink]="['../../private-tuition/nagarbhavi-private-tuition-tutors']">Nagarbhavi</a><br>
-                        <a [routerLink]="['../../private-tuition/nagasandra-private-tuition-tutors']">Nagasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/nagavara-private-tuition-tutors']">Nagavara</a><br>
-                        <a [routerLink]="['../../private-tuition/nandinilayout-private-tuition-tutors']">Nandinilayout</a><br>
-                        <a [routerLink]="['../../private-tuition/narasimharaja-colony-private-tuition-tutors']">Narasimharaja Colony</a><br>
-                        <a [routerLink]="['../../private-tuition/narasimjharaja-road-private-tuition-tutors']">Narasimjharaja Road</a><br>
-                        <a [routerLink]="['../../private-tuition/narayan-pillai-street-private-tuition-tutors']">Narayan Pillai street</a><br>
-                        <a [routerLink]="['../../private-tuition/nayandahalli-private-tuition-tutors']">Nayandahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/neralur-private-tuition-tutors']">Neralur</a><br>
-                        <a [routerLink]="['../../private-tuition/new-tharaggupet-private-tuition-tutors']">New Tharaggupet</a><br>
-                        <a [routerLink]="['../../private-tuition/new-thippasandra-private-tuition-tutors']">New Thippasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/okalipuram-private-tuition-tutors']">Okalipuram</a><br>
-                        <a [routerLink]="['../../private-tuition/p&t-col.-kavalbyrasandra-private-tuition-tutors']">P&t Col. kavalbyrasandra</a><br>
-                        <a [routerLink]="['../../private-tuition/padmanabhnagar-private-tuition-tutors']">Padmanabhnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/palace-guttahalli-private-tuition-tutors']">Palace Guttahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/panathur-private-tuition-tutors']">Panathur</a><br>
-                        <a [routerLink]="['../../private-tuition/pasmpamahakavi-road-private-tuition-tutors']">Pasmpamahakavi Road</a><br>
-                        <a [routerLink]="['../../private-tuition/peenya-i-stage-private-tuition-tutors']">Peenya I stage</a><br>
-                        <a [routerLink]="['../../private-tuition/peenya-ii-stage-private-tuition-tutors']">Peenya Ii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/peenya-small-industries-private-tuition-tutors']">Peenya Small industries</a><br>
-                        <a [routerLink]="['../../private-tuition/r-t-nagar-private-tuition-tutors']">R T nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/r.m.v.-extension-ii-stage-private-tuition-tutors']">R.M.v. extension ii stage</a><br>
-                        <a [routerLink]="['../../private-tuition/rajajinagar-private-tuition-tutors']">Rajajinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/rajajinagar-i-block-private-tuition-tutors']">Rajajinagar I block</a><br>
-                        <a [routerLink]="['../../private-tuition/rajajinagar-ivth-block-private-tuition-tutors']">Rajajinagar Ivth block</a><br>
-                        <a [routerLink]="['../../private-tuition/rajanakunte-private-tuition-tutors']">Rajanakunte</a><br>
-                        <a [routerLink]="['../../private-tuition/rajarajeshwarinagar-private-tuition-tutors']">Rajarajeshwarinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/rajbhavan-private-tuition-tutors']">Rajbhavan</a><br>
-                        <a [routerLink]="['../../private-tuition/ramachandrapuram-private-tuition-tutors']">Ramachandrapuram</a><br>
-                        <a [routerLink]="['../../private-tuition/ramagondanahalli-private-tuition-tutors']">Ramagondanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/ramakrishna-hegde-nagar-private-tuition-tutors']">Ramakrishna Hegde nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/ramamurthy-nagar-private-tuition-tutors']">Ramamurthy Nagar</a><br>
-                        <a [routerLink]="['../../private-tuition/rameshnagar-private-tuition-tutors']">Rameshnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/richmond-town-private-tuition-tutors']">Richmond Town</a><br>
-                        <a [routerLink]="['../../private-tuition/rv-niketan-private-tuition-tutors']">Rv Niketan</a><br>
-                        <a [routerLink]="['../../private-tuition/sadashivanagar-private-tuition-tutors']">Sadashivanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/sahakaranagar-p.o-private-tuition-tutors']">Sahakaranagar P.o</a><br>
-                        <a [routerLink]="['../../private-tuition/samandur-private-tuition-tutors']">Samandur</a><br>
-                        <a [routerLink]="['../../private-tuition/samethanahalli-private-tuition-tutors']">Samethanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/sampangiramnagar-private-tuition-tutors']">Sampangiramnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/sarjapura-private-tuition-tutors']">Sarjapura</a><br>
-                        <a [routerLink]="['../../private-tuition/science-institute-private-tuition-tutors']">Science Institute</a><br>
-                        <a [routerLink]="['../../private-tuition/seshadripuram-private-tuition-tutors']">Seshadripuram</a><br>
-                        <a [routerLink]="['../../private-tuition/shankarpura-private-tuition-tutors']">Shankarpura</a><br>
-                        <a [routerLink]="['../../private-tuition/shanthinagar-private-tuition-tutors']">Shanthinagar</a><br>
-                        <a [routerLink]="['../../private-tuition/sidihoskote-private-tuition-tutors']">Sidihoskote</a><br>
-                        <a [routerLink]="['../../private-tuition/singanayakanahalli-private-tuition-tutors']">Singanayakanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/sivan-chetty-gardens-private-tuition-tutors']">Sivan Chetty gardens</a><br>
-                        <a [routerLink]="['../../private-tuition/someswarapura-private-tuition-tutors']">Someswarapura</a><br>
-                        <a [routerLink]="['../../private-tuition/sri-jayachamarajendra-road-private-tuition-tutors']">Sri Jayachamarajendra road</a><br>
-                        <a [routerLink]="['../../private-tuition/srirampuram-private-tuition-tutors']">Srirampuram</a><br>
-                        <a [routerLink]="['../../private-tuition/st.-johns-medical-college-private-tuition-tutors']">St. john's medical college</a><br>
-                        <a [routerLink]="['../../private-tuition/st.-thomas-town-private-tuition-tutors']">St. thomas town</a><br>
-                        <a [routerLink]="['../../private-tuition/state-bank-of-mysore-colony-private-tuition-tutors']">State Bank of mysore colony</a><br>
-                        <a [routerLink]="['../../private-tuition/subhashnagar-private-tuition-tutors']">Subhashnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/subramanyapura-private-tuition-tutors']">Subramanyapura</a><br>
-                        <a [routerLink]="['../../private-tuition/swimming-pool-extn-private-tuition-tutors']">Swimming Pool extn</a><br>
-                        <a [routerLink]="['../../private-tuition/tarahunise-private-tuition-tutors']">Tarahunise</a><br>
-                        <a [routerLink]="['../../private-tuition/tavarekere-private-tuition-tutors']">Tavarekere</a><br>
-                        <a [routerLink]="['../../private-tuition/taverekere-private-tuition-tutors']">Taverekere</a><br>
-                        <a [routerLink]="['../../private-tuition/thambuchetty-palya-private-tuition-tutors']">Thambuchetty Palya</a><br>
-                        <a [routerLink]="['../../private-tuition/thammanayakanahalli-private-tuition-tutors']">Thammanayakanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/tilaknagar-private-tuition-tutors']">Tilaknagar</a><br>
-                        <a [routerLink]="['../../private-tuition/training-command-iaf-private-tuition-tutors']">Training Command iaf</a><br>
-                        <a [routerLink]="['../../private-tuition/tyagrajnagar-private-tuition-tutors']">Tyagrajnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/ullalu-upanagara-private-tuition-tutors']">Ullalu Upanagara</a><br>
-                        <a [routerLink]="['../../private-tuition/vanakanahalli-private-tuition-tutors']">Vanakanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/vartur-private-tuition-tutors']">Vartur</a><br>
-                        <a [routerLink]="['../../private-tuition/vasanthnagar-private-tuition-tutors']">Vasanthnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/venkatarangapura-private-tuition-tutors']">Venkatarangapura</a><br>
-                        <a [routerLink]="['../../private-tuition/venkateshapura-private-tuition-tutors']">Venkateshapura</a><br>
-                        <a [routerLink]="['../../private-tuition/vidhana-soudha-private-tuition-tutors']">Vidhana Soudha</a><br>
-                        <a [routerLink]="['../../private-tuition/vidyanagara-private-tuition-tutors']">Vidyanagara</a><br>
-                        <a [routerLink]="['../../private-tuition/vidyaranyapura-private-tuition-tutors']">Vidyaranyapura</a><br>
-                        <a [routerLink]="['../../private-tuition/vijayanagar-private-tuition-tutors']">Vijayanagar</a><br>
-                        <a [routerLink]="['../../private-tuition/vijayanagar-east-private-tuition-tutors']">Vijayanagar East</a><br>
-                        <a [routerLink]="['../../private-tuition/vikramnagar-private-tuition-tutors']">Vikramnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/vimapura-private-tuition-tutors']">Vimapura</a><br>
-                        <a [routerLink]="['../../private-tuition/virgonagar-private-tuition-tutors']">Virgonagar</a><br>
-                        <a [routerLink]="['../../private-tuition/visveswarapuram-private-tuition-tutors']">Visveswarapuram</a><br>
-                        <a [routerLink]="['../../private-tuition/viswaneedam-private-tuition-tutors']">Viswaneedam</a><br>
-                        <a [routerLink]="['../../private-tuition/vittalnagar-private-tuition-tutors']">Vittalnagar</a><br>
-                        <a [routerLink]="['../../private-tuition/viveknagar-private-tuition-tutors']">Viveknagar</a><br>
-                        <a [routerLink]="['../../private-tuition/vyalikaval-extn-private-tuition-tutors']">Vyalikaval Extn</a><br>
-                        <a [routerLink]="['../../private-tuition/wheel-and-axle-plant-private-tuition-tutors']">Wheel And axle plant</a><br>
-                        <a [routerLink]="['../../private-tuition/whitefield-private-tuition-tutors']">Whitefield</a><br>
-                        <a [routerLink]="['../../private-tuition/wilson-garden-private-tuition-tutors']">Wilson Garden</a><br>
-                        <a [routerLink]="['../../private-tuition/yadavanahalli-private-tuition-tutors']">Yadavanahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/yediyur-private-tuition-tutors']">Yediyur</a><br>
-                        <a [routerLink]="['../../private-tuition/yelachenahalli-private-tuition-tutors']">Yelachenahalli</a><br>
-                        <a [routerLink]="['../../private-tuition/yelahanka-private-tuition-tutors']">Yelahanka</a><br>
-                        <a [routerLink]="['../../private-tuition/yelahanka-satellite-town-private-tuition-tutors']">Yelahanka Satellite town</a><br>
-                        <a [routerLink]="['../../private-tuition/yemalur-private-tuition-tutors']">Yemalur</a><br>
-                        <a [routerLink]="['../../private-tuition/yeshwanthpur-bazar-private-tuition-tutors']">Yeshwanthpur Bazar</a><br>
-                        <a [routerLink]="['../../private-tuition/yeswanthpura-private-tuition-tutors']">Yeswanthpura</a><br>
-                        <a [routerLink]="['../../private-tuition/btm-layout-1st-stage-private-tuition-tutors']"></a><br>
-                        <a [routerLink]="['../../private-tuition/btm-layout-2nd-stage-private-tuition-tutors']"></a><br>
-                </div>
-                            </div>
-                            <!-- <div class="card">
-                                    <div class="card-header">
-                                            Question Papers:
-                                    </div>                                
-                                        <div class="card-body bg-transparent" style="margin-right: 0em!important;" routerLinkActive="active">
-                                           <ul><li><a [routerLink]="['/question']">Cbse Class 10 Question Paper</a><br></li>
-                                                <li><a [routerLink]="['/question']">Cbse Class 12 Question Paper</a><br></li>
-                                                <li><a [routerLink]="['/question']">ICSE Class 10 Question Paper</a><br></li>
-                                                <li><a [routerLink]="['/question']">ICSE Class 12 Question Paper</a><br></li>
-                                                <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br></li>
-                                                <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br></li>
+                                        <ul>
+                                                <li><a [routerLink]="['../../private-tuition/maths-private-tuitions-in-bangalore']">Math Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/science-private-tuitions-in-bangalore']">Science Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/english-private-tuitions-in-bangalore']">EnglishPrivate Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/physics-private-tuitions-in-bangalore']">Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/social-science-private-tuitions-in-bangalore']">Social Science Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/hindi-private-tuitions-in-bangalore']">Hindi Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/chemistry-private-tuitions-in-bangalore']">Chemistry Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/biology-private-tuitions-in-bangalore']">Biology Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/accounting-private-tuitions-in-bangalore']">Accounting Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/history-private-tuitions-in-bangalore']">History Private Tuitions</a><br><br></li>
+                                                <li><a [routerLink]="['../../private-tuition/geography-private-tuitions-in-bangalore']">Geography Private Tuitions</a><br><br></li>
                                         </ul>  
+                                </div>
+                                </div><br><br>            
+                                                                                
+                                <div class="card" style="background-color:  #fff; ">
+                                        <div class="card card-body" style="background-color:  #fff;  font-size:2em;color:black;text-align:center;font-weight:bold;">
+                                                                                        Find Private Tuitions near your locations: 
                                         </div>
-                            </div><br> -->
-                            <!--<div class="cardBeside">
-                                        <div class="cardDetail">
-                                        <br><br>
-                                            <p>"It has been 2 years since we started classes with CsquareEducation. And it has been an amazing journey and they 
-                                            have really helped my kids. My elder son was in 12th and passed out 12th with 84% which we didn't expect as he was scared because														
-                                            of maths. All thanks to CsquareEducation."<br>
-                                                - Akshat Chandra &nbsp; &nbsp; &nbsp;
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;"></p>
-                                        </div>
-                            </div><br>
-                            <div class="cardBeside">
-                                        <div class="cardDetail">
-                                        <br><br>
-                                            <p>"It has been 2 years since we started classes with CsquareEducation. And it has been an amazing journey and they 
-                                            have really helped my kids. My elder son was in 12th and passed out 12th with 84% which we didn't expect as he was scared because														
-                                            of maths. All thanks to CsquareEducation."<br>
-                                                - Akshat Chandra &nbsp; &nbsp; &nbsp;
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
-                                                <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;"></p>
-                                        </div>
-                            </div><br>-->
-
+                                        <div class="card card-body bg-transparent" routerLinkActive=active style="overflow-y: auto; height: 700px; overflow-x: hidden;">
+                                
+                        <div class="card card-body bg-transparent" routerLinkActive="active">
+                                <a [routerLink]="['../../private-tuition/private-tuition-in-bangalore']">Bangalore</a><br>
+                                <a [routerLink]="['../../private-tuition/a-f-station-yelahanka-private-tuition-tutors']">A F station yelahanka</a><br>
+                                <a [routerLink]="['../../private-tuition/adugodi-private-tuition-tutors']">Adugodi</a><br>
+                                <a [routerLink]="['../../private-tuition/agara-private-tuition-tutors']">Agara</a><br>
+                                <a [routerLink]="['../../private-tuition/agram-private-tuition-tutors']">Agram</a><br>
+                                <a [routerLink]="['../../private-tuition/air-force-hospital-private-tuition-tutors']">Air Force hospital</a><br>
+                                <a [routerLink]="['../../private-tuition/amruthahalli-private-tuition-tutors']">Amruthahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/anandnagar-private-tuition-tutors']">Anandnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/anekal-private-tuition-tutors']">Anekal</a><br>
+                                <a [routerLink]="['../../private-tuition/anekalbazar-private-tuition-tutors']">Anekalbazar</a><br>
+                                <a [routerLink]="['../../private-tuition/arabic-college-private-tuition-tutors']">Arabic College</a><br>
+                                <a [routerLink]="['../../private-tuition/aranya-bhavan-private-tuition-tutors']">Aranya Bhavan</a><br>
+                                <a [routerLink]="['../../private-tuition/ashoknagar-private-tuition-tutors']">Ashoknagar</a><br>
+                                <a [routerLink]="['../../private-tuition/attibele-private-tuition-tutors']">Attibele</a><br>
+                                <a [routerLink]="['../../private-tuition/attur-private-tuition-tutors']">Attur</a><br>
+                                <a [routerLink]="['../../private-tuition/austin-town-private-tuition-tutors']">Austin Town</a><br>
+                                <a [routerLink]="['../../private-tuition/avalahalli-private-tuition-tutors']">Avalahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/avani-sringeri-mutt-private-tuition-tutors']">Avani Sringeri mutt</a><br>
+                                <a [routerLink]="['../../private-tuition/avenue-road-private-tuition-tutors']">Avenue Road</a><br>
+                                <a [routerLink]="['../../private-tuition/b-sk-ii-stage-private-tuition-tutors']">B Sk ii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/bsf-campus-yelahanka-private-tuition-tutors']">Bsf Campus yelahanka</a><br>
+                                <a [routerLink]="['../../private-tuition/bagalgunte-private-tuition-tutors']">Bagalgunte</a><br>
+                                <a [routerLink]="['../../private-tuition/bagalur-private-tuition-tutors']">Bagalur</a><br>
+                                <a [routerLink]="['../../private-tuition/balepete-private-tuition-tutors']">Balepete</a><br>
+                                <a [routerLink]="['../../private-tuition/banashankari-private-tuition-tutors']">Banashankari</a><br>
+                                <a [routerLink]="['../../private-tuition/banashankari-iii-stage-private-tuition-tutors']">Banashankari Iii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/banaswadi-private-tuition-tutors']">Banaswadi</a><br>
+                                <a [routerLink]="['../../private-tuition/bandikodigehalli-private-tuition-tutors']">Bandikodigehalli</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-air-port-private-tuition-tutors']">Bangalore Air port</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-bazaar-private-tuition-tutors']">Bangalore Bazaar</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-city-private-tuition-tutors']">Bangalore City</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-corporation-building-private-tuition-tutors']">Bangalore Corporation building</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-dist-offices-bldg-private-tuition-tutors']">Bangalore Dist offices bldg</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-fort-private-tuition-tutors']">Bangalore Fort</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore-sub-fgn-post-private-tuition-tutors']">Bangalore Sub fgn post</a><br>
+                                <a [routerLink]="['../../private-tuition/bangalore.-private-tuition-tutors']">Bangalore.</a><br>
+                                <a [routerLink]="['../../private-tuition/bannerghatta-private-tuition-tutors']">Bannerghatta</a><br>
+                                <a [routerLink]="['../../private-tuition/bannerghatta-road-private-tuition-tutors']">Bannerghatta Road</a><br>
+                                <a [routerLink]="['../../private-tuition/bapujinagar-private-tuition-tutors']">Bapujinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/basavanagudi-private-tuition-tutors']">Basavanagudi</a><br>
+                                <a [routerLink]="['../../private-tuition/basavaraja-market-private-tuition-tutors']">Basavaraja Market</a><br>
+                                <a [routerLink]="['../../private-tuition/basaveshwaranagar-private-tuition-tutors']">Basaveshwaranagar</a><br>
+                                <a [routerLink]="['../../private-tuition/basaveswaranagar-ii-stage-private-tuition-tutors']">Basaveswaranagar Ii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/bellandur-private-tuition-tutors']">Bellandur</a><br>
+                                <a [routerLink]="['../../private-tuition/benson-town-private-tuition-tutors']">Benson Town</a><br>
+                                <a [routerLink]="['../../private-tuition/bestamaranahalli-private-tuition-tutors']">Bestamaranahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/bettahalsur-private-tuition-tutors']">Bettahalsur</a><br>
+                                <a [routerLink]="['../../private-tuition/bhashyam-circle-private-tuition-tutors']">Bhashyam Circle</a><br>
+                                <a [routerLink]="['../../private-tuition/bhattarahalli-private-tuition-tutors']">Bhattarahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/bidaraguppe-private-tuition-tutors']">Bidaraguppe</a><br>
+                                <a [routerLink]="['../../private-tuition/bidrahalli-private-tuition-tutors']">Bidrahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/bnagalore-viswavidalaya-private-tuition-tutors']">Bnagalore Viswavidalaya</a><br>
+                                <a [routerLink]="['../../private-tuition/bommanahalli-private-tuition-tutors']">Bommanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/brigade-road-private-tuition-tutors']">Brigade Road</a><br>
+                                <a [routerLink]="['../../private-tuition/byatarayanapura-private-tuition-tutors']">Byatarayanapura</a><br>
+                                <a [routerLink]="['../../private-tuition/c.v.raman-nagar-private-tuition-tutors']">C.V.raman nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/cmp-centre-and-school-private-tuition-tutors']">Cmp Centre and school</a><br>
+                                <a [routerLink]="['../../private-tuition/crpf-campus-yelahanka-private-tuition-tutors']">Crpf Campus yelahanka</a><br>
+                                <a [routerLink]="['../../private-tuition/cahmrajendrapet-private-tuition-tutors']">Cahmrajendrapet</a><br>
+                                <a [routerLink]="['../../private-tuition/chamrajpet-private-tuition-tutors']">Chamrajpet</a><br>
+                                <a [routerLink]="['../../private-tuition/chamrajpet-bazar-private-tuition-tutors']">Chamrajpet Bazar</a><br>
+                                <a [routerLink]="['../../private-tuition/chandra-lay-out-private-tuition-tutors']">Chandra Lay out</a><br>
+                                <a [routerLink]="['../../private-tuition/chickpet-private-tuition-tutors']">Chickpet</a><br>
+                                <a [routerLink]="['../../private-tuition/chikkabettahalli-private-tuition-tutors']">Chikkabettahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/chikkajala-private-tuition-tutors']">Chikkajala</a><br>
+                                <a [routerLink]="['../../private-tuition/chikkalasandra-private-tuition-tutors']">Chikkalasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/chikkanahalli-private-tuition-tutors']">Chikkanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/chunchanakuppe-private-tuition-tutors']">Chunchanakuppe</a><br>
+                                <a [routerLink]="['../../private-tuition/cubban-road-private-tuition-tutors']">Cubban Road</a><br>
+                                <a [routerLink]="['../../private-tuition/dasarahalli-private-tuition-tutors']">Dasarahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/deepanjalinagar-private-tuition-tutors']">Deepanjalinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/devanagundi-private-tuition-tutors']">Devanagundi</a><br>
+                                <a [routerLink]="['../../private-tuition/devarjeevanahalli-private-tuition-tutors']">Devarjeevanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/devasandra-private-tuition-tutors']">Devasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/dharmaram-college-private-tuition-tutors']">Dharmaram College</a><br>
+                                <a [routerLink]="['../../private-tuition/doddagubbi-private-tuition-tutors']">Doddagubbi</a><br>
+                                <a [routerLink]="['../../private-tuition/doddajala-private-tuition-tutors']">Doddajala</a><br>
+                                <a [routerLink]="['../../private-tuition/doddakallasandra-private-tuition-tutors']">Doddakallasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/doddanekkundi-private-tuition-tutors']">Doddanekkundi</a><br>
+                                <a [routerLink]="['../../private-tuition/domlur-private-tuition-tutors']">Domlur</a><br>
+                                <a [routerLink]="['../../private-tuition/dommasandra-private-tuition-tutors']">Dommasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/doorvaninagar-private-tuition-tutors']">Doorvaninagar</a><br>
+                                <a [routerLink]="['../../private-tuition/dr.-ambedkar-veedhi-private-tuition-tutors']">Dr. ambedkar veedhi</a><br>
+                                <a [routerLink]="['../../private-tuition/electronics-city-private-tuition-tutors']">Electronics City</a><br>
+                                <a [routerLink]="['../../private-tuition/fraser-town-private-tuition-tutors']">Fraser Town</a><br>
+                                <a [routerLink]="['../../private-tuition/g.k.v.k.-private-tuition-tutors']">G.K.v.k.</a><br>
+                                <a [routerLink]="['../../private-tuition/gaviopuram-extension-private-tuition-tutors']">Gaviopuram Extension</a><br>
+                                <a [routerLink]="['../../private-tuition/gaviopuram-guttanahalli-private-tuition-tutors']">Gaviopuram Guttanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/gayathrinagar-private-tuition-tutors']">Gayathrinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/girinagar-private-tuition-tutors']">Girinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/goraguntepalya-private-tuition-tutors']">Goraguntepalya</a><br>
+                                <a [routerLink]="['../../private-tuition/goripalya-private-tuition-tutors']">Goripalya</a><br>
+                                <a [routerLink]="['../../private-tuition/governmemnt-electric-factory-private-tuition-tutors']">Governmemnt Electric factory</a><br>
+                                <a [routerLink]="['../../private-tuition/govindapalya-private-tuition-tutors']">Govindapalya</a><br>
+                                <a [routerLink]="['../../private-tuition/gunjur-private-tuition-tutors']">Gunjur</a><br>
+                                <a [routerLink]="['../../private-tuition/h-m-t-private-tuition-tutors']">H M t</a><br>
+                                <a [routerLink]="['../../private-tuition/h.a.-farm-private-tuition-tutors']">H.A. farm</a><br>
+                                <a [routerLink]="['../../private-tuition/h.a.l-ii-stage-private-tuition-tutors']">H.A.l ii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/h.k.p.-road-private-tuition-tutors']">H.K.p. road</a><br>
+                                <a [routerLink]="['../../private-tuition/hsr-layout-private-tuition-tutors']">Hsr Layout</a><br>
+                                <a [routerLink]="['../../private-tuition/hampinagar-private-tuition-tutors']">Hampinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/handenahalli-private-tuition-tutors']">Handenahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/harogadde-private-tuition-tutors']">Harogadde</a><br>
+                                <a [routerLink]="['../../private-tuition/hebbal-kempapura-private-tuition-tutors']">Hebbal Kempapura</a><br>
+                                <a [routerLink]="['../../private-tuition/hennagara-private-tuition-tutors']">Hennagara</a><br>
+                                <a [routerLink]="['../../private-tuition/highcourt-private-tuition-tutors']">Highcourt</a><br>
+                                <a [routerLink]="['../../private-tuition/hongasandra-private-tuition-tutors']">Hongasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/hoodi-private-tuition-tutors']">Hoodi</a><br>
+                                <a [routerLink]="['../../private-tuition/horamavu-private-tuition-tutors']">Horamavu</a><br>
+                                <a [routerLink]="['../../private-tuition/hosakerehalli-private-tuition-tutors']">Hosakerehalli</a><br>
+                                <a [routerLink]="['../../private-tuition/hosur-road-private-tuition-tutors']">Hosur Road</a><br>
+                                <a [routerLink]="['../../private-tuition/hulimangala-private-tuition-tutors']">Hulimangala</a><br>
+                                <a [routerLink]="['../../private-tuition/hulimavu-private-tuition-tutors']">Hulimavu</a><br>
+                                <a [routerLink]="['../../private-tuition/hulsur-bazaar-private-tuition-tutors']">Hulsur Bazaar</a><br>
+                                <a [routerLink]="['../../private-tuition/hunasamaranahalli-private-tuition-tutors']">Hunasamaranahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/isro-anthariksha-bhavan-private-tuition-tutors']">Isro Anthariksha bhavan</a><br>
+                                <a [routerLink]="['../../private-tuition/immedihalli-private-tuition-tutors']">Immedihalli</a><br>
+                                <a [routerLink]="['../../private-tuition/indalavadi-private-tuition-tutors']">Indalavadi</a><br>
+                                <a [routerLink]="['../../private-tuition/indiranagar-private-tuition-tutors']">Indiranagar</a><br>
+                                <a [routerLink]="['../../private-tuition/indiranagar-com.-complex-private-tuition-tutors']">Indiranagar Com. complex</a><br>
+                                <a [routerLink]="['../../private-tuition/industrial-estate-private-tuition-tutors']">Industrial Estate</a><br>
+                                <a [routerLink]="['../../private-tuition/ittamadu-layout-private-tuition-tutors']">Ittamadu Layout</a><br>
+                                <a [routerLink]="['../../private-tuition/j-p-nagar-private-tuition-tutors']">J P nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/j.c.nagar-private-tuition-tutors']">J.C.nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/jakkur-private-tuition-tutors']">Jakkur</a><br>
+                                <a [routerLink]="['../../private-tuition/jalahalli-private-tuition-tutors']">Jalahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/jalahalli-east-private-tuition-tutors']">Jalahalli East</a><br>
+                                <a [routerLink]="['../../private-tuition/jalahalli-village-private-tuition-tutors']">Jalahalli Village</a><br>
+                                <a [routerLink]="['../../private-tuition/jalahalli-west-private-tuition-tutors']">Jalahalli West</a><br>
+                                <a [routerLink]="['../../private-tuition/jalavayuvihar-private-tuition-tutors']">Jalavayuvihar</a><br>
+                                <a [routerLink]="['../../private-tuition/jayanagar-private-tuition-tutors']">Jayanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/jayanagar-west-private-tuition-tutors']">Jayanagar West</a><br>
+                                <a [routerLink]="['../../private-tuition/jayangar-east-private-tuition-tutors']">Jayangar East</a><br>
+                                <a [routerLink]="['../../private-tuition/jayangar-iii-block-private-tuition-tutors']">Jayangar Iii block</a><br>
+                                <a [routerLink]="['../../private-tuition/jeevanahalli-private-tuition-tutors']">Jeevanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/jeevanbhimanagar-private-tuition-tutors']">Jeevanbhimanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/jigani-private-tuition-tutors']">Jigani</a><br>
+                                <a [routerLink]="['../../private-tuition/jp-nagar-iii-phase-private-tuition-tutors']">Jp Nagar iii phase</a><br>
+                                <a [routerLink]="['../../private-tuition/k-h-b-colony-private-tuition-tutors']">K H b colony</a><br>
+                                <a [routerLink]="['../../private-tuition/k.-g.-road-private-tuition-tutors']">K. g. road</a><br>
+                                <a [routerLink]="['../../private-tuition/k.p.west-private-tuition-tutors']">K.P.west</a><br>
+                                <a [routerLink]="['../../private-tuition/kacharakanahalli-private-tuition-tutors']">Kacharakanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/kadabagere-private-tuition-tutors']">Kadabagere</a><br>
+                                <a [routerLink]="['../../private-tuition/kadugodi-private-tuition-tutors']">Kadugodi</a><br>
+                                <a [routerLink]="['../../private-tuition/kalkunte-private-tuition-tutors']">Kalkunte</a><br>
+                                <a [routerLink]="['../../private-tuition/kalyanagar-private-tuition-tutors']">Kalyanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/kamagondanahalli-private-tuition-tutors']">Kamagondanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/kamakshipalya-private-tuition-tutors']">Kamakshipalya</a><br>
+                                <a [routerLink]="['../../private-tuition/kannamangala-private-tuition-tutors']">Kannamangala</a><br>
+                                <a [routerLink]="['../../private-tuition/kannur-private-tuition-tutors']">Kannur</a><br>
+                                <a [routerLink]="['../../private-tuition/kanteeravanagar-private-tuition-tutors']">Kanteeravanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/kathriguppe-private-tuition-tutors']">Kathriguppe</a><br>
+                                <a [routerLink]="['../../private-tuition/kenchanahalli-private-tuition-tutors']">Kenchanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/kendriya-sadan-private-tuition-tutors']">Kendriya Sadan</a><br>
+                                <a [routerLink]="['../../private-tuition/kendriya-vihar-private-tuition-tutors']">Kendriya Vihar</a><br>
+                                <a [routerLink]="['../../private-tuition/kodigehalli-private-tuition-tutors']">Kodigehalli</a><br>
+                                <a [routerLink]="['../../private-tuition/konanakunte-private-tuition-tutors']">Konanakunte</a><br>
+                                <a [routerLink]="['../../private-tuition/koramangala-private-tuition-tutors']">Koramangala</a><br>
+                                <a [routerLink]="['../../private-tuition/koramangala-i-block-private-tuition-tutors']">Koramangala I block</a><br>
+                                <a [routerLink]="['../../private-tuition/koramangala-vi-bk-private-tuition-tutors']">Koramangala Vi bk</a><br>
+                                <a [routerLink]="['../../private-tuition/kothanur-private-tuition-tutors']">Kothanur</a><br>
+                                <a [routerLink]="['../../private-tuition/krishnarajapuram-private-tuition-tutors']">Krishnarajapuram</a><br>
+                                <a [routerLink]="['../../private-tuition/krishnarajapuram-r-s-private-tuition-tutors']">Krishnarajapuram R s</a><br>
+                                <a [routerLink]="['../../private-tuition/kugur-private-tuition-tutors']">Kugur</a><br>
+                                <a [routerLink]="['../../private-tuition/kumaraswamy-layout-private-tuition-tutors']">Kumaraswamy Layout</a><br>
+                                <a [routerLink]="['../../private-tuition/kumbalgodu-private-tuition-tutors']">Kumbalgodu</a><br>
+                                <a [routerLink]="['../../private-tuition/kundalahalli-private-tuition-tutors']">Kundalahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/lalbagh-west-private-tuition-tutors']">Lalbagh West</a><br>
+                                <a [routerLink]="['../../private-tuition/legislators-home-private-tuition-tutors']">Legislators Home</a><br>
+                                <a [routerLink]="['../../private-tuition/lingarajapuram-private-tuition-tutors']">Lingarajapuram</a><br>
+                                <a [routerLink]="['../../private-tuition/m-s-r-road-private-tuition-tutors']">M S r road</a><br>
+                                <a [routerLink]="['../../private-tuition/madhavan-park-private-tuition-tutors']">Madhavan Park</a><br>
+                                <a [routerLink]="['../../private-tuition/madivala-private-tuition-tutors']">Madivala</a><br>
+                                <a [routerLink]="['../../private-tuition/magadi-road-private-tuition-tutors']">Magadi Road</a><br>
+                                <a [routerLink]="['../../private-tuition/mahadevapura-private-tuition-tutors']">Mahadevapura</a><br>
+                                <a [routerLink]="['../../private-tuition/mahalakshmipuram-layout-private-tuition-tutors']">Mahalakshmipuram Layout</a><br>
+                                <a [routerLink]="['../../private-tuition/mahatma-gandhi-road-private-tuition-tutors']">Mahatma Gandhi road</a><br>
+                                <a [routerLink]="['../../private-tuition/malkand-lines-private-tuition-tutors']">Malkand Lines</a><br>
+                                <a [routerLink]="['../../private-tuition/mallathahalli-private-tuition-tutors']">Mallathahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/malleswaram-private-tuition-tutors']">Malleswaram</a><br>
+                                <a [routerLink]="['../../private-tuition/malleswaram-west-private-tuition-tutors']">Malleswaram West</a><br>
+                                <a [routerLink]="['../../private-tuition/mandalay-lines-private-tuition-tutors']">Mandalay Lines</a><br>
+                                <a [routerLink]="['../../private-tuition/marathahalli-colony-private-tuition-tutors']">Marathahalli Colony</a><br>
+                                <a [routerLink]="['../../private-tuition/marsur-private-tuition-tutors']">Marsur</a><br>
+                                <a [routerLink]="['../../private-tuition/maruthi-sevanagar-private-tuition-tutors']">Maruthi Sevanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/mathikere-private-tuition-tutors']">Mathikere</a><br>
+                                <a [routerLink]="['../../private-tuition/mavalli-private-tuition-tutors']">Mavalli</a><br>
+                                <a [routerLink]="['../../private-tuition/mayasandra-private-tuition-tutors']">Mayasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/medihalli-private-tuition-tutors']">Medihalli</a><br>
+                                <a [routerLink]="['../../private-tuition/medimallasandra-private-tuition-tutors']">Medimallasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/mico-layout-private-tuition-tutors']">Mico Layout</a><br>
+                                <a [routerLink]="['../../private-tuition/milk-colony-private-tuition-tutors']">Milk Colony</a><br>
+                                <a [routerLink]="['../../private-tuition/mount-st-joseph-private-tuition-tutors']">Mount St joseph</a><br>
+                                <a [routerLink]="['../../private-tuition/msrit-private-tuition-tutors']">Msrit</a><br>
+                                <a [routerLink]="['../../private-tuition/mundur-private-tuition-tutors']">Mundur</a><br>
+                                <a [routerLink]="['../../private-tuition/museum-road-private-tuition-tutors']">Museum Road</a><br>
+                                <a [routerLink]="['../../private-tuition/muthanallur-private-tuition-tutors']">Muthanallur</a><br>
+                                <a [routerLink]="['../../private-tuition/muthusandra-private-tuition-tutors']">Muthusandra</a><br>
+                                <a [routerLink]="['../../private-tuition/nal-private-tuition-tutors']">Nal</a><br>
+                                <a [routerLink]="['../../private-tuition/naduvathi-private-tuition-tutors']">Naduvathi</a><br>
+                                <a [routerLink]="['../../private-tuition/nagarbhavi-private-tuition-tutors']">Nagarbhavi</a><br>
+                                <a [routerLink]="['../../private-tuition/nagasandra-private-tuition-tutors']">Nagasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/nagavara-private-tuition-tutors']">Nagavara</a><br>
+                                <a [routerLink]="['../../private-tuition/nandinilayout-private-tuition-tutors']">Nandinilayout</a><br>
+                                <a [routerLink]="['../../private-tuition/narasimharaja-colony-private-tuition-tutors']">Narasimharaja Colony</a><br>
+                                <a [routerLink]="['../../private-tuition/narasimjharaja-road-private-tuition-tutors']">Narasimjharaja Road</a><br>
+                                <a [routerLink]="['../../private-tuition/narayan-pillai-street-private-tuition-tutors']">Narayan Pillai street</a><br>
+                                <a [routerLink]="['../../private-tuition/nayandahalli-private-tuition-tutors']">Nayandahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/neralur-private-tuition-tutors']">Neralur</a><br>
+                                <a [routerLink]="['../../private-tuition/new-tharaggupet-private-tuition-tutors']">New Tharaggupet</a><br>
+                                <a [routerLink]="['../../private-tuition/new-thippasandra-private-tuition-tutors']">New Thippasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/okalipuram-private-tuition-tutors']">Okalipuram</a><br>
+                                <a [routerLink]="['../../private-tuition/p&t-col.-kavalbyrasandra-private-tuition-tutors']">P&t Col. kavalbyrasandra</a><br>
+                                <a [routerLink]="['../../private-tuition/padmanabhnagar-private-tuition-tutors']">Padmanabhnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/palace-guttahalli-private-tuition-tutors']">Palace Guttahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/panathur-private-tuition-tutors']">Panathur</a><br>
+                                <a [routerLink]="['../../private-tuition/pasmpamahakavi-road-private-tuition-tutors']">Pasmpamahakavi Road</a><br>
+                                <a [routerLink]="['../../private-tuition/peenya-i-stage-private-tuition-tutors']">Peenya I stage</a><br>
+                                <a [routerLink]="['../../private-tuition/peenya-ii-stage-private-tuition-tutors']">Peenya Ii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/peenya-small-industries-private-tuition-tutors']">Peenya Small industries</a><br>
+                                <a [routerLink]="['../../private-tuition/r-t-nagar-private-tuition-tutors']">R T nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/r.m.v.-extension-ii-stage-private-tuition-tutors']">R.M.v. extension ii stage</a><br>
+                                <a [routerLink]="['../../private-tuition/rajajinagar-private-tuition-tutors']">Rajajinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/rajajinagar-i-block-private-tuition-tutors']">Rajajinagar I block</a><br>
+                                <a [routerLink]="['../../private-tuition/rajajinagar-ivth-block-private-tuition-tutors']">Rajajinagar Ivth block</a><br>
+                                <a [routerLink]="['../../private-tuition/rajanakunte-private-tuition-tutors']">Rajanakunte</a><br>
+                                <a [routerLink]="['../../private-tuition/rajarajeshwarinagar-private-tuition-tutors']">Rajarajeshwarinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/rajbhavan-private-tuition-tutors']">Rajbhavan</a><br>
+                                <a [routerLink]="['../../private-tuition/ramachandrapuram-private-tuition-tutors']">Ramachandrapuram</a><br>
+                                <a [routerLink]="['../../private-tuition/ramagondanahalli-private-tuition-tutors']">Ramagondanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/ramakrishna-hegde-nagar-private-tuition-tutors']">Ramakrishna Hegde nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/ramamurthy-nagar-private-tuition-tutors']">Ramamurthy Nagar</a><br>
+                                <a [routerLink]="['../../private-tuition/rameshnagar-private-tuition-tutors']">Rameshnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/richmond-town-private-tuition-tutors']">Richmond Town</a><br>
+                                <a [routerLink]="['../../private-tuition/rv-niketan-private-tuition-tutors']">Rv Niketan</a><br>
+                                <a [routerLink]="['../../private-tuition/sadashivanagar-private-tuition-tutors']">Sadashivanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/sahakaranagar-p.o-private-tuition-tutors']">Sahakaranagar P.o</a><br>
+                                <a [routerLink]="['../../private-tuition/samandur-private-tuition-tutors']">Samandur</a><br>
+                                <a [routerLink]="['../../private-tuition/samethanahalli-private-tuition-tutors']">Samethanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/sampangiramnagar-private-tuition-tutors']">Sampangiramnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/sarjapura-private-tuition-tutors']">Sarjapura</a><br>
+                                <a [routerLink]="['../../private-tuition/science-institute-private-tuition-tutors']">Science Institute</a><br>
+                                <a [routerLink]="['../../private-tuition/seshadripuram-private-tuition-tutors']">Seshadripuram</a><br>
+                                <a [routerLink]="['../../private-tuition/shankarpura-private-tuition-tutors']">Shankarpura</a><br>
+                                <a [routerLink]="['../../private-tuition/shanthinagar-private-tuition-tutors']">Shanthinagar</a><br>
+                                <a [routerLink]="['../../private-tuition/sidihoskote-private-tuition-tutors']">Sidihoskote</a><br>
+                                <a [routerLink]="['../../private-tuition/singanayakanahalli-private-tuition-tutors']">Singanayakanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/sivan-chetty-gardens-private-tuition-tutors']">Sivan Chetty gardens</a><br>
+                                <a [routerLink]="['../../private-tuition/someswarapura-private-tuition-tutors']">Someswarapura</a><br>
+                                <a [routerLink]="['../../private-tuition/sri-jayachamarajendra-road-private-tuition-tutors']">Sri Jayachamarajendra road</a><br>
+                                <a [routerLink]="['../../private-tuition/srirampuram-private-tuition-tutors']">Srirampuram</a><br>
+                                <a [routerLink]="['../../private-tuition/st.-johns-medical-college-private-tuition-tutors']">St. john's medical college</a><br>
+                                <a [routerLink]="['../../private-tuition/st.-thomas-town-private-tuition-tutors']">St. thomas town</a><br>
+                                <a [routerLink]="['../../private-tuition/state-bank-of-mysore-colony-private-tuition-tutors']">State Bank of mysore colony</a><br>
+                                <a [routerLink]="['../../private-tuition/subhashnagar-private-tuition-tutors']">Subhashnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/subramanyapura-private-tuition-tutors']">Subramanyapura</a><br>
+                                <a [routerLink]="['../../private-tuition/swimming-pool-extn-private-tuition-tutors']">Swimming Pool extn</a><br>
+                                <a [routerLink]="['../../private-tuition/tarahunise-private-tuition-tutors']">Tarahunise</a><br>
+                                <a [routerLink]="['../../private-tuition/tavarekere-private-tuition-tutors']">Tavarekere</a><br>
+                                <a [routerLink]="['../../private-tuition/taverekere-private-tuition-tutors']">Taverekere</a><br>
+                                <a [routerLink]="['../../private-tuition/thambuchetty-palya-private-tuition-tutors']">Thambuchetty Palya</a><br>
+                                <a [routerLink]="['../../private-tuition/thammanayakanahalli-private-tuition-tutors']">Thammanayakanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/tilaknagar-private-tuition-tutors']">Tilaknagar</a><br>
+                                <a [routerLink]="['../../private-tuition/training-command-iaf-private-tuition-tutors']">Training Command iaf</a><br>
+                                <a [routerLink]="['../../private-tuition/tyagrajnagar-private-tuition-tutors']">Tyagrajnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/ullalu-upanagara-private-tuition-tutors']">Ullalu Upanagara</a><br>
+                                <a [routerLink]="['../../private-tuition/vanakanahalli-private-tuition-tutors']">Vanakanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/vartur-private-tuition-tutors']">Vartur</a><br>
+                                <a [routerLink]="['../../private-tuition/vasanthnagar-private-tuition-tutors']">Vasanthnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/venkatarangapura-private-tuition-tutors']">Venkatarangapura</a><br>
+                                <a [routerLink]="['../../private-tuition/venkateshapura-private-tuition-tutors']">Venkateshapura</a><br>
+                                <a [routerLink]="['../../private-tuition/vidhana-soudha-private-tuition-tutors']">Vidhana Soudha</a><br>
+                                <a [routerLink]="['../../private-tuition/vidyanagara-private-tuition-tutors']">Vidyanagara</a><br>
+                                <a [routerLink]="['../../private-tuition/vidyaranyapura-private-tuition-tutors']">Vidyaranyapura</a><br>
+                                <a [routerLink]="['../../private-tuition/vijayanagar-private-tuition-tutors']">Vijayanagar</a><br>
+                                <a [routerLink]="['../../private-tuition/vijayanagar-east-private-tuition-tutors']">Vijayanagar East</a><br>
+                                <a [routerLink]="['../../private-tuition/vikramnagar-private-tuition-tutors']">Vikramnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/vimapura-private-tuition-tutors']">Vimapura</a><br>
+                                <a [routerLink]="['../../private-tuition/virgonagar-private-tuition-tutors']">Virgonagar</a><br>
+                                <a [routerLink]="['../../private-tuition/visveswarapuram-private-tuition-tutors']">Visveswarapuram</a><br>
+                                <a [routerLink]="['../../private-tuition/viswaneedam-private-tuition-tutors']">Viswaneedam</a><br>
+                                <a [routerLink]="['../../private-tuition/vittalnagar-private-tuition-tutors']">Vittalnagar</a><br>
+                                <a [routerLink]="['../../private-tuition/viveknagar-private-tuition-tutors']">Viveknagar</a><br>
+                                <a [routerLink]="['../../private-tuition/vyalikaval-extn-private-tuition-tutors']">Vyalikaval Extn</a><br>
+                                <a [routerLink]="['../../private-tuition/wheel-and-axle-plant-private-tuition-tutors']">Wheel And axle plant</a><br>
+                                <a [routerLink]="['../../private-tuition/whitefield-private-tuition-tutors']">Whitefield</a><br>
+                                <a [routerLink]="['../../private-tuition/wilson-garden-private-tuition-tutors']">Wilson Garden</a><br>
+                                <a [routerLink]="['../../private-tuition/yadavanahalli-private-tuition-tutors']">Yadavanahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/yediyur-private-tuition-tutors']">Yediyur</a><br>
+                                <a [routerLink]="['../../private-tuition/yelachenahalli-private-tuition-tutors']">Yelachenahalli</a><br>
+                                <a [routerLink]="['../../private-tuition/yelahanka-private-tuition-tutors']">Yelahanka</a><br>
+                                <a [routerLink]="['../../private-tuition/yelahanka-satellite-town-private-tuition-tutors']">Yelahanka Satellite town</a><br>
+                                <a [routerLink]="['../../private-tuition/yemalur-private-tuition-tutors']">Yemalur</a><br>
+                                <a [routerLink]="['../../private-tuition/yeshwanthpur-bazar-private-tuition-tutors']">Yeshwanthpur Bazar</a><br>
+                                <a [routerLink]="['../../private-tuition/yeswanthpura-private-tuition-tutors']">Yeswanthpura</a><br>
+                                <a [routerLink]="['../../private-tuition/btm-layout-1st-stage-private-tuition-tutors']"></a><br>
+                                <a [routerLink]="['../../private-tuition/btm-layout-2nd-stage-private-tuition-tutors']"></a><br>
+                        </div>
+                                    </div>
+                                    <!-- <div class="card">
+                                            <div class="card-header">
+                                                    Question Papers:
+                                            </div>                                
+                                                <div class="card-body bg-transparent" style="margin-right: 0em!important;" routerLinkActive="active">
+                                                   <ul><li><a [routerLink]="['/question']">Cbse Class 10 Question Paper</a><br></li>
+                                                        <li><a [routerLink]="['/question']">Cbse Class 12 Question Paper</a><br></li>
+                                                        <li><a [routerLink]="['/question']">ICSE Class 10 Question Paper</a><br></li>
+                                                        <li><a [routerLink]="['/question']">ICSE Class 12 Question Paper</a><br></li>
+                                                        <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br></li>
+                                                        <li><a [routerLink]="['/question']">Karnataka Board Class 10 Question Paper</a><br></li>
+                                                </ul>  
+                                                </div>
+                                    </div><br> -->
+                                    <!--<div class="cardBeside">
+                                                <div class="cardDetail">
+                                                <br><br>
+                                                    <p>"It has been 2 years since we started classes with CsquareEducation. And it has been an amazing journey and they 
+                                                    have really helped my kids. My elder son was in 12th and passed out 12th with 84% which we didn't expect as he was scared because														
+                                                    of maths. All thanks to CsquareEducation."<br>
+                                                        - Akshat Chandra &nbsp; &nbsp; &nbsp;
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;"></p>
+                                                </div>
+                                    </div><br>
+                                    <div class="cardBeside">
+                                                <div class="cardDetail">
+                                                <br><br>
+                                                    <p>"It has been 2 years since we started classes with CsquareEducation. And it has been an amazing journey and they 
+                                                    have really helped my kids. My elder son was in 12th and passed out 12th with 84% which we didn't expect as he was scared because														
+                                                    of maths. All thanks to CsquareEducation."<br>
+                                                        - Akshat Chandra &nbsp; &nbsp; &nbsp;
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;">
+                                                        <img src="images/star-gold.png" alt="private tuition bangalore" style="width:20px;"></p>
+                                                </div>
+                                    </div><br>-->
+        
+                            </div>
                     </div>
-            </div>
-
-</div>
-   
+        
+        </div>
+           
