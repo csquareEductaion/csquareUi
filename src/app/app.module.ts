@@ -27,7 +27,6 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import {TeximateModule} from "ng-teximate";
-import {BasicelementsService} from './components/basicelements/basicelements.service';
 import {HttpModule} from '@angular/http';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
@@ -68,7 +67,6 @@ import { FilterPipeModule } from './shared/pipes/filters/fliter.module';
   ],
   entryComponents: [  ],
   providers: [
-    BasicelementsService,
     StudentService,
     TutorService,
     appRoutingProviders,

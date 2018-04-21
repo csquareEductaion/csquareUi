@@ -8,11 +8,7 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
 
 import { HomeComponent } from './home.component';
-
-import { ComponentsModule } from '../components/components.module';
-//import {MatCardModule} from '@angular/material/card';
 import { NouisliderModule } from 'ng2-nouislider';
-//import { CommonModalComponent } from 'app/shared/common-modal/common-modal.component';
 
 @NgModule({
     imports: [
@@ -20,12 +16,9 @@ import { NouisliderModule } from 'ng2-nouislider';
         BrowserModule,
         FormsModule,
         RouterModule,
-        ComponentsModule,
         NgxCarouselModule,
         NgbModule,
-       // MatCardModule,
         NouisliderModule,
-       // CommonModalComponent
         
     ],
     declarations: [ HomeComponent],

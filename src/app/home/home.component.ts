@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxCarousel } from 'ngx-carousel';
 import { Meta, Title } from "@angular/platform-browser";
+import { Router } from '@angular/router';
 
 @Component({    
     selector: 'app-home',
@@ -15,7 +16,13 @@ export class HomeComponent implements OnInit {
         middle: false,
         right: false
     };
-    constructor (
+    isCollapsedS1: any;
+    isCollapsedS2: any;
+    isCollapsedS3: any;
+    usersCount: number = 0;
+    studentCount: number = 0;
+    tutorCount: number = 0;
+    constructor ( private router: Router,
         meta: Meta, title: Title){  
         
             title.setTitle('Best private home Tuition Tutor, Teacher & Online Classes for Math, Science');
@@ -39,12 +46,13 @@ export class HomeComponent implements OnInit {
           loop: true,
           custom: 'banner'
         }
+        this.usersCount = 6000;
+        this.studentCount = 200;
+        this.tutorCount = 5800;
       }
      
-      public myfunc(event: Event) {
-         // carouselLoad will trigger this funnction when your load value reaches
-         // it is helps to load the data by parts to increase the performance of the app
-         // must use feature to all carousel
-      }
+      buttonClick(data: any) {
+       this.router.navigateByUrl(data);
+     } 
       
 }

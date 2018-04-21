@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
         let titleLogged = titlee.split('/');
-        if(titleLogged[0] === 'signup' || titleLogged[0] === 'admin-app'){
+        if(titleLogged[1] === 'signup' || titleLogged[1] === 'admin-app'){
             return false;
         } else {
             return true;
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
         let titleLogged = titlee.split('/');
-        if(titleLogged[0] === 'admin-app'){
+        if(titleLogged[1] === 'admin-app'){
             this.nav = false;
             return false;
         } else {
@@ -75,9 +75,9 @@ export class AppComponent implements OnInit {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
         let titleLogged = titlee.split('/');
-        if(titleLogged[0] === 'signup' || titleLogged[0] === 'admin-app' || titleLogged[0] === 'tutorForm' ||
-         titleLogged[0] === 'studentForm' || titleLogged[0] == 'about' || titleLogged[0] == 'question' ||
-        titleLogged[0] == 'contact' ){
+        if(titleLogged[1] === 'signup' || titleLogged[1] === 'admin-app' || titleLogged[1] === 'tutorForm' ||
+         titleLogged[1] === 'studentForm' || titleLogged[1] == 'about' || titleLogged[1] == 'question' ||
+        titleLogged[1] == 'contact' ){
             return false;
         } else {
             return true;
