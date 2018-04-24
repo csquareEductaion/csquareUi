@@ -310,7 +310,7 @@ export class EditStudentManagementComponent implements OnInit {
     submit() {
         const formValue: any = this.studentManagementForm.value;
         if (!this.leadIdParam){
-          if(this.studentManagementForm.valid) {
+          //if(this.studentManagementForm.valid) {
             this.loading = true;
             this.service.addStudent(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -320,15 +320,15 @@ export class EditStudentManagementComponent implements OnInit {
               this.loading = false;
               this.router.navigateByUrl('/admin-app/studentManagement/' + this.sessionId);
             });
-          } else{
-            const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-            activeModal.componentInstance.showHide = true;
-            activeModal.componentInstance.modalHeader = 'Alert';
-            activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-          }  
+          // } else{
+          //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+          //   activeModal.componentInstance.showHide = true;
+          //   activeModal.componentInstance.modalHeader = 'Alert';
+          //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+          // }  
         } else {
           this.pK.setValue(this.leadIdParam);
-          if(this.studentManagementForm.valid) {
+          //if(this.studentManagementForm.valid) {
             this.loading = true;
             this.service.updateStudent(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -338,12 +338,12 @@ export class EditStudentManagementComponent implements OnInit {
               this.loading = false;
               this.router.navigateByUrl('/admin-app/studentManagement/' + this.sessionId);
             });
-          } else{
-            const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-            activeModal.componentInstance.showHide = true;
-            activeModal.componentInstance.modalHeader = 'Alert';
-            activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-          }
+          // } else{
+          //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+          //   activeModal.componentInstance.showHide = true;
+          //   activeModal.componentInstance.modalHeader = 'Alert';
+          //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+          // }
         }
                
       }

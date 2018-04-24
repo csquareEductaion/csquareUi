@@ -316,7 +316,7 @@ export class EditTutorManagementComponent implements OnInit {
               this.subjects.setValue('');
               const formValue: any = this.tutorManagementForm.value;
               if (!this.tutorIdParam){
-                if(this.tutorManagementForm.valid) {
+               // if(this.tutorManagementForm.valid) {
                   this.loading = true;
                   this.service.addTutor(formValue).subscribe(enquiry => {
                     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -326,15 +326,15 @@ export class EditTutorManagementComponent implements OnInit {
                     this.loading = false;
                     this.router.navigateByUrl('/admin-app/tutorManagement/' + this.sessionId);
                   });
-                } else{
-                  const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-                  activeModal.componentInstance.showHide = true;
-                  activeModal.componentInstance.modalHeader = 'Alert';
-                  activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-                }  
+                // } else{
+                //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+                //   activeModal.componentInstance.showHide = true;
+                //   activeModal.componentInstance.modalHeader = 'Alert';
+                //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+                // }  
               } else {
                 this.pK.setValue(this.tutorIdParam);
-                if(this.tutorManagementForm.valid) {
+               // if(this.tutorManagementForm.valid) {
                   this.loading = true;
                   this.service.updateTutor(formValue).subscribe(enquiry => {
                     const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -344,12 +344,12 @@ export class EditTutorManagementComponent implements OnInit {
                     this.loading = false;
                     this.router.navigateByUrl('/admin-app/tutorManagement/' + this.sessionId);
                   });
-                } else{
-                  const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-                  activeModal.componentInstance.showHide = true;
-                  activeModal.componentInstance.modalHeader = 'Alert';
-                  activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-                }
+                // } else{
+                //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+                //   activeModal.componentInstance.showHide = true;
+                //   activeModal.componentInstance.modalHeader = 'Alert';
+                //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+                // }
               }
                      
             }

@@ -295,7 +295,7 @@ export class EditLeadComponent implements OnInit {
       }
         const formValue: any = this.leadForm.value;
         if(!this.leadIdParam){
-          if(this.leadForm.valid) {
+          // if(this.leadForm.valid) {
             this.loading = true;
             this.service.addLead(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -305,15 +305,15 @@ export class EditLeadComponent implements OnInit {
               this.loading = false;
               this.router.navigateByUrl('/admin-app/lead/'+this.sessionId);
             });
-          } else{
-            const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-            activeModal.componentInstance.showHide = true;
-            activeModal.componentInstance.modalHeader = 'Alert';
-            activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-          } 
+          // } else{
+          //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+          //   activeModal.componentInstance.showHide = true;
+          //   activeModal.componentInstance.modalHeader = 'Alert';
+          //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+          // } 
         } else {
           this.pK.setValue(this.leadIdParam);
-          if(this.leadForm.valid) {
+          // if(this.leadForm.valid) {
             this.loading = true;
             this.service.updateLead(formValue).subscribe(enquiry => {
               const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
@@ -323,12 +323,12 @@ export class EditLeadComponent implements OnInit {
               this.loading = false;
               this.router.navigateByUrl('/admin-app/lead/'+this.sessionId); 
             });
-          } else{
-            const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
-            activeModal.componentInstance.showHide = true;
-            activeModal.componentInstance.modalHeader = 'Alert';
-            activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
-          } 
+          // } else{
+          //   const activeModal = this.modalService.open(CommonModalComponent, { size: 'lg' });
+          //   activeModal.componentInstance.showHide = true;
+          //   activeModal.componentInstance.modalHeader = 'Alert';
+          //   activeModal.componentInstance.modalContent = 'Please Fill the form and then submit!';
+          // } 
         }
                 
       }
